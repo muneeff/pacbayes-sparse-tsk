@@ -1,0 +1,106 @@
+{
+  "phase": "confirmatory_real_energy_case",
+  "confirmatory": true,
+  "case_study": "pjm_four_region_daily_load",
+  "regions": [
+    "aep",
+    "comed",
+    "dayton",
+    "pjme"
+  ],
+  "completed_regions": 4,
+  "total_candidates": 325,
+  "all_candidate_selection_excluded_test": true,
+  "all_certificates_excluded_test": true,
+  "all_decisions_preceded_test": true,
+  "pretest_decisions_sha256": "66ab2927b6ea3545e6a2a8fe052581a26c8f2a06f6947e6c6811562d9a3b9126",
+  "deployed_model_regions": 4,
+  "mean_test_rmse_improvement_vs_fallback": 0.5355135955829278,
+  "mean_test_cost_improvement_vs_fallback": 0.5361578679766557,
+  "runtime_seconds": 105.47598335800012,
+  "lock_sha256": "41d4619578a7f8784003e6b96cf9e010c2d361d191e2124be70bc3402a088a37",
+  "lock_created_utc": "2026-07-12T19:23:41.893693+00:00",
+  "data_sha256": "ec8c8ba641a56f47ea5308910899c222d326f7cb244c3957cd60c8e168da7cb2",
+  "region_audits": [
+    {
+      "zone": "aep",
+      "scaling_constructed_from": "Dprior_only",
+      "scaling_mean": 15501.676779203954,
+      "scaling_std": 1737.192785690142,
+      "candidate_count": 85,
+      "skipped_capped_candidates": 35,
+      "build_failures": [],
+      "split_counts": {
+        "prior": 481,
+        "bound": 1083,
+        "validation": 361,
+        "test": 481
+      },
+      "familywise_delta": 0.0125,
+      "candidate_selection_uses_test": false,
+      "certificate_uses_test": false,
+      "deployment_decision_uses_test": false,
+      "all_region_decisions_serialized_before_test": true
+    },
+    {
+      "zone": "comed",
+      "scaling_constructed_from": "Dprior_only",
+      "scaling_mean": 11547.628491367617,
+      "scaling_std": 1850.947344507464,
+      "candidate_count": 80,
+      "skipped_capped_candidates": 40,
+      "build_failures": [],
+      "split_counts": {
+        "prior": 481,
+        "bound": 1083,
+        "validation": 361,
+        "test": 481
+      },
+      "familywise_delta": 0.0125,
+      "candidate_selection_uses_test": false,
+      "certificate_uses_test": false,
+      "deployment_decision_uses_test": false,
+      "all_region_decisions_serialized_before_test": true
+    },
+    {
+      "zone": "dayton",
+      "scaling_constructed_from": "Dprior_only",
+      "scaling_mean": 1991.8037150863227,
+      "scaling_std": 264.5431186891978,
+      "candidate_count": 80,
+      "skipped_capped_candidates": 40,
+      "build_failures": [],
+      "split_counts": {
+        "prior": 481,
+        "bound": 1083,
+        "validation": 361,
+        "test": 481
+      },
+      "familywise_delta": 0.0125,
+      "candidate_selection_uses_test": false,
+      "certificate_uses_test": false,
+      "deployment_decision_uses_test": false,
+      "all_region_decisions_serialized_before_test": true
+    },
+    {
+      "zone": "pjme",
+      "scaling_constructed_from": "Dprior_only",
+      "scaling_mean": 31484.57674606044,
+      "scaling_std": 4417.7704684298205,
+      "candidate_count": 80,
+      "skipped_capped_candidates": 40,
+      "build_failures": [],
+      "split_counts": {
+        "prior": 481,
+        "bound": 1083,
+        "validation": 361,
+        "test": 481
+      },
+      "familywise_delta": 0.0125,
+      "candidate_selection_uses_test": false,
+      "certificate_uses_test": false,
+      "deployment_decision_uses_test": false,
+      "all_region_decisions_serialized_before_test": true
+    }
+  ]
+}

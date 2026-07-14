@@ -1,0 +1,31 @@
+{
+  "confirmatory_gate_modified": false,
+  "examples": [
+    {
+      "candidate_id": "dense_tsk|p=3|r=1.75|a=1|k=5",
+      "example": "SETAR seed 3001",
+      "lag": 3,
+      "radius": 1.75,
+      "ridge_alpha": 1.0,
+      "rule_count": 5,
+      "selected_csv_sha256": "8420a4099fa653165995498ed3c7ff34b07c23862aa8397e88a42d3951159787",
+      "selection": "development validation RMSE"
+    },
+    {
+      "candidate_csv_sha256": "0c25ff9b82f297d76fd920f37deb19450fd79b100278521a024661c3c8989839",
+      "candidate_id": "dense_tsk|p=12|r=1.5|a=1|k=4",
+      "decision_csv_sha256": "21957d9e47b36bdfc9e6e30b43dfcd239c2c254fccbeac0fa992b47e87ec3d19",
+      "example": "Tetouan Zone 1",
+      "lag": 12,
+      "radius": 1.5,
+      "ridge_alpha": 1.0,
+      "rule_count": 4,
+      "selection": "development deployment gate; test failure retained"
+    }
+  ],
+  "full_sha256": "74e94c0f4936d100de8d079710285f15e8e2d503ce802a84e58ad79648d54c4e",
+  "schema_version": "4.3",
+  "selection_modified": false,
+  "status": "post_hoc_interpretability_only",
+  "summary_sha256": "db96284930d03af4460a53dbe0d70e8f323ba5cea7a98254ab6cae9b25aef237"
+}

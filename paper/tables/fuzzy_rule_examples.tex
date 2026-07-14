@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\centering
+\caption{Post-hoc examples of actual multi-rule posterior-center TSK models. Antecedent prototypes and consequent coefficients are reported in original data units. Mean firing is computed on bound plus validation observations. These deterministic rules are the point predictors used for validation/test evaluation; the PAC-Bayes guarantee directly covers the Gibbs predictor and, by convexity, the clipped Bayesian model average, not these point forecasts.}
+\label{tab:fuzzy_rule_examples}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrrrrp{5.4cm}}
+\toprule
+Example & Rule & Prior support & Mean firing & Center mean & Recent-oldest & Dominant local consequent terms \\
+\midrule
+SETAR seed 3001 & R1 & 143 & 34.1\% & -0.11 & 0.04 & +0.458 y(t-1); +0.179 y(t-2); +0.119 y(t-3) \\
+SETAR seed 3001 & R4 & 74 & 19.0\% & 0.06 & 0.24 & +0.487 y(t-2); -0.422 y(t-1); -0.037 y(t-3) \\
+SETAR seed 3001 & R3 & 82 & 18.5\% & -0.37 & 0.09 & +0.685 y(t-1); +0.067 y(t-2); -0.006 y(t-3) \\
+SETAR seed 3001 & R5 & 61 & 15.3\% & -0.01 & -0.23 & +0.183 y(t-1); +0.106 y(t-3); +0.003 y(t-2) \\
+SETAR seed 3001 & R2 & 37 & 13.1\% & -0.19 & -0.56 & +0.576 y(t-1); -0.160 y(t-3); +0.067 y(t-2) \\
+\midrule
+Tetouan Zone 1 & R1 & 216 & 25.5\% & 31094.05 & 5904.95 & +0.641 y(t-12); +0.463 y(t-1); +0.259 y(t-6) \\
+Tetouan Zone 1 & R2 & 216 & 25.0\% & 31033.57 & -2317.05 & +0.927 y(t-1); -0.198 y(t-2); +0.164 y(t-7) \\
+Tetouan Zone 1 & R4 & 216 & 24.9\% & 31018.71 & -1208.12 & +0.888 y(t-1); +0.459 y(t-12); -0.299 y(t-4) \\
+Tetouan Zone 1 & R3 & 214 & 24.5\% & 30957.31 & -3487.66 & +0.542 y(t-12); -0.466 y(t-10); +0.356 y(t-2) \\
+\bottomrule
+\end{tabular}
+\end{table*}

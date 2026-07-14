@@ -1,0 +1,17 @@
+{
+  "region": "comed",
+  "decision_made_before_test_opening": true,
+  "deployment": "ridge",
+  "reason": "robust_certificate_validation_gate_passed",
+  "eligible_candidate_count": 31,
+  "seasonal_validation_rmse": 1431.003242783293,
+  "seasonal_validation_mae": 1018.5441557268427,
+  "seasonal_validation_weighted_cost": 1524.2419607370784,
+  "selected_candidate_id": "ridge|p=28|r=none|a=0.0001|k=1",
+  "selected_family": "ridge",
+  "selected_certificate": 0.08409788967628062,
+  "selected_validation_rmse": 756.651642230009,
+  "selected_validation_cost": 761.8588085853652,
+  "selected_validation_rmse_improvement": 0.4712439359967306,
+  "selected_validation_cost_improvement": 0.5001720014209865
+}

@@ -1,80 +1,99 @@
-# PAC-Bayesian Sparse TSK — V3.4
+# Auditable PAC-Bayesian Forecasting — V4.3
 
-This repository is the clean rebuild of the experimental artifact. V2 is preserved as a historical run. The revised evidence consists of corrected synthetic development, structural-sparsity ablations, a negative Tetouan development decision case, and a frozen independent PJM confirmatory case.
+This repository contains the reproducibility artifact for the revised manuscript:
 
-## Current status
+> **An Auditable Complexity-Aware PAC-Bayesian Framework for Linear and Takagi--Sugeno Time-Series Forecasting under Temporal Dependence**
 
-- Corrected V3 synthetic development completed.
-- Fixed-K versus radius-controlled structural-sparsity ablation completed.
-- Tetouan development energy case completed; its original deployment gate failed operationally.
-- Redesigned robust gate frozen using Tetouan development evidence only.
-- Independent PJM confirmatory case completed once under a pre-outcome SHA-256 lock.
-- All four PJM deployment decisions improved independent test RMSE and asymmetric cost relative to the predeclared seven-day seasonal-naive fallback.
-- Three selected models were Ridge and the fourth was a one-rule TSK; therefore the PJM case validates the decision gate, not nonlinear Sparse TSK superiority.
-- Theoretical and manuscript reconstruction is the next phase.
+The artifact preserves the corrected synthetic development study, Fixed-\(K\) sensitivity, statistical inference, the negative Tetouan development case, the internally locked PJM holdout case, and the V4.3 secondary post-hoc and interpretability analyses.
 
-## Evidence summary
+## Scientific status
 
-### Synthetic and structural ablation
+- The general time-uniform PAC-Bayes inequality is treated as an established result; the contribution is its chronological and computable specialization.
+- Radius-controlled structural sparsity reduces dimension, KL, and certificate relative to a fixed 12-rule TSK reference, but it is not significantly better in certificate value than the best small Fixed-\(K\) model.
+- Top-three activation sparsity does not materially tighten the certificate because it does not reduce the randomized parameter dimension.
+- Ridge retains the tightest average certificate.
+- The Tetouan development gate failed and is retained as negative evidence.
+- The locked PJM gate improved over its predeclared seven-day seasonal-naive fallback, but the selected models were three ridge predictors and one one-rule TSK predictor.
+- Secondary post-hoc SARIMA and ETS benchmarks, added only after the PJM holdout was opened, outperform the originally deployed predictors on average. They do not alter the frozen gate or its decisions.
+- The PAC-Bayes certificate directly covers the clipped Gibbs predictor and, by convexity, the clipped Bayesian model average. The deterministic posterior-center predictor used for validation, test RMSE, and deployment is not directly certified after clipping; the certificate is used as a screening signal.
 
-- Ridge gives the tightest certificates overall.
-- Radius-controlled structural sparsity reduces rule count, randomized dimension, KL, and certificate relative to a fixed-K TSK reference when it reduces the realized rule count.
-- Top-3 activation sparsity is computational only; it does not reduce the randomized parameter dimension or systematically tighten the certificate.
+## Main V4.3 additions
 
-### Tetouan development case
+1. Secondary post-hoc SARIMA and ETS benchmarks on the four PJM regions.
+2. Explicit distinction between the certified Gibbs/BMA objects and the operational point predictor.
+3. Actual multi-rule examples reconstructed from a five-rule SETAR model and a four-rule Tetouan model.
+4. A complete augmented hierarchical prior over model structure, prior variant, scale, and parameters.
+5. Full gate and infrastructure-recovery details moved to the supplementary material.
+6. Discussion and conclusion rewritten around the auditable integration claim rather than TSK superiority.
 
-The first frozen deployment gate admitted two TSK decisions that later underperformed the seasonal fallback. This result is retained as a negative development case and motivated the stricter gate.
+## Quick local build on Windows
 
-### PJM confirmatory case
+Activate an existing Python environment, install the project without changing dependencies, then run:
 
-The stricter gate required certificate <= 0.10, clipping <= 2%, at least 5% validation improvement in both RMSE and asymmetric cost, and stability across four chronological validation blocks. On AEP, COMED, DAYTON, and PJME, mean independent test improvements were 53.55% in RMSE and 53.62% in cost relative to the frozen fallback. See `docs/PJM_CONFIRMATORY_CASE_V3_REPORT_AR.md`.
-
-## Quick start
-
-```bash
-python -m venv .venv
-.venv\Scripts\activate   # Windows
-pip install -e .[dev]
-pytest
-python scripts/validate_v3.py
+```cmd
+python -m pip install -e . --no-deps
+python -m pytest tests\v3
+tools\04_compile_manuscript.cmd
 ```
 
-## Retrieve and prepare the PJM data
+Final files:
 
-The underlying Hourly Energy Consumption collection is identified as CC0 by its primary Kaggle page. The transport mirror is used only to retrieve exact files whose SHA-256 hashes are frozen.
-
-```bash
-python scripts/download_pjm_energy_v3.py
-python scripts/prepare_pjm_energy_v3.py \
-  --raw-dir data/raw/pjm \
-  --processed data/processed/pjm_daily.csv \
-  --audit artifacts/pjm_data_preparation_audit.json
+```text
+paper\PACBayes_TSK_Manuscript_V4_3_Integrated.pdf
+paper\PACBayes_TSK_Supplementary_V4_3.pdf
 ```
 
-## Confirmatory-run integrity
+## Reproduce the V4.3 additions
 
-The completed PJM run is protected by `results/confirmatory/pjm_case_v3_4/COMPLETED.json`. The original pre-outcome lock is `artifacts/pjm_confirmatory_v3_preoutcome_lock.json`. Do not delete the completion marker or rerun the case while describing it as confirmatory.
+The supplied CSV and LaTeX outputs are already included. Regeneration is optional.
 
-A first infrastructure attempt stopped at a command timeout before test opening. It is documented in `artifacts/pjm_confirmatory_v3_aborted_attempt_01.json`. The exact unchanged retry completed successfully; no retuning occurred.
+### Secondary post-hoc PJM benchmarks
 
-## Key documentation
+```cmd
+tools\08_run_posthoc_energy_benchmarks_v4_3.cmd
+```
 
-- `protocol/EXPERIMENT_PROTOCOL_V3.md`
-- `protocol/PJM_CONFIRMATORY_CASE_V3_PROTOCOL.md`
-- `docs/PACBAYES_VALIDITY_CHECKLIST.md`
-- `docs/DEVELOPMENT_V3_REPORT_AR.md`
-- `docs/STRUCTURAL_SPARSITY_ABLATION_V3_REPORT_AR.md`
-- `docs/ENERGY_CASE_STUDY_V3_REPORT_AR.md`
-- `docs/PJM_CONFIRMATORY_CASE_V3_REPORT_AR.md`
-- `docs/PJM_DATASET_MANIFEST.json`
-- `docs/REPRODUCIBILITY.md`
+This fits SARIMA and ETS candidates using prior/bound/validation data and evaluates the previously opened PJM test horizons. The analysis is explicitly post-hoc and never changes the frozen deployment gate.
 
-## Exploratory multi-K sensitivity
+### Actual fuzzy-rule examples
 
-The development-only Fixed-K sensitivity over `K={2,3,4,6,8,12}` can be reproduced on Windows with an active Python environment:
+```cmd
+tools\09_extract_fuzzy_rules_v4_3.cmd
+```
+
+This reconstructs the selected posterior-center TSK models and writes rule antecedents, firing summaries, and local affine consequents in original units.
+
+### Fixed-K sensitivity and statistical inference
 
 ```cmd
 tools\06_run_fixed_k_sensitivity_v4.cmd
+tools\07_run_statistical_analysis_v4_2.cmd
 ```
 
-This analysis does not modify the locked PJM confirmatory protocol or outcomes. See `docs/FIXED_K_SENSITIVITY_V4_REPORT_AR.md`.
+## Complete reproducibility build
+
+```cmd
+tools\BUILD_ALL_LOCAL.cmd
+```
+
+The complete build regenerates manuscript assets, V4.2 statistical summaries, V4.3 post-hoc benchmarks and rule examples, validates the artifact, and compiles both PDFs. It does **not** rerun or modify the locked PJM confirmatory decisions.
+
+## Important files
+
+- `paper/main.tex`
+- `paper/supplementary.tex`
+- `paper/sections/03_model_and_chronology.tex`
+- `paper/sections/04_certificate.tex`
+- `paper/sections/05_experimental_protocol.tex`
+- `paper/sections/06_results.tex`
+- `paper/sections/07_discussion.tex`
+- `paper/sections/08_conclusion.tex`
+- `results/posthoc/v4_3/energy_posthoc_summary_all.csv`
+- `results/interpretability/v4_3/fuzzy_rule_examples_summary.csv`
+- `docs/INTEGRATED_REVISION_V4_3_REPORT_AR.md`
+- `artifacts/pjm_confirmatory_v3_preoutcome_lock.json`
+- `artifacts/pjm_confirmatory_v3_aborted_attempt_01.json`
+
+## Integrity restriction
+
+Do not delete the PJM completion marker or rerun the PJM case while describing a later run as the original locked evaluation. The V4.3 SARIMA/ETS analysis is post-hoc by construction and must remain labeled as such.

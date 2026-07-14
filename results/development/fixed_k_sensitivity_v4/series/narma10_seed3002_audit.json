@@ -1,0 +1,43 @@
+{
+  "phase": "development",
+  "confirmatory": false,
+  "process": "narma10",
+  "seed": 3002,
+  "generator_metadata": {
+    "generator": "narma10",
+    "equation_id": "V3-NARMA10",
+    "input_low": 0.0,
+    "input_high": 0.5
+  },
+  "split_counts_raw": {
+    "prior": 400,
+    "bound": 900,
+    "validation": 300,
+    "test": 400
+  },
+  "scaling_constructed_from": "Dprior_only",
+  "scaling_mean": 0.36246142522143726,
+  "scaling_std": 0.09493411132538375,
+  "candidate_count": 535,
+  "eligible_by_family": {
+    "ridge": 25,
+    "fixed_k_dense_tsk": 150,
+    "dense_tsk": 180,
+    "sparse_tsk": 180
+  },
+  "skipped_capped_candidates": 190,
+  "build_failures": [],
+  "selection_uses_test": false,
+  "certificate_uses_test": false,
+  "test_opened_only_after_selection": true,
+  "familywise_delta": 0.0016666666666666668,
+  "pointwise_delta": 0.05,
+  "protocol_hashes": {
+    "protocol_v3.yaml": "1a12e28d336c925a0c965d3bbe46fb8d9689fa82582e51eacdb8a967cf8a04f5",
+    "synthetic_v3.yaml": "0893da17a78857362ab8de34b6ad06f8fccbdc8e01a079cd35759f2efb2955d9",
+    "fixed_k_sensitivity_v4.yaml": "c86e0e55fa5746cb2c39467949fda32f13aedafb3ba30ae67dfd10999cb7c9cb"
+  },
+  "runtime_seconds": 1.6593939439999872,
+  "candidate_file": "narma10_seed3002_candidates.csv",
+  "selected_file": "narma10_seed3002_selected.csv"
+}

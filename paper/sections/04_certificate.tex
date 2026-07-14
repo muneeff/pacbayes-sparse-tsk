@@ -1,35 +1,69 @@
 \section{Computable Sequential PAC-Bayes Certificate}
 \label{sec:certificate}
 
-\subsection{Hierarchical Prior over Structures}
-Condition on the information $\mathcal G_0$ available after $\mathcal D_{\mathrm{prior}}$. The family, lag, ridge-penalty, and radius grids are fixed by configuration. The implemented code length assigns uniform mass to family, lag, and ridge penalty; radius-controlled families additionally pay a uniform radius-grid mass. TSK structures pay
+\subsection{Augmented Hierarchical Prior}
+Condition on the information $\mathcal G_0$ available after $\mathcal D_{\mathrm{prior}}$. The hypothesis space is augmented with the discrete labels used to construct the Gaussian component:
+\begin{equation}
+ h=(M,v,s,a),\qquad M=(F,p,\gamma,r,K),
+\label{eq:augmented_hypothesis}
+\end{equation}
+where $v$ denotes the prior-localization variant, $s$ the prior-scale component, and $a$ the consequent vector. The prediction depends on $(M,a)$; the labels $(v,s)$ make the mixture accounting explicit.
+
+Let $\pi_F$, $\pi_p$, and $\pi_\gamma$ be uniform on the predeclared family, lag, and ridge-penalty grids. For ridge and fixed-$K$ families, the radius factor is one; for radius-controlled families, $\pi_{r\mid F}$ is uniform on the radius grid. TSK structures additionally receive the normalized geometric rule-count mass
 \begin{equation}
 \pi_K(K)=\frac{\exp(-\eta K)}{\sum_{j=1}^{K_{\max}}\exp(-\eta j)},\qquad \eta=\log 2.
 \label{eq:kprior}
 \end{equation}
-The resulting structural cost is $C(M)=-\log\pi(M)$. Since only the prior-realized $K$ is valid for a particular radius, the displayed masses can sum to less than one over executable candidates; the unused mass is assigned to a dummy hypothesis. This completion makes the code a proper prior and can only make the reported candidate costs conservative.
-
-For a selected structure, the base diagonal prior standard deviation is derived from prior residual variance and the diagonal of the regularized inverse Gram matrix. A finite scale mixture $s\in\{0.5,1,2,4,8\}$ defines
+The structural mass used by the implementation is therefore
 \begin{equation}
-P_{M,s}=\mathcal N\!\left(\mu_{P,M},\operatorname{diag}(s^2b_M^2)\right).
+\pi(M)=\pi_F(F)\pi_p(p)\pi_\gamma(\gamma)\pi_{r\mid F}(r\mid F)\,\pi_{K\mid F}(K\mid F),
+\label{eq:structural_prior}
+\end{equation}
+where $\pi_{K\mid F}=1$ for ridge and $\pi_{K\mid F}=\pi_K$ for TSK families. For a radius candidate, $K=K(r,\mathcal D_{\mathrm{prior}})$ is fixed after conditioning on $\mathcal G_0$. Ineligible radius candidates receive zero executable mass. For each radius-controlled family,
+\begin{equation}
+\sum_{r}\pi_{r\mid F}(r\mid F)\pi_K\!\left(K(r)\right)\mathbf 1\{r\text{ eligible}\}\le 1,
+\end{equation}
+and for any evaluated fixed-$K$ subset, $\sum_{K\in\mathcal K_{\mathrm{exec}}}\pi_K(K)\le1$. The unused family mass is assigned to a dummy hypothesis. Thus the prior is proper without renormalizing after observing which candidates are executable; the reported code lengths are conservative.
+
+For localization variant $v$ and prior scale $s$, let $\omega(v)$ and $\xi(s)$ denote the predeclared mixture masses. The operational studies use a single chronological localized variant, while the development localization ablation uses two equally weighted variants. The scale set is $\mathcal S=\{0.5,1,2,4,8\}$ with uniform mass $\xi(s)=1/5$. For every $(M,v,s)$, define
+\begin{equation}
+P_{M,v,s}=\mathcal N\!\left(\mu_{P,M,v},\operatorname{diag}(s^2b_{M,v}^2)\right).
 \label{eq:prior_gauss}
 \end{equation}
-The posterior is
+The full prior on the augmented space is
 \begin{equation}
-Q_{M,s,\rho}=\mathcal N\!\left(\mu_{Q,M},\operatorname{diag}(s^2\rho^2b_M^2)\right),
+P(dM,dv,ds,da)=\pi(M)\omega(v)\xi(s)P_{M,v,s}(da),
+\label{eq:joint_prior}
+\end{equation}
+with the remaining structural mass placed on the dummy component.
+
+After observing the certification data, a selected posterior has the form
+\begin{equation}
+Q=\delta_{\widehat M}\delta_{\widehat v}\delta_{\widehat s}\,
+Q_{\widehat M,\widehat v,\widehat s,\widehat\rho},
+\label{eq:joint_posterior}
+\end{equation}
+where
+\begin{equation}
+Q_{M,v,s,\rho}=\mathcal N\!\left(\mu_{Q,M},\operatorname{diag}(s^2\rho^2b_{M,v}^2)\right),
 \label{eq:posterior_gauss}
 \end{equation}
-where $\rho\in\{0.01,0.03,0.1,0.3,1\}$. Choosing a prior scale pays $\log5$ through the mixture inequality. Posterior-ratio selection needs no discrete penalty because the PAC-Bayes event is simultaneous over all posteriors $Q\ll P$. In the localization development ablation, localized and zero-mean prior variants are included as two prior-mixture components and each pays $\log2$; the operational studies use only the chronological localized prior.
-
-The exact diagonal-Gaussian divergence is
+and $\rho\in\{0.01,0.03,0.1,0.3,1\}$. Because the component labels are explicit coordinates of the augmented hypothesis, the divergence decomposes exactly as
+\begin{align}
+\mathrm{KL}(Q\|P)
+={}&-\log\pi(\widehat M)-\log\omega(\widehat v)-\log\xi(\widehat s)\nonumber\\
+&+\mathrm{KL}\!\left(Q_{\widehat M,\widehat v,\widehat s,\widehat\rho}\middle\|P_{\widehat M,\widehat v,\widehat s}\right).
+\label{eq:joint_kl}
+\end{align}
+The final term is the exact diagonal-Gaussian divergence
 \begin{equation}
-\mathrm{KL}(Q_M\|P_M)=\frac12\sum_{j=1}^{D_M}\left[
+\frac12\sum_{j=1}^{D_M}\left[
 \log\frac{\sigma_{P,j}^2}{\sigma_{Q,j}^2}-1+
 \frac{\sigma_{Q,j}^2+(\mu_{Q,j}-\mu_{P,j})^2}{\sigma_{P,j}^2}
 \right].
 \label{eq:gaussian_kl}
 \end{equation}
-The total charged complexity is the structural code, prior-mixture cost, and Gaussian KL.
+Selection of $\rho$ needs no additional discrete union penalty because Proposition~\ref{prop:bound} is simultaneous over all $Q\ll P$. Temperature selection is different: it is a choice among concentration inequalities and is charged through the temperature mass $\nu(\lambda)$. The supplementary material gives the proper-mass completion and the componentwise derivation in full.
 
 \subsection{Time-Uniform Bounded-Loss Specialization}
 For $h=(M,a)$, write $\mu_t(h)=\mathbb E[\ell_t(h)\mid\mathcal G_{t-1}]$ and
@@ -74,7 +108,7 @@ Projection cannot increase squared distance to $\bar Y\in[-B,B]$. Using the conc
 \end{equation}
 The implementation substitutes $t^{-1}\sum_i\widehat r_i(Q)$ for $\widehat R_t(Q)$, which is conservative.
 
-\begin{corollary}[Clipped Bayesian model average]
+\begin{corollary}[Clipped Bayesian model average]\label{cor:bma}
 The clipped Bayesian model-average risk is no larger than the Gibbs risk in Proposition~\ref{prop:bound}, by convexity of squared loss.
 \end{corollary}
 

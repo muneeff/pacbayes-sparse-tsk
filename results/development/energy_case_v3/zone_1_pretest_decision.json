@@ -1,0 +1,13 @@
+{
+  "zone": "zone_1",
+  "decision_made_before_test_opening": true,
+  "deployment": "dense_tsk",
+  "reason": "certificate_and_validation_gates_passed",
+  "eligible_candidate_count": 95,
+  "seasonal_validation_rmse": 1804.2602465985367,
+  "seasonal_validation_mae": 1283.4815086742997,
+  "selected_candidate_id": "dense_tsk|p=12|r=1.5|a=1|k=4",
+  "selected_family": "dense_tsk",
+  "selected_certificate": 0.1225807032131924,
+  "selected_validation_rmse": 1386.3342656695252
+}

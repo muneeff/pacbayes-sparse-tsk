@@ -1,0 +1,17 @@
+{
+  "region": "aep",
+  "decision_made_before_test_opening": true,
+  "deployment": "ridge",
+  "reason": "robust_certificate_validation_gate_passed",
+  "eligible_candidate_count": 35,
+  "seasonal_validation_rmse": 1714.0672030287283,
+  "seasonal_validation_mae": 1280.9136807981047,
+  "seasonal_validation_weighted_cost": 1913.8390692119306,
+  "selected_candidate_id": "ridge|p=28|r=none|a=0.0001|k=1",
+  "selected_family": "ridge",
+  "selected_certificate": 0.09585332422796711,
+  "selected_validation_rmse": 803.141876589908,
+  "selected_validation_cost": 869.5068717247962,
+  "selected_validation_rmse_improvement": 0.5314408471437003,
+  "selected_validation_cost_improvement": 0.5456739881045293
+}

@@ -1,0 +1,15 @@
+{
+  "phase": "development",
+  "confirmatory": false,
+  "completed_series": 30,
+  "total_candidates": 16450,
+  "all_selection_excluded_test": true,
+  "all_certificates_excluded_test": true,
+  "total_runtime_seconds_sum": 45.80618307799989,
+  "build_failure_count": 0,
+  "skipped_capped_candidates": 5300,
+  "selected_file_sha256": "8420a4099fa653165995498ed3c7ff34b07c23862aa8397e88a42d3951159787",
+  "candidates_file_sha256": "08075c573427a5d5bc60ea3197d3f0ceda00b44e6cef928a27f2247d829b6a13",
+  "summary_file_sha256": "6b756c0146888d9c22b7640c9263a0adbda70b3ae6df2cb2b20349b8ca8525bb",
+  "radius_chain_file_sha256": "3cf9c0d3aec979138e1004fae3770f626c0c99a5f81a9d806758f2af1dc209a9"
+}

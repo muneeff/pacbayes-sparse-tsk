@@ -1,0 +1,13 @@
+{
+  "zone": "zone_3",
+  "decision_made_before_test_opening": true,
+  "deployment": "seasonal_naive_24h",
+  "reason": "no_certificate_eligible_candidate",
+  "eligible_candidate_count": 0,
+  "seasonal_validation_rmse": 1080.9882532835416,
+  "seasonal_validation_mae": 737.8269985242974,
+  "selected_candidate_id": null,
+  "selected_family": null,
+  "selected_certificate": null,
+  "selected_validation_rmse": null
+}

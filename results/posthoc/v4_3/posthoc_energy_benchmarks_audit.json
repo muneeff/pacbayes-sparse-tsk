@@ -1,0 +1,18 @@
+{
+  "config_sha256": "3bd93014d29ed2a608e7ef276aebebf3c9f8eb372261b69e4472512a5b28555a",
+  "confirmatory_gate_modified": false,
+  "confirmatory_run_reexecuted": false,
+  "datasets": {
+    "pjm": {
+      "candidate_rows": 40,
+      "data_sha256": "ec8c8ba641a56f47ea5308910899c222d326f7cb244c3957cd60c8e168da7cb2",
+      "failed_candidates": 0,
+      "selected_rows": 8,
+      "successful_candidates": 40
+    }
+  },
+  "schema_version": "4.3",
+  "status": "secondary_post_hoc_only",
+  "summary_sha256": "0c3abe674cf4c3df02027050108a37b8a86eff5745dbe9667d48d00ac199d643",
+  "test_used_for_hyperparameter_selection": false
+}

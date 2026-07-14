@@ -1,0 +1,130 @@
+\documentclass[12pt,draftclsnofoot,onecolumn]{IEEEtran}
+\usepackage{amsmath,amsfonts,amssymb,bm}
+\usepackage{amsthm}
+\usepackage{booktabs,array,multirow}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\title{Supplementary Material for ``An Auditable Complexity-Aware PAC-Bayesian Framework for Linear and Takagi--Sugeno Time-Series Forecasting under Temporal Dependence''}
+\author{Muneef Abdulkareem Farea Ahmed}
+\maketitle
+
+\section{Properness of the Augmented Hierarchical Prior}
+\label{sup:prior}
+Condition on $\mathcal G_0$, so all grids, prior-only scalers, antecedent maps, candidate-specific prior means, prior variances, and realized radius rule counts are fixed. The augmented hypothesis is $h=(M,v,s,a)$ with $M=(F,p,\gamma,r,K)$.
+
+For ridge, the family-conditional structural mass over $(p,\gamma)$ sums to one. For fixed-$K$ TSK, the family-conditional executable mass is
+\begin{equation}
+\sum_{p,\gamma}\pi_p(p)\pi_\gamma(\gamma)
+\sum_{K\in\mathcal K_{\mathrm{exec}}}\pi_K(K)\le 1.
+\end{equation}
+For each radius-controlled family, the executable mass is
+\begin{align}
+&\sum_{p,\gamma}\pi_p(p)\pi_\gamma(\gamma)
+\sum_{r\in\mathcal R}\pi_r(r)\pi_K(K(r))\mathbf 1\{r\text{ eligible}\}\nonumber\\
+&\hspace{2cm}\le
+\sum_{p,\gamma}\pi_p(p)\pi_\gamma(\gamma)
+\sum_{r\in\mathcal R}\pi_r(r)=1,
+\end{align}
+because $0<\pi_K(K)\le1$. The deficit in each family block is assigned to a dummy hypothesis that predicts a fixed constant and is never selected. Multiplication by the normalized family mass, localization-variant mass $\omega(v)$, and scale mass $\xi(s)$ therefore yields a proper probability measure.
+
+On the augmented space, the posterior
+\begin{equation}
+Q=\delta_{\widehat M}\delta_{\widehat v}\delta_{\widehat s}Q_{\widehat M,\widehat v,\widehat s,\widehat\rho}
+\end{equation}
+has exact divergence
+\begin{align}
+\mathrm{KL}(Q\|P)={}&-\log\pi(\widehat M)-\log\omega(\widehat v)-\log\xi(\widehat s)\nonumber\\
+&+\mathrm{KL}\!\left(Q_{\widehat M,\widehat v,\widehat s,\widehat\rho}\middle\|P_{\widehat M,\widehat v,\widehat s}\right).
+\end{align}
+The final term is the diagonal-Gaussian formula in the main paper. Posterior-ratio selection is absorbed by the simultaneous quantifier over $Q\ll P$; the temperature grid is charged separately through $\nu(\lambda)$.
+
+\section{Time-Uniform Bounded-Loss Proof}
+\label{sup:proof}
+For fixed $h$, conditional Hoeffding's lemma gives
+\begin{equation}
+\mathbb E\!\left[\exp\{\lambda(\mu_t(h)-\ell_t(h))-\lambda^2/8\}\mid\mathcal G_{t-1}\right]\le1.
+\end{equation}
+Thus
+\begin{equation}
+L_t(h)=\exp\!\left\{\lambda\sum_{i=1}^t(\mu_i(h)-\ell_i(h))-t\lambda^2/8\right\}
+\end{equation}
+is a nonnegative supermartingale. Its $P$-mixture remains a nonnegative supermartingale because $P$ is $\mathcal G_0$-measurable. Ville's inequality, followed by the Donsker--Varadhan change of measure, yields simultaneously over $t$ and $Q_t\ll P$
+\begin{equation}
+\lambda t\left(R_t^{\mathrm{seq}}(Q_t)-\widehat R_t(Q_t)\right)
+\le \frac{t\lambda^2}{8}+\mathrm{KL}(Q_t\|P)+\log\frac1{\delta\nu(\lambda)}.
+\end{equation}
+Dividing by $\lambda t$ gives the proposition in the main paper. A union bound over the finite temperature grid produces the factor $\nu(\lambda)$.
+
+\section{Complete Synthetic Data-Generating Processes}
+\label{sup:dgp}
+The source code and YAML configuration are authoritative. The implemented processes are:
+\begin{align}
+\text{AR(2): }Y_t&=0.6Y_{t-1}-0.2Y_{t-2}+\varepsilon_t,
+&\varepsilon_t&\sim\mathcal N(0,0.2^2),\\
+\text{SETAR: }Y_t&=\begin{cases}
+0.65Y_{t-1}+\varepsilon_t,&Y_{t-1}\le0,\\
+-0.45Y_{t-1}+0.25Y_{t-2}+\varepsilon_t,&Y_{t-1}>0,
+\end{cases}
+&\varepsilon_t&\sim\mathcal N(0,0.2^2),\\
+\text{NARMA-10: }Y_{t+1}&=0.3Y_t+0.05Y_t\sum_{j=0}^{9}Y_{t-j}+1.5U_{t-9}U_t+0.1,
+&U_t&\sim\mathcal U(0,0.5),\\
+\text{Mackey--Glass: }Y_{t+1}&=Y_t+\frac{0.2Y_{t-17}}{1+Y_{t-17}^{10}}-0.1Y_t+\varepsilon_t,
+&\varepsilon_t&\sim\mathcal N(0,0.01^2).
+\end{align}
+The GARCH process is zero-mean GARCH(1,1),
+\begin{align}
+h_t&=0.05+0.10Y_{t-1}^2+0.85h_{t-1},\\
+Y_t&=\sqrt{h_t}Z_t,
+\end{align}
+where $Z_t$ is a Student-$t_5$ innovation standardized to unit variance. The structural-break process changes at 60\% of the retained sample:
+\begin{equation}
+Y_t=\mu_j+\phi_j(Y_{t-1}-\mu_j)+\varepsilon_{t,j},
+\end{equation}
+with $(\mu_0,\phi_0,\sigma_0)=(0,0.75,0.30)$ before the break and $(\mu_1,\phi_1,\sigma_1)=(1.5,0.30,0.55)$ afterward. Each process retains 2,000 observations after a burn-in of 500. Initialization values, exact seeds, and generator hashes are included in the artifact.
+
+\section{Operational Gate and Recovery Audit}
+\label{sup:operation}
+The Tetouan development gate required: untruncated certificate at most 0.20, certification target clipping at most 5\%, and validation RMSE no worse than the 12-step seasonal-naive fallback. Candidate selection then minimized validation RMSE with the frozen tie-breaking order.
+
+The PJM gate was frozen after the Tetouan development result and before test opening. A candidate was eligible only if all seven conditions held:
+\begin{enumerate}
+\item untruncated certificate $\le0.10$;
+\item certification target clipping $\le2\%$;
+\item validation RMSE improvement over seven-day seasonal naive $\ge5\%$;
+\item validation asymmetric-cost improvement $\ge5\%$;
+\item nonnegative RMSE improvement in at least three of four chronological validation blocks;
+\item nonnegative cost improvement in at least three blocks; and
+\item worst-block degradation no worse than 5\% for either metric.
+\end{enumerate}
+Among eligible candidates, minimum validation asymmetric cost won, followed by RMSE, certificate, dimension, rule count, family, radius, ridge penalty, and lag. If no candidate qualified, the seasonal-naive fallback was deployed.
+
+The first execution stopped for an infrastructure reason after the AEP pretest decision had been written and before any test outcome had been opened. The aborted-attempt record, pre-outcome lock, stdout/stderr records, and final run manifest are included in the artifact. The restart used unchanged code, data, configuration, and hashes. This is disclosed as a computational recovery, not as an uninterrupted single invocation.
+
+\section{Secondary Post-Hoc Statistical Benchmarks}
+\label{sup:posthoc}
+The SARIMA and ETS analysis was designed after the original PJM test outcomes were opened. It is not part of the frozen gate and does not alter any original certificate, decision, or holdout claim. Hyperparameters are selected on the original validation segment. Selected models are fitted on all pretest observations and evaluated using rolling one-step forecasts with fixed parameters and observed-target state updates.
+
+\input{tables/posthoc_energy_benchmarks}
+
+The SARIMA grid contains $(1,0,0)(0,1,1)_7$, $(0,1,1)(0,1,1)_7$, $(1,1,0)(0,1,1)_7$, $(1,0,1)(0,1,1)_7$, and $(2,0,0)(1,0,0)_7$. The ETS grid contains level-only, Holt, damped Holt, seasonal level, and Holt--Winters specifications. All 40 PJM candidates converged in the recorded run. Test outcomes were not used for specification selection.
+
+\section{Actual Multi-Rule TSK Examples}
+\label{sup:rules}
+The main-paper rule table is reconstructed from the exact selected development candidates. The SETAR example is a five-rule radius TSK with $p=3$, $r=1.75$, and $\gamma=1$. The Tetouan example is the selected zone-1 four-rule radius TSK with $p=12$, $r=1.5$, and $\gamma=1$. Antecedents are fitted on $\mathcal D_{\mathrm{prior}}$ and posterior-center consequents on $\mathcal D_{\mathrm{bound}}$ exactly as in the original runs.
+
+\input{tables/fuzzy_rule_examples}
+
+The complete machine-readable table contains one row per rule and lag, including original-unit antecedent center, original-unit spread, local consequent coefficient, local intercept, prior support, and mean certification firing weight. It is distributed as \path{results/interpretability/v4_3/fuzzy_rule_examples_full.csv}. The Tetouan example is retained despite its negative test outcome to prevent interpretability from being conflated with operational success.
+
+\section{Additional Statistical Details}
+The synthetic paired bootstrap resamples complete series, not forecast origins, and uses 20,000 draws. Wilcoxon signed-rank tests are two-sided and Holm-adjusted across the predeclared fixed-$K$ comparisons. Moving-block bootstrap resamples forecast-error blocks within each energy trajectory and recomputes nonlinear RMSE and asymmetric-cost improvements. The primary PJM block length is 14 days with 7- and 28-day sensitivity; the primary Tetouan block length is seven days at two-hour resolution.
+
+\end{document}

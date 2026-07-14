@@ -5,11 +5,11 @@
 Table~\ref{tab:structural_overall} summarizes the 30-series development ablation under validation-RMSE selection. Fixed-$K$ TSK has the largest randomized dimension, KL, and certificate. Radius control reduces the mean rule count from 12 to 3.80 and the mean dimension from 135.6 to 39.7.
 
 \input{tables/structural_overall}
-\input{tables/structural_pairwise}
+\input{tables/structural_inference}
 
-The paired differences in Table~\ref{tab:structural_pairwise} establish the contrast with the originally prespecified dense $K=12$ baseline. Relative to that baseline, radius-controlled all-active TSK reduces dimension by 95.9 coefficients, Gaussian KL by 22.917, and certificate value by 0.0631 on average. Its certificate is tighter in 28 of 30 series and its test RMSE is lower in 24 of 30. This comparison shows the cost of an unnecessarily dense rule base, but it does not by itself establish that radius selection is superior to a well-chosen smaller fixed $K$.
+The paired inference in Table~\ref{tab:structural_inference} establishes the contrast with the originally prespecified dense $K=12$ baseline. Relative to that baseline, radius-controlled all-active TSK reduces dimension by 95.9 coefficients (95\% CI $[-120.9,-71.9]$), Gaussian KL by 22.917 ($[-40.698,-10.461]$), and certificate value by 0.0631 ($[-0.0833,-0.0460]$) on average. The corresponding Holm-adjusted Wilcoxon tests remain significant, with large negative rank-biserial effects. Test RMSE is lower by 0.0335 on average ($[-0.0612,-0.0129]$). This comparison shows the cost of an unnecessarily dense rule base, but it does not by itself establish that radius selection is superior to a well-chosen smaller fixed $K$.
 
-By contrast, Top-3 activation does not materially change the certificate. Across 5,600 matched candidate pairs, the mean Top-3 minus all-active certificate difference is approximately $-5\times10^{-5}$, and the selected-family averages in Table~\ref{tab:structural_overall} are effectively identical. Since Top-3 does not reduce $K(p+1)$, it should be described as a computational approximation, not the source of the PAC-Bayesian complexity gain.
+By contrast, Top-3 activation does not materially change the certificate. At the series level, the mean Top-3 minus all-active difference is $-1.5\times10^{-5}$ with 95\% CI $[-0.0018,0.0014]$ and Holm-adjusted $p=1.000$; the test-RMSE interval also includes zero. Across 5,600 matched candidate pairs, the descriptive mean certificate difference is approximately $-5\times10^{-5}$. Since Top-3 does not reduce $K(p+1)$, it should be described as a computational approximation, not the source of the PAC-Bayesian complexity gain.
 
 \begin{figure}[t]
 \centering
@@ -24,7 +24,7 @@ By contrast, Top-3 activation does not materially change the certificate. Across
 
 Table~\ref{tab:fixed_k_sensitivity} shows that the mean fixed-$K$ certificate increases steadily with rule count, from 0.1326 at $K=2$ to 0.2221 at $K=12$. The radius-controlled mean is 0.1589. Consequently, radius control is not uniformly tighter than fixed rule bases: its mean certificate is looser than fixed $K=2$ and $K=3$, essentially matched by $K=4$, and tighter than the larger $K=6,8,12$ alternatives. After Holm correction, the paired certificate advantage is clear for $K=8$ and $K=12$, while the differences for $K=3,4,6$ are not statistically decisive.
 
-When each series is allowed to choose its best fixed $K$ by validation RMSE, radius control changes the certificate by only $-0.0068$ on average (radius minus best fixed $K$; 95\% bootstrap interval $[-0.0187,0.0049]$) and the paired Wilcoxon result is not significant after correction. The corresponding test-RMSE difference is $-0.0054$ with bootstrap interval $[-0.0118,-0.0002]$, but the rank test is again not significant after multiplicity correction. Nine of 30 series select $K=2$, five select $K=3$, four select $K=4$, six select $K=6$, five select $K=8$, and only one selects $K=12$. Under certificate selection, all 30 series select fixed $K=2$.
+When each series is allowed to choose its best fixed $K$ by validation RMSE, radius control changes the certificate by only $-0.0068$ on average (radius minus best fixed $K$; 95\% bootstrap interval $[-0.0190,0.0047]$; Holm-adjusted $p=0.382$). The corresponding test-RMSE mean difference is $-0.0054$ with bootstrap interval $[-0.0116,-0.0003]$, whereas the corrected rank test remains non-significant ($p=0.285$). The differing conclusions reflect that the bootstrap targets the mean while the signed-rank test targets the paired rank distribution and is affected by ties and heterogeneous effects. Nine of 30 series select $K=2$, five select $K=3$, four select $K=4$, six select $K=6$, five select $K=8$, and only one selects $K=12$. Under certificate selection, all 30 series select fixed $K=2$.
 
 These results materially narrow the structural claim. Radius construction is useful as an adaptive mechanism that avoids large unnecessary rule bases, but the certificate gain relative to $K=12$ is mainly a rule-count effect. The current evidence does not show that radius control dominates a predeclared and fairly charged small fixed-$K$ grid.
 
@@ -48,7 +48,7 @@ Within each process, family, and lag, Spearman correlations across radius values
 r\longrightarrow K(r)\longrightarrow D(r)\longrightarrow \mathrm{KL}\longrightarrow \operatorname{Cert}.
 \end{equation}
 
-Ridge retains the smallest mean certificate under both selection strategies: 0.1145 under validation-RMSE selection and 0.1017 under certificate selection. The results therefore do not support a claim that TSK is intrinsically easier to certify than a linear model.
+Ridge retains the smallest mean certificate under both selection strategies: 0.1145 under validation-RMSE selection and 0.1017 under certificate selection. Under validation-RMSE selection, Radius TSK exceeds ridge by 0.0445 in certificate value (95\% CI $[0.0296,0.0609]$; Holm-adjusted $p<10^{-8}$), while its mean test-RMSE difference is small and uncertain ($-0.0052$, 95\% CI $[-0.0194,0.0137]$). The results therefore do not support a claim that TSK is intrinsically easier to certify than a linear model.
 
 \subsection{Predictive Accuracy and Clipping}
 \input{tables/process_results}
@@ -59,15 +59,23 @@ The structural-break process is a failure-boundary example. Certification target
 
 The localized prior improves the selected familywise certificate over a zero-mean prior in 85.6\% of selected rows, with mean absolute improvement 0.0138 after charging the same prior-variant mixture cost. Localization is useful but not uniformly superior; GARCH contains counterexamples.
 
+\subsection{Actual Multi-Rule Fuzzy Structures}
+\input{tables/fuzzy_rule_examples}
+
+Table~\ref{tab:fuzzy_rule_examples} reports two reconstructed posterior-center TSK models in original units. The five SETAR rules partition different lag configurations and attach distinct local affine dynamics; for example, the dominant rule places most weight on $y_{t-1}$, while another assigns a negative coefficient to $y_{t-1}$ and a larger positive coefficient to $y_{t-2}$. The four Tetouan rules have similar average load levels but different recent-versus-oldest prototypes and different combinations of the most recent, six-step, and twelve-step lags. This demonstrates that the implementation contains genuine local rule variation rather than repeated copies of one global affine model.
+
+The interpretation must remain limited. These prototypes are data-driven summaries, not linguistic rules validated by domain experts. The Tetouan model also failed operationally on the held-out horizon, so interpretability does not imply predictive reliability. Full centers, spreads, local intercepts, all lag coefficients, supports, and firing frequencies are provided in the supplementary CSV artifact.
+
 \subsection{Negative Tetouan Development Outcome}
-The initial Tetouan gate admits a radius TSK model in zone 1 and a fixed-$K$ TSK model in zone 2, while zone 3 abstains. Both learned deployments fail on the test horizon: RMSE changes are $-11.86\%$ and $-1.51\%$, and asymmetric-cost changes are $-22.67\%$ and $-19.05\%$. Averaged over all three zones, including the zone-3 fallback, RMSE worsens by 4.46\% and cost worsens by 13.91\%.
+The initial Tetouan gate admits a radius TSK model in zone 1 and a fixed-$K$ TSK model in zone 2, while zone 3 abstains. Both learned deployments fail on the test horizon: RMSE changes are $-11.86\%$ and $-1.51\%$, and asymmetric-cost changes are $-22.67\%$ and $-19.05\%$. With seven-day moving blocks, the zone-1 RMSE interval is $[-24.45,-1.04]\%$ and its cost interval is $[-34.95,-10.98]\%$; zone 2 has RMSE interval $[-13.04,8.55]\%$ and cost interval $[-35.35,-3.70]\%$. Zone 3 is identically the fallback. Averaged over all three zones, RMSE worsens by 4.46\% and cost worsens by 13.91\%.
 
 This negative result demonstrates that a non-vacuous certificate plus overall validation performance is not a sufficient deployment rule under temporal shift. It motivated the stricter margin and block-stability requirements in the independent confirmatory protocol.
 
 \subsection{Independent PJM Confirmatory Outcome}
 \input{tables/energy_decisions}
+\input{tables/pjm_bootstrap_ci}
 
-The frozen PJM gate admits a learned model in all four regions. Test RMSE improves by 57.97\%, 55.40\%, 49.13\%, and 51.70\% for AEP, COMED, DAYTON, and PJME, respectively. Corresponding asymmetric-cost improvements are 58.64\%, 54.11\%, 50.30\%, and 51.42\%; mean improvements are 53.55\% and 53.62\%. Selected certificates range from 0.0841 to 0.0959, and test target and forecast clipping are zero.
+The frozen PJM gate admits a learned model in all four regions. Test RMSE improves by 57.97\%, 55.40\%, 49.13\%, and 51.70\% for AEP, COMED, DAYTON, and PJME, respectively. Corresponding asymmetric-cost improvements are 58.64\%, 54.11\%, 50.30\%, and 51.42\%; mean improvements are 53.55\% and 53.62\%. Table~\ref{tab:pjm_bootstrap_ci} reports secondary 14-day moving-block-bootstrap intervals. Every lower bound remains positive, and the same conclusion holds under 7- and 28-day block-length sensitivity analyses. Selected certificates range from 0.0841 to 0.0959, and test target and forecast clipping are zero.
 
 \begin{figure}[t]
 \centering
@@ -77,3 +85,8 @@ The frozen PJM gate admits a learned model in all four regions. Test RMSE improv
 \end{figure}
 
 The confirmatory result does not establish nonlinear fuzzy superiority. AEP, COMED, and PJME select ridge. DAYTON selects a radius-controlled one-rule TSK with lag 14; with one rule, this is an affine predictor. No fixed-eight-rule TSK candidate passes the frozen gate. The operational evidence therefore supports a complexity-aware gate that can shrink to a simple model, not a claim that a multi-rule TSK system caused the gain.
+
+\subsection{Secondary Post-Hoc Statistical Benchmarks}
+The post-hoc SARIMA and ETS comparisons provide a stricter context for the PJM result. Across the four regions, selected SARIMA specifications improve RMSE over the seasonal-naive fallback by 56.82\% on average and improve on the originally deployed point forecasts by 6.99\%. ETS improves over the fallback by 54.77\% on average and over the deployed forecasts by 2.43\%. SARIMA has lower test RMSE than the deployed model in all four regions; ETS is better in AEP and DAYTON, essentially tied in COMED, and worse in PJME. The full per-region table is reported in the supplementary material.
+
+These comparisons were designed after the original PJM outcomes were opened. They therefore cannot be used to revise the frozen gate or strengthen the original internally locked claim. Instead, they show that the large gain over seasonal naive is not unique to the PAC-Bayesian candidate family and that simple statistical forecasting models remain competitive or superior. The operational contribution is consequently the auditable screening and abstention protocol, not state-of-the-art point forecasting.

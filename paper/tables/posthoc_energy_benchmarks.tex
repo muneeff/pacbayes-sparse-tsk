@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\centering
+\caption{Secondary post-hoc SARIMA and ETS benchmarks. Hyperparameters are selected without test outcomes, but the analysis was designed after the original energy test results were opened and does not alter the frozen PJM gate. Positive improvements indicate lower RMSE.}
+\label{tab:posthoc_energy}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{ll ll rrr}
+\toprule
+Dataset & Series & Family & Selected specification & Test RMSE & vs. fallback & vs. deployed \\
+\midrule
+PJM & AEP & SARIMA & sarima\_101\_011 & 659.18 & 61.06\% & 7.36\% \\
+PJM & AEP & ETS & ets\_seasonal & 701.64 & 58.56\% & 1.39\% \\
+PJM & COMED & SARIMA & sarima\_101\_011 & 701.16 & 58.41\% & 6.75\% \\
+PJM & COMED & ETS & ets\_seasonal & 751.99 & 55.39\% & -0.01\% \\
+PJM & DAYTON & SARIMA & sarima\_011\_011 & 114.88 & 54.61\% & 10.77\% \\
+PJM & DAYTON & ETS & ets\_holt\_winters & 115.56 & 54.34\% & 10.24\% \\
+PJM & PJME & SARIMA & sarima\_011\_011 & 2073.75 & 53.18\% & 3.06\% \\
+PJM & PJME & ETS & ets\_seasonal & 2180.22 & 50.78\% & -1.92\% \\
+\bottomrule
+\end{tabular}
+\end{table*}

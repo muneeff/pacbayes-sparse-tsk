@@ -1,0 +1,99 @@
+schema_version: 4.3
+status: secondary_post_hoc_only
+purpose: Add simple SARIMA and ETS secondary post-hoc benchmarks to the independent
+  PJM energy case. The analysis was designed after the frozen PJM outcomes were opened
+  and does not alter the gate, decisions, certificates, or confirmatory claims.
+shared:
+  split_fractions:
+    prior: 0.2
+    bound: 0.45
+    validation: 0.15
+    test: 0.2
+  underforecast_weight: 2.0
+  overforecast_weight: 1.0
+  rolling_one_step: true
+  update_with_observed_target: true
+  refit_during_validation_or_test: false
+  selection_uses_test: false
+  sarima_candidates:
+  - name: sarima_100_011
+    order:
+    - 1
+    - 0
+    - 0
+    seasonal_order:
+    - 0
+    - 1
+    - 1
+  - name: sarima_011_011
+    order:
+    - 0
+    - 1
+    - 1
+    seasonal_order:
+    - 0
+    - 1
+    - 1
+  - name: sarima_110_011
+    order:
+    - 1
+    - 1
+    - 0
+    seasonal_order:
+    - 0
+    - 1
+    - 1
+  - name: sarima_101_011
+    order:
+    - 1
+    - 0
+    - 1
+    seasonal_order:
+    - 0
+    - 1
+    - 1
+  - name: sarima_200_100
+    order:
+    - 2
+    - 0
+    - 0
+    seasonal_order:
+    - 1
+    - 0
+    - 0
+  ets_candidates:
+  - name: ets_level
+    trend: false
+    damped_trend: false
+    seasonal: false
+  - name: ets_holt
+    trend: true
+    damped_trend: false
+    seasonal: false
+  - name: ets_damped_holt
+    trend: true
+    damped_trend: true
+    seasonal: false
+  - name: ets_seasonal
+    trend: false
+    damped_trend: false
+    seasonal: true
+  - name: ets_holt_winters
+    trend: true
+    damped_trend: false
+    seasonal: true
+datasets:
+  pjm:
+    data_path: data/processed/pjm_daily.csv
+    series:
+    - aep
+    - comed
+    - dayton
+    - pjme
+    frequency: daily
+    seasonal_period: 7
+    selection_primary: validation_weighted_cost
+    existing_predictions_dir: results/confirmatory/pjm_case_v3_4/predictions
+    existing_fallback_column: seasonal_naive_7d
+    existing_deployed_column: deployed_forecast
+    posthoc_label: secondary_post_hoc_after_confirmatory_opening

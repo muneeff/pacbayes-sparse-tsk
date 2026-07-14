@@ -1,4 +1,21 @@
-1. Run: tools\02_generate_manuscript_assets.cmd
-2. Confirm generated files under paper\tables and paper\figures
-3. Run: tools\04_compile_manuscript.cmd
-4. Final PDF: paper\PACBayes_TSK_Manuscript_V4.pdf
+V4.3 build order (Windows CMD)
+
+1. Activate the Python environment.
+2. Optional regeneration of base manuscript assets:
+   tools\02_generate_manuscript_assets.cmd
+3. Regenerate statistical inference tables:
+   tools\07_run_statistical_analysis_v4_2.cmd
+4. Regenerate secondary post-hoc PJM SARIMA/ETS results:
+   tools\08_run_posthoc_energy_benchmarks_v4_3.cmd
+5. Regenerate actual fuzzy-rule examples:
+   tools\09_extract_fuzzy_rules_v4_3.cmd
+6. Run validation and tests:
+   tools\03_validate_code_and_results.cmd
+7. Compile manuscript and supplement:
+   tools\04_compile_manuscript.cmd
+
+Final PDFs:
+- paper\PACBayes_TSK_Manuscript_V4_3_Integrated.pdf
+- paper\PACBayes_TSK_Supplementary_V4_3.pdf
+
+The V4.3 post-hoc analysis does not modify the locked PJM gate or decisions.

@@ -1,0 +1,9 @@
+{
+  "status": "completed",
+  "single_authorized_run": true,
+  "outcomes_published_atomically": true,
+  "runtime_seconds": 105.47598335800012,
+  "audit_sha256": "16d80fbdb4698cddcf76da07633e4cc724c5c904ca4dac8815cd751dc822e999",
+  "decisions_sha256": "74b50095c06573727216c88e4d5e0c9f020ab3662b86691b0a46a450fe650611",
+  "family_results_sha256": "9040cd46f9c0d4a08f465358117dea6a66af231889e76216dd4e46b98ebaa71a"
+}

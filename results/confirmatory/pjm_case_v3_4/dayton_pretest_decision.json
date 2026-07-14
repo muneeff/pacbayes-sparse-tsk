@@ -1,0 +1,17 @@
+{
+  "region": "dayton",
+  "decision_made_before_test_opening": true,
+  "deployment": "dense_tsk",
+  "reason": "robust_certificate_validation_gate_passed",
+  "eligible_candidate_count": 25,
+  "seasonal_validation_rmse": 264.072585041732,
+  "seasonal_validation_mae": 200.5554719177767,
+  "seasonal_validation_weighted_cost": 299.56878036050637,
+  "selected_candidate_id": "dense_tsk|p=14|r=2.5|a=1|k=1",
+  "selected_family": "dense_tsk",
+  "selected_certificate": 0.09327798727887952,
+  "selected_validation_rmse": 143.75416535975776,
+  "selected_validation_cost": 159.61813376112403,
+  "selected_validation_rmse_improvement": 0.4556263182827556,
+  "selected_validation_cost_improvement": 0.4671736702034279
+}

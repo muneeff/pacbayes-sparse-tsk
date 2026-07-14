@@ -1,0 +1,53 @@
+{
+  "release": "V4.3 integrated revision",
+  "created_utc": "2026-07-14T18:40:32.618942+00:00",
+  "confirmatory_gate_modified": false,
+  "confirmatory_case_rerun": false,
+  "posthoc_status": "secondary_post_hoc_after_confirmatory_opening",
+  "requested_changes": [
+    "PJM SARIMA and ETS secondary post-hoc benchmarks",
+    "explicit certified-versus-operational predictor distinction",
+    "actual multi-rule SETAR and Tetouan rule examples",
+    "augmented hierarchical prior formulation",
+    "operational details moved to supplementary material",
+    "integrative and modest discussion and conclusion"
+  ],
+  "test_status": {
+    "passed": 43,
+    "failed": 0
+  },
+  "key_files": {
+    "paper/PACBayes_TSK_Manuscript_V4_3_Integrated.pdf": {
+      "sha256": "e5c976159f33453e0f7f4d30bf1bdc730d06a2f0ee5a3dce19824cfede94a5df",
+      "bytes": 553175
+    },
+    "paper/PACBayes_TSK_Supplementary_V4_3.pdf": {
+      "sha256": "f5668d541a3c9f23a731728bbab41cca8ea1d0eeab7783eebdd9b947ef3c6171",
+      "bytes": 155098
+    },
+    "results/posthoc/v4_3/energy_posthoc_summary_all.csv": {
+      "sha256": "0c3abe674cf4c3df02027050108a37b8a86eff5745dbe9667d48d00ac199d643",
+      "bytes": 3531
+    },
+    "results/interpretability/v4_3/fuzzy_rule_examples_summary.csv": {
+      "sha256": "db96284930d03af4460a53dbe0d70e8f323ba5cea7a98254ab6cae9b25aef237",
+      "bytes": 2058
+    },
+    "paper/sections/03_model_and_chronology.tex": {
+      "sha256": "b7175043b536d27fead9f60cec9d4d2a9aee14c1ecba0838d51a16b7126858e3",
+      "bytes": 5872
+    },
+    "paper/sections/04_certificate.tex": {
+      "sha256": "1fdbaa98d169415fd17b89c8035ebceecf8097f816fc2636225ce07463f1f27d",
+      "bytes": 7490
+    },
+    "paper/sections/07_discussion.tex": {
+      "sha256": "aa2f9c231e7257abfe344ba4c141ad0ae0ded39eb2c55da24a63cb4b7d828bc4",
+      "bytes": 6598
+    },
+    "paper/sections/08_conclusion.tex": {
+      "sha256": "484fa29306eae6b8efd92c84e4a34bee901e0714584dd612b7d25ad9d3100b9a",
+      "bytes": 2214
+    }
+  }
+}

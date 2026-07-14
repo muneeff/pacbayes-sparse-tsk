@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\centering
+\caption{Paired Radius-TSK minus fixed-$K=12$ differences across 30 synthetic development series under validation-RMSE selection. Confidence intervals are 95\% paired percentile-bootstrap intervals for the mean difference. $p_H$ is the two-sided Wilcoxon signed-rank $p$-value after Holm correction across the four reported endpoints; $r_{rb}$ is matched-pairs rank-biserial correlation. Negative values favor Radius TSK.}
+\label{tab:structural_inference}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrlrr}
+\toprule
+Metric & Mean $\Delta$ & 95\% CI & Radius lower & $p_H$ & $r_{rb}$ \\
+\midrule
+Dimension & -95.9 & [-120.9, -71.9] & 29/30 & 5.4e-06 & -1.000 \\
+Gaussian KL & -22.917 & [-40.698, -10.461] & 27/30 & 2.4e-05 & -0.837 \\
+Certificate & -0.0631 & [-0.0833, -0.0460] & 28/30 & 4.1e-07 & -0.953 \\
+Test RMSE & -0.0335 & [-0.0612, -0.0129] & 24/30 & 1.2e-04 & -0.755 \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -73,3 +73,15 @@ paper\tables\pjm_family.tex
 paper\figures\structural_certificate_by_family.png
 paper\figures\pjm_test_improvements.png
 ```
+
+## إضافة التحليل الإحصائي V4.2
+
+بعد تفعيل بيئة بايثون نفّذ:
+
+```cmd
+tools\07_run_statistical_analysis_v4_2.cmd
+python -m pytest tests\v3
+tools\04_compile_manuscript.cmd
+```
+
+يولد الأمر فترات ثقة paired bootstrap للتجارب الاصطناعية، واختبارات Wilcoxon مع تصحيح Holm، وفترات moving-block bootstrap لحالتي PJM وTetouan. لا يعيد تدريب النماذج ولا يغير قرارات PJM المجمدة.

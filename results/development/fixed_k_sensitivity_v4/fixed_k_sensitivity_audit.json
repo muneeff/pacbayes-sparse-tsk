@@ -1,0 +1,24 @@
+{
+  "phase": "exploratory_development_extension",
+  "confirmatory": false,
+  "pjm_protocol_modified": false,
+  "fixed_k_values": [
+    2,
+    3,
+    4,
+    6,
+    8,
+    12
+  ],
+  "series_count": 30,
+  "selected_rows": 420,
+  "bootstrap_resamples": 20000,
+  "bootstrap_seed": 20260714,
+  "outputs": [
+    "fixed_k_sensitivity_selected.csv",
+    "fixed_k_sensitivity_summary.csv",
+    "fixed_k_vs_radius_paired_statistics.csv",
+    "best_fixed_k_selected.csv",
+    "radius_vs_best_fixed_k_statistics.csv"
+  ]
+}

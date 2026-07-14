@@ -3,7 +3,7 @@ requires=["setuptools>=69","wheel"]
 build-backend="setuptools.build_meta"
 [project]
 name="pacbayes-sparse-tsk"
-version="0.4.0"
+version="0.4.3"
 description="Reproducible PAC-Bayesian certification for sparse TSK time-series forecasting"
 readme="README.md"
 requires-python=">=3.10,<3.14"

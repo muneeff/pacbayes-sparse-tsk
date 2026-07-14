@@ -1,0 +1,17 @@
+{
+  "region": "pjme",
+  "decision_made_before_test_opening": true,
+  "deployment": "ridge",
+  "reason": "robust_certificate_validation_gate_passed",
+  "eligible_candidate_count": 25,
+  "seasonal_validation_rmse": 4178.405327246124,
+  "seasonal_validation_mae": 3066.8982145007803,
+  "seasonal_validation_weighted_cost": 4587.089992572961,
+  "selected_candidate_id": "ridge|p=28|r=none|a=0.0001|k=1",
+  "selected_family": "ridge",
+  "selected_certificate": 0.09593204983856893,
+  "selected_validation_rmse": 1928.989680728593,
+  "selected_validation_cost": 2149.2434431635847,
+  "selected_validation_rmse_improvement": 0.5383430927224241,
+  "selected_validation_cost_improvement": 0.5314581910005116
+}

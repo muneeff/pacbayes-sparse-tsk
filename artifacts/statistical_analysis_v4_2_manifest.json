@@ -1,0 +1,27 @@
+{
+  "analysis_version": "4.2",
+  "bootstrap_resamples": 20000,
+  "random_seed": 20260714,
+  "synthetic_unit": "complete paired series",
+  "synthetic_pair_count": 30,
+  "synthetic_ci": "paired percentile bootstrap for mean difference",
+  "synthetic_test": "two-sided Wilcoxon signed-rank with Pratt zeros and Holm correction across four endpoints per comparison",
+  "effect_size": "matched-pairs rank-biserial correlation",
+  "pjm_bootstrap": "paired circular moving-block bootstrap",
+  "pjm_primary_block_days": 14,
+  "pjm_sensitivity_blocks_days": [
+    7,
+    28
+  ],
+  "tetouan_primary_block_two_hour_steps": 84,
+  "post_outcome_disclosure": true,
+  "selection_or_gate_changed": false,
+  "outputs": [
+    "/mnt/data/PACBayes_V4_2_Stats_Work/results/statistics/v4_2/synthetic_primary_paired_statistics.csv",
+    "/mnt/data/PACBayes_V4_2_Stats_Work/results/statistics/v4_2/pjm_moving_block_bootstrap_ci.csv",
+    "/mnt/data/PACBayes_V4_2_Stats_Work/results/statistics/v4_2/tetouan_moving_block_bootstrap_ci.csv",
+    "/mnt/data/PACBayes_V4_2_Stats_Work/paper/tables/structural_inference.tex",
+    "/mnt/data/PACBayes_V4_2_Stats_Work/paper/tables/pjm_bootstrap_ci.tex",
+    "/mnt/data/PACBayes_V4_2_Stats_Work/docs/STATISTICAL_ANALYSIS_V4_2_REPORT_AR.md"
+  ]
+}

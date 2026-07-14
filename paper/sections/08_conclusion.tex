@@ -1,8 +1,42 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-We presented an audited, chronological specialization of a known time-uniform PAC-Bayes supermartingale bound for ridge and TSK time-series predictors. The complete model index includes the ridge penalty and all structural choices, and the certified loss is explicitly clipped and normalized. A controlled development ablation shows that radius-controlled rule-count sparsity substantially reduces randomized dimension, KL, and certificate value relative to a dense 12-rule TSK structure, whereas Top-3 activation alone does not. A subsequent multi-$K$ sensitivity analysis qualifies this result: small fixed rule bases can match or tighten the radius-controlled certificate, so the supported mechanism is removal of complete rule blocks rather than a universal advantage of radius selection. Ridge nevertheless remains the easiest family to certify on average.
+This work presents an auditable framework that combines chronological prior construction, explicit structural coding, a computable sequential PAC-Bayesian certificate, linear and TSK forecasting families, and conservative deployment screening. The general supermartingale inequality is established in prior work; the contribution is its fully charged, reproducible specialization and the empirical separation of different kinds of sparsity.
 
-The real decision studies provide a complementary result. A permissive Tetouan gate failed, while a redesigned gate frozen before an independent PJM study improved both RMSE and asymmetric cost in all four regions relative to the predeclared seasonal fallback. Because the selected models were ridge or one-rule TSK, this is evidence for complexity-aware selection and abstention rather than fuzzy-model dominance.
+The structural experiments show that removing complete TSK rule blocks can reduce randomized dimension, Gaussian KL, and certificate value relative to an unnecessarily dense rule base. The additional Fixed-$K$ sensitivity prevents a stronger claim: small fixed rule bases can match or tighten the radius-controlled certificate, so the evidence supports structural compactness rather than universal superiority of radius selection. Sparse activation alone does not deliver the same complexity reduction when all consequent coordinates remain randomized and charged.
 
-The defensible conclusion is therefore limited but useful: structural rule reduction can tighten a PAC-Bayesian certificate, and a certificate can contribute to an operational gate when it is not confused with a direct performance guarantee. Future work should develop posterior rule selection, compare against stronger operational baselines, and replace clipping with verified heavy-tail or variance-adaptive sequential bounds.
+The energy studies show that a valid certificate can contribute to a broader screening rule but cannot replace forecasting validation. The first Tetouan gate fails. The redesigned PJM gate succeeds relative to its predeclared seasonal-naive fallback, yet the selected models are linear or one-rule affine predictors. Secondary post-hoc SARIMA and ETS benchmarks often improve further on the deployed point forecasts. Accordingly, the real-data evidence supports transparent model screening, validation margins, temporal-stability checks, and abstention; it does not establish nonlinear fuzzy-model dominance or state-of-the-art forecasting accuracy.
+
+The main conclusion is therefore modest: PAC-Bayesian complexity can be made explicit and auditable for linear and TSK time-series models, and true structural rule reduction can tighten that accounting. Future work should learn a posterior over rule inclusion, align the certified and operational prediction objects more directly, compare against stronger forecasting baselines in a new externally timestamped protocol, and replace clipping with verified heavy-tail or variance-adaptive sequential guarantees.
+
+
+\section*{Data and Code Availability}
+
+The source code, processed data, experimental configurations,
+result tables, audit manifests, and supplementary materials
+supporting this study are publicly available at
+\url{https://github.com/muneeff/pacbayes-sparse-tsk}.
+
+The exact version associated with this manuscript is archived as
+release v4.3.1:
+\url{https://github.com/muneeff/pacbayes-sparse-tsk/releases/tag/v4.3.1}.
+
+Raw third-party datasets are not redistributed. Download,
+verification, and preprocessing scripts are provided in the
+repository.
+
+
+\section*{CRediT Author Statement}
+Muneef Abdulkareem Farea Ahmed: Conceptualization,
+Methodology, Software, Validation, Formal analysis,
+Investigation, Data curation, Visualization, Writing--original
+draft, Writing--review and editing, and Project administration.
+
+\section*{Funding}
+This research did not receive any specific grant from funding
+agencies in the public, commercial, or not-for-profit sectors.
+
+\section*{Declaration of Competing Interest}
+The author declares that he has no known competing financial
+interests or personal relationships that could have appeared to
+influence the work reported in this paper.

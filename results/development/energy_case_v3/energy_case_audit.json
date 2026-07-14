@@ -1,0 +1,90 @@
+{
+  "phase": "development_real_case_study",
+  "confirmatory": false,
+  "case_study": "tetouan_city_hourly_power_consumption",
+  "zones": [
+    "zone_1",
+    "zone_2",
+    "zone_3"
+  ],
+  "completed_zones": 3,
+  "total_candidates": 305,
+  "all_candidate_selection_excluded_test": true,
+  "all_certificates_excluded_test": true,
+  "all_decisions_preceded_test": true,
+  "deployed_model_zones": 2,
+  "mean_test_rmse_improvement_vs_fallback": -0.04457196496881455,
+  "mean_test_cost_improvement_vs_fallback": -0.1390900395788347,
+  "runtime_seconds": 0.8965027189997272,
+  "lock_sha256": "fd9182eada979c4cd6f0d862c340d04442dd23d60a86fde7a21b0c6920554e14",
+  "lock_created_utc": "2026-07-12T19:01:29.463334+00:00",
+  "data_sha256": "8311ad1b6d427ab53f66c572ff574bc00171601b9165e201ad71ec486dbbc249",
+  "zone_audits": [
+    {
+      "zone": "zone_1",
+      "scaling_constructed_from": "Dprior_only",
+      "scaling_mean": 30998.784807382726,
+      "scaling_std": 6887.9332969921,
+      "candidate_count": 95,
+      "skipped_capped_candidates": 25,
+      "build_failures": [],
+      "split_counts": {
+        "prior": 874,
+        "bound": 1966,
+        "validation": 655,
+        "test": 873
+      },
+      "familywise_delta": 0.016666666666666666,
+      "candidate_selection_uses_test": false,
+      "certificate_uses_test": false,
+      "deployment_decision_uses_test": false,
+      "test_opened_after_decision": true,
+      "seasonal_validation_points": 655,
+      "seasonal_test_points": 873
+    },
+    {
+      "zone": "zone_2",
+      "scaling_constructed_from": "Dprior_only",
+      "scaling_mean": 19010.8331754754,
+      "scaling_std": 4321.560143793027,
+      "candidate_count": 95,
+      "skipped_capped_candidates": 25,
+      "build_failures": [],
+      "split_counts": {
+        "prior": 874,
+        "bound": 1966,
+        "validation": 655,
+        "test": 873
+      },
+      "familywise_delta": 0.016666666666666666,
+      "candidate_selection_uses_test": false,
+      "certificate_uses_test": false,
+      "deployment_decision_uses_test": false,
+      "test_opened_after_decision": true,
+      "seasonal_validation_points": 655,
+      "seasonal_test_points": 873
+    },
+    {
+      "zone": "zone_3",
+      "scaling_constructed_from": "Dprior_only",
+      "scaling_mean": 17454.998302147498,
+      "scaling_std": 4225.554196621766,
+      "candidate_count": 115,
+      "skipped_capped_candidates": 5,
+      "build_failures": [],
+      "split_counts": {
+        "prior": 874,
+        "bound": 1966,
+        "validation": 655,
+        "test": 873
+      },
+      "familywise_delta": 0.016666666666666666,
+      "candidate_selection_uses_test": false,
+      "certificate_uses_test": false,
+      "deployment_decision_uses_test": false,
+      "test_opened_after_decision": true,
+      "seasonal_validation_points": 655,
+      "seasonal_test_points": 873
+    }
+  ]
+}

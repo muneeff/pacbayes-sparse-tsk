@@ -32,6 +32,19 @@ With fixed antecedents, the predictor is linear in the stacked consequent vector
 \end{equation}
 with randomized dimension $D_M=K(p+1)$. Ridge is the $D_M=p+1$ linear family and is kept separate in the structural prior.
 
+\subsection{Certified and Operational Prediction Objects}
+The study distinguishes three prediction objects that should not be conflated. First, the \emph{Gibbs predictor} samples $a\sim Q_M$ and incurs the clipped loss in \eqref{eq:loss}; Proposition~\ref{prop:bound} directly controls its conditional sequential risk. Second, the \emph{clipped Bayesian model average} is
+\begin{equation}
+ f_Q^{\mathrm{BMA}}(x)=\mathbb E_{a\sim Q_M}\!\left[\Pi_{[-B,B]}f_{M,a}(x)\right],
+\label{eq:clipped_bma}
+\end{equation}
+and is covered by Corollary~\ref{cor:bma} through convexity. Third, the deterministic posterior-center point forecast used for validation, test RMSE, and the deployment studies is
+\begin{equation}
+ f_M^{\mathrm{point}}(x)=\Pi_{[-B,B]}f_{M,\mu_{Q,M}}(x).
+\label{eq:point_predictor}
+\end{equation}
+Before projection, linearity in $a$ gives $\mathbb E_Q[f_{M,a}(x)]=f_{M,\mu_{Q,M}}(x)$. After projection, however, $\mathbb E_Q[\Pi f_{M,a}(x)]$ need not equal $\Pi f_{M,\mu_{Q,M}}(x)$. Consequently, the certificate is not presented as a direct guarantee for the deterministic point forecast. In the operational studies it is one eligibility signal combined with validation margins and temporal-stability checks; the reported raw RMSE and cost remain empirical holdout quantities.
+
 \subsection{Prior-Only Antecedent Constructions}
 For radius-controlled TSK, standardized prior inputs are covered by deterministic farthest-first centers until all prior points lie within radius $r$ or the predeclared rule cap is reached. Candidates that hit the cap before coverage are ineligible. Rule spreads are estimated from prior assignments with fixed numerical floors and ceilings. The resulting $K=K(r,\mathcal D_{\mathrm{prior}})$ is therefore random before conditioning, but is $\mathcal G_0$-measurable after the prior segment.
 
