@@ -1,0 +1,41 @@
+\section{Experimental Protocol}
+\label{sec:experiments}
+
+\subsection{Synthetic Development and Structural Ablation}
+The development study uses six processes and five seeds per process, for 30 complete trajectories. Each trajectory retains 2,000 observations after a burn-in of 500 and is split chronologically 20/45/15/20 into prior, bound, validation, and test roles. Table~\ref{tab:synthetic_processes} gives the corrected data-generating definitions.
+
+\input{tables/synthetic_processes}
+
+The full structural ablation compares four families: ridge; fixed-$K$ all-active TSK with $K=12$; radius-controlled all-active TSK; and radius-controlled Top-3 TSK. Candidate lags are $\{3,5,10,15,20\}$, ridge penalties are $\{10^{-4},10^{-3},10^{-2},10^{-1},1\}$, and radii are $\{0.5,0.75,1,1.25,1.5,1.75,2,2.5,3,4,5\}$. The rule cap is 12. The certificate uses temperatures $\{0.125,0.25,0.5,1,2,4\}$, the prior scales and posterior ratios in Section~\ref{sec:certificate}, and familywise confidence $\delta=0.05/30$.
+
+The original four-family engine evaluated 12,700 eligible candidates with no build failures. Candidate rows contain no test metric. A selected candidate is serialized before its test role is opened. We report both validation-RMSE selection and certificate selection; the former is the primary predictive comparison.
+
+\subsection{Exploratory Fixed-$K$ Sensitivity Extension}
+Because comparison with only $K=12$ can mechanically favor any smaller rule base, we added an explicitly exploratory development extension with fixed rule counts $K\in\{2,3,4,6,8,12\}$. The radius-controlled all-active family, lag grid, ridge-penalty grid, prior construction, posterior grids, loss, confidence allocation, and chronological roles were unchanged. Each fixed $K$ pays the same normalized geometric rule-count code as the radius-controlled family; selecting $K$ is therefore not free. The degenerate one-rule case is excluded from the primary fuzzy sensitivity analysis because it reduces to an affine predictor.
+
+For every series and every $K$, candidates are selected independently by validation RMSE and by certificate value before the synthetic test role is opened. Radius-controlled TSK is compared with each fixed $K$ and with the best fixed-$K$ candidate selected from the predeclared grid. Paired differences are summarized using 20,000-resample bootstrap confidence intervals and Wilcoxon signed-rank tests with Holm correction across the six $K$ values. This extension is developmental and postdates the original $K=12$ ablation; it does not modify the frozen PJM gate, decisions, or confirmatory outcomes. The extended engine evaluated 16,450 eligible candidates with no build failures.
+
+\subsection{Tetouan Development Decision Case}
+The first operational study uses the UCI Tetouan City power-consumption data \cite{uci_tetouan_849}. Ten-minute observations are aggregated to two-hour means for three zones. Each zone is split 20/45/15/20. The candidate families are ridge, fixed eight-rule TSK, and radius-controlled TSK with lags $\{3,6,12\}$. The initial gate required an untruncated certificate no larger than 0.20, certification clipping no larger than 5\%, and validation RMSE no worse than a 12-step seasonal-naive fallback. Underforecast errors receive weight two and overforecast errors weight one. This study is explicitly developmental: its test outcome is used to redesign, not confirm, the later gate.
+
+\subsection{Independent PJM Confirmatory Case}
+After the Tetouan outcome, a stricter gate was frozen before inspecting PJM test outcomes. Four predeclared regional hourly-load series---AEP, COMED, DAYTON, and PJME---are taken from the public Hourly Energy Consumption collection \cite{mulla_hourly_energy}. Duplicate timestamps are averaged; the common interval from 1 January 2012 through 2 August 2018 is aggregated to 2,406 daily means per region, requiring at least 23 hourly values per retained day. No exogenous variables are used.
+
+The chronological split is again 20/45/15/20. The candidate families are ridge, fixed eight-rule TSK, and radius-controlled TSK. Lags are $\{7,14,28\}$ days, radii are $\{0.75,1,1.25,1.5,2,2.5\}$, and ridge penalties are unchanged. Confidence is $0.05/4$.
+
+A candidate is deployment-eligible only if all seven frozen conditions hold:
+\begin{enumerate}
+    \item untruncated certificate $\le0.10$;
+    \item certification target clipping $\le2\%$;
+    \item validation RMSE improvement over seven-day seasonal naive $\ge5\%$;
+    \item validation asymmetric-cost improvement $\ge5\%$;
+    \item nonnegative RMSE improvement in at least three of four chronological validation blocks;
+    \item nonnegative cost improvement in at least three blocks; and
+    \item worst-block degradation no worse than 5\% for either metric.
+\end{enumerate}
+Among eligible candidates, minimum validation asymmetric cost wins, followed by RMSE, certificate, dimension, rule count, family, radius, ridge penalty, and lag. If no candidate qualifies, the fallback is deployed.
+
+All four decisions are serialized and hashed before any test prediction is computed. The final run evaluated 325 eligible candidates. Thirty-two automated tests passed. An initial execution stopped for an infrastructure reason after writing the AEP pretest decision and before opening any test outcome. The incident and its hashes are preserved; the unchanged locked computation was then restarted. This is disclosed as a computational recovery, not described as an uninterrupted single invocation.
+
+\subsection{Metrics and Interpretation}
+Synthetic prediction is summarized by standardized RMSE and MAE. Energy studies report raw-scale RMSE, MAE, and asymmetric absolute cost. Certificate values, empirical Gibbs upper terms, structural cost, Gaussian KL, randomized dimension, rule count, and target/forecast clipping are recorded separately. A certificate is never interpreted as direct evidence that a predictor beats the fallback.

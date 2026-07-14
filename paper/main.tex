@@ -1,0 +1,60 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage{amsmath,amsfonts,amssymb,bm}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs,array,multirow}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{algorithm,algorithmic}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{remark}[theorem]{Remark}
+
+\hyphenation{op-tical net-works semi-conduc-tor PAC-Bayesian Takagi--Sugeno}
+
+\begin{document}
+
+\title{An Auditable Complexity-Aware PAC-Bayesian Framework for Linear and Takagi--Sugeno Time-Series Forecasting under Temporal Dependence}
+
+\author{Muneef Abdulkareem Farea Ahmed%
+\thanks{M. A. F. Ahmed is with the Faculty of Computer and Information Technology, Sana'a University, Sana'a, Yemen (e-mail: muneef.ahmed@su.edu.ye).}}
+
+\markboth{Manuscript under review}%
+{Ahmed: Complexity-Aware PAC-Bayesian Certificates for TSK Forecasting}
+
+\maketitle
+
+\begin{abstract}
+PAC-Bayesian certificates for time-series predictors can be formally valid yet operationally uninformative if the prior reuses certification data, the loss is unbounded, or structural choices are not charged. We give a computable specialization of a known time-uniform supermartingale PAC-Bayes bound for ridge and first-order Takagi--Sugeno (TSK) forecasters with overlapping, potentially nonstationary forecast windows. A chronological segment constructs every candidate prior, including scaling, fuzzy antecedents, ridge penalty, and diagonal Gaussian localization. A finite hierarchical code explicitly charges model family, lag, ridge penalty, radius, and realized rule count. The guarantee concerns conditional sequential risk for a clipped normalized squared loss; it is not a bound on raw test RMSE.
+
+A development ablation on 30 synthetic series separates structural sparsity from top-three activation sparsity. Relative to a fixed 12-rule TSK model, radius-controlled TSK reduced the randomized dimension by 95.9 coefficients, Gaussian KL by 22.92, and the certificate by 0.0631 on average; its certificate was tighter in 28 of 30 paired series. Top-three activation alone had negligible certificate effect because it did not reduce the randomized dimension. Ridge nevertheless retained the tightest mean certificate. A first energy deployment gate failed on the three-zone Tetouan development data, motivating a stricter gate frozen before an independent four-region PJM study. The frozen decisions improved test RMSE by 49.13--57.97\% and asymmetric cost by 50.30--58.64\% over a seven-day seasonal-naive fallback. Three decisions selected ridge and the fourth a one-rule TSK model, so the confirmatory result supports complexity-aware selection and abstention, not nonlinear fuzzy-model superiority.
+\end{abstract}
+
+\begin{IEEEkeywords}
+PAC-Bayesian learning, Takagi--Sugeno fuzzy systems, time-series forecasting, martingales, temporal dependence, structural sparsity, risk certificates.
+\end{IEEEkeywords}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_model_and_chronology}
+\input{sections/04_certificate}
+\input{sections/05_experimental_protocol}
+\input{sections/06_results}
+\input{sections/07_discussion}
+\input{sections/08_conclusion}
+
+\section*{Data and Code Availability}
+The complete code, frozen configurations, raw result tables, pre-outcome locks, and audit manifests are included in the accompanying reproducibility artifact. The public repository URL will be inserted in the final submission; the review package uses an anonymized archive.
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\end{document}

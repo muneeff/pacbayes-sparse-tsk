@@ -1,0 +1,32 @@
+{
+  "stage": "energy_case_study_v3",
+  "postprocessing_only": true,
+  "outcome_files_unchanged": true,
+  "files": {
+    "figures/energy_case_v3/zone_1_test_last_seven_days.png": "bf1a84b07904e24520377edb2b6faff789432016fa3280e2db23b715fd013a54",
+    "figures/energy_case_v3/zone_1_validation_certificate.png": "47169c7bc40c7afa9acc93df2ff459f8f41a18eef6d4f578a4089a0238cb7eff",
+    "figures/energy_case_v3/zone_2_test_last_seven_days.png": "8821a2b63a703d30746da2fc89f6f1b39ed5b1ad7c11550f92236f488b6f553d",
+    "figures/energy_case_v3/zone_2_validation_certificate.png": "793754d15beff0d9d091cba2fb62970309dfd693c0159cd5fd17b988be588ec0",
+    "figures/energy_case_v3/zone_3_test_last_seven_days.png": "1a50e5b9e420ab5dc4bf0de8f180466eeaf44bfe539065a4a4ac2bd5b168ba3f",
+    "figures/energy_case_v3/zone_3_validation_certificate.png": "883c0f9aab274c9c3bc4cc96d11fc7e6484abbabd894c1d64dc2e746d1454426",
+    "results/development/energy_case_v3/COMPLETED.json": "0268706fbc9e5943e2096a59a69206c5f07120af76a5dab45502b5f339283a6f",
+    "results/development/energy_case_v3/energy_candidates_all.csv": "0c25ff9b82f297d76fd920f37deb19450fd79b100278521a024661c3c8989839",
+    "results/development/energy_case_v3/energy_case_audit.json": "75dc2e90256285de7079ccf59a7d5b73672ad9b7dbb61cf1ba2a3e65d5606a68",
+    "results/development/energy_case_v3/energy_deployment_decisions.csv": "21957d9e47b36bdfc9e6e30b43dfcd239c2c254fccbeac0fa992b47e87ec3d19",
+    "results/development/energy_case_v3/energy_family_results.csv": "0ca6e0e2a917e04700c38b1fe0a19b21607490c839eddf9ec622d5cf41e86a93",
+    "results/development/energy_case_v3/energy_structural_comparison.csv": "7228cc7b83868f2dad42fee35ff85c93fa53444feb8fd28fbdeee9c5cda45fbd",
+    "results/development/energy_case_v3/energy_summary_by_family.csv": "b42f86fbacccd3f6f4c88eb48f11535164d642be04394471c7f2e5b67540f520",
+    "results/development/energy_case_v3/predictions/zone_1_test_predictions.csv": "fed63c7210827688528bd68a17e482b57b228a8337f142dab6d45e037ae12773",
+    "results/development/energy_case_v3/predictions/zone_2_test_predictions.csv": "78a4c80221a79bae0163d6223dd42f6345bcdb68e53ccbc770616fdf31a7e6cb",
+    "results/development/energy_case_v3/predictions/zone_3_test_predictions.csv": "be4523f50a4f9b3ad5b236653e24caec419053c562194a6b8cad4755fa65b380",
+    "results/development/energy_case_v3/zone_1_candidates.csv": "caaf01d92c42ab598cb04dc5c0376ebfbbf82e6c47d0528bccc3b22c90a2c0b1",
+    "results/development/energy_case_v3/zone_1_pretest_decision.json": "f1b1879dfcac9887a699b99076754c201f35e4786043a63d45713bf857720764",
+    "results/development/energy_case_v3/zone_2_candidates.csv": "8c4e77f3357f9b20ca62a0fd964d4e170a9f3af6609ea8195f583ac93e854d0a",
+    "results/development/energy_case_v3/zone_2_pretest_decision.json": "930fed221278607dded584739c23c20dc8e19fa428304f8de281ba770689b426",
+    "results/development/energy_case_v3/zone_3_candidates.csv": "ec185f66f6cc327fc78b2cff179e932be3719bb5a5d7aa0701d31d77c912bb3b",
+    "results/development/energy_case_v3/zone_3_pretest_decision.json": "3007db2f5b38ffcca7331c5fa100d81861c2abb85a6ae7c2b956a2d499be913b"
+  },
+  "deployed_zones": 2,
+  "mean_test_rmse_improvement_vs_fallback": -0.04457196496881453,
+  "mean_test_cost_improvement_vs_fallback": -0.1390900395788347
+}

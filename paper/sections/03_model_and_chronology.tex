@@ -1,0 +1,67 @@
+\section{Sequential Setup and Model Family}
+\label{sec:model}
+
+\subsection{Chronological Roles}
+Let $(\mathcal F_t)_{t\ge0}$ be the data filtration and
+\begin{equation}
+X_t=(Y_{t-1},\ldots,Y_{t-p})^\top
+\label{eq:lag_vector}
+\end{equation}
+be $\mathcal F_{t-1}$-measurable. Every trajectory is divided, without shuffling, into
+$\mathcal D_{\mathrm{prior}}$, $\mathcal D_{\mathrm{bound}}$, $\mathcal D_{\mathrm{validation}}$, and $\mathcal D_{\mathrm{test}}$.
+The first segment constructs all candidate-specific priors. The bound segment fits posterior centers, the validation segment selects among the predeclared candidate/posterior family, and the test segment is opened only after selection or deployment decisions are frozen. Certification uses bound plus validation observations; test observations are excluded.
+
+All target scaling parameters are computed from $\mathcal D_{\mathrm{prior}}$. This makes the standardized lag vector, antecedent geometry, and clipping interval measurable at the start of the certification horizon.
+
+\subsection{Ridge and TSK Predictors}
+The ridge family uses the design $\phi_{p}(x)=(1,x^\top)^\top$. A first-order TSK system with $K$ rules uses Gaussian memberships
+\begin{align}
+\mu_{kj}(x_j)&=\exp\!\left[-\frac{(x_j-c_{kj})^2}{2s_{kj}^2}\right],\\
+\alpha_k(x)&=\frac{\prod_j\mu_{kj}(x_j)}{\sum_{\ell=1}^{K}\prod_j\mu_{\ell j}(x_j)},
+\label{eq:memberships}
+\end{align}
+and prediction
+\begin{equation}
+f_{M,a}(x)=\sum_{k=1}^{K}\alpha_k(x)(a_{k0}+a_k^\top x).
+\label{eq:tsk}
+\end{equation}
+With fixed antecedents, the predictor is linear in the stacked consequent vector $a$. Its design vector is
+\begin{equation}
+\phi_M(x)=\big[\alpha_1(x)(1,x^\top),\ldots,\alpha_K(x)(1,x^\top)\big]^\top,
+\label{eq:design}
+\end{equation}
+with randomized dimension $D_M=K(p+1)$. Ridge is the $D_M=p+1$ linear family and is kept separate in the structural prior.
+
+\subsection{Prior-Only Antecedent Constructions}
+For radius-controlled TSK, standardized prior inputs are covered by deterministic farthest-first centers until all prior points lie within radius $r$ or the predeclared rule cap is reached. Candidates that hit the cap before coverage are ineligible. Rule spreads are estimated from prior assignments with fixed numerical floors and ceilings. The resulting $K=K(r,\mathcal D_{\mathrm{prior}})$ is therefore random before conditioning, but is $\mathcal G_0$-measurable after the prior segment.
+
+The fixed-$K$ baseline uses deterministic farthest-first construction with exactly $K_{\max}$ centers. Radius-controlled all-active TSK retains all rule weights. Radius Top-3 TSK uses the same antecedents but keeps only the three largest firing strengths per sample before renormalization. This latter operation changes computation and occasionally prediction, but not $D_M$; it is therefore an activation-sparsity ablation rather than structural sparsity.
+
+\subsection{Complete Model Index and Ridge Fits}
+The discrete model index is
+\begin{equation}
+M=(F,p,\gamma,r,K),
+\label{eq:model_index}
+\end{equation}
+where $F$ identifies ridge, fixed-$K$ TSK, radius TSK, or the development-only Top-3 family. The radius is absent for ridge and fixed-$K$ candidates. For every predeclared $M$, the prior and posterior centers use the same ridge penalty $\gamma$:
+\begin{align}
+\mu_{P,M}&=(\Phi_{P,M}^\top\Phi_{P,M}+\gamma I)^{-1}\Phi_{P,M}^\top y_P,\\
+\mu_{Q,M}&=(\Phi_{B,M}^\top\Phi_{B,M}+\gamma I)^{-1}\Phi_{B,M}^\top y_B.
+\label{eq:centers}
+\end{align}
+Thus $\gamma$ is not selected silently after the prior is fixed: all candidate-specific prior centers are functions only of the configuration and $\mathcal D_{\mathrm{prior}}$. Computing them lazily in software is mathematically equivalent to constructing the whole finite family at $\mathcal G_0$.
+
+The validation ordering is RMSE, then MAE, consequent dimension, rule count, radius, ridge penalty, and lag. A separate development analysis minimizes the certificate instead of validation RMSE; this is not the primary predictive selection rule.
+
+\subsection{Bounded Certified Loss}
+Let
+\begin{equation}
+B=c_B\max\left\{1,\max_{t\in\mathcal D_{\mathrm{prior}}}|Y_t|\right\},
+\label{eq:B}
+\end{equation}
+where $c_B\ge1$ is fixed before certification. Define $\bar Y_t=\Pi_{[-B,B]}Y_t$ and $\bar f_h(X_t)=\Pi_{[-B,B]}f_h(X_t)$. The certified loss is
+\begin{equation}
+\ell_t(h)=\frac{(\bar Y_t-\bar f_h(X_t))^2}{4B^2}\in[0,1].
+\label{eq:loss}
+\end{equation}
+Target and forecast clipping rates are reported separately. The operational energy studies use $c_B=1.25$; the synthetic development study uses $c_B=1$.

@@ -1,0 +1,20 @@
+\section{Discussion and Limitations}
+\label{sec:discussion}
+
+\subsection{What the Evidence Supports}
+The structural ablation supports a narrower claim than the original $K=12$ contrast alone suggested. Replacing an unnecessarily dense fixed rule base by a prior-only radius cover reduces the realized rule count, randomized dimension, Gaussian KL, and certificate. However, the multi-$K$ sensitivity shows that small fixed rule bases can match or improve on the radius-controlled certificate. Thus the robust conclusion is that true rule-block reduction matters, not that radius construction is intrinsically superior to every fixed-$K$ design. This effect remains distinct from Top-3 activation, which leaves the randomized parameter space unchanged.
+
+The operational studies support a second, different claim. A certificate can be used as one eligibility condition in a decision rule, but it must be combined with a meaningful baseline margin and temporal-stability checks. The failed Tetouan gate and successful frozen PJM gate are both part of the evidence. Hiding the negative development case would make the confirmatory result appear stronger than the protocol justifies.
+
+\subsection{What the Evidence Does Not Support}
+First, ridge has the tightest average certificate, so the study does not show that fuzzy models are generally more certifiable. Second, the PJM decisions are linear or one-rule affine models; the real-data case does not demonstrate a practical advantage from nonlinear multi-rule fuzzy partitioning. Third, the PJM comparison is against a predeclared seven-day seasonal-naive fallback, not SARIMA, gradient boosting, or deep forecasting systems. The 49--58\% improvements should not be generalized beyond that comparison.
+
+Fourth, the certificate is not a raw-RMSE guarantee. The conditional sequential risk in Proposition~\ref{prop:bound} belongs to the clipped Gibbs/BMA predictor over the certification horizon. The independent test horizon is used only for empirical confirmation of the frozen deployment decision. Future deployment under a new shift would require a new online or rolling protocol.
+
+\subsection{Remaining Methodological Limitations}
+The synthetic ablation contains five seeds per process, sufficient to expose large structural effects but not to characterize every nonlinear regime. The strong structural-break process shows that a prior-fixed clipping interval can lose operational meaning. Heavy-tail or variance-adaptive supermartingale bounds \cite{haddouche2023heavy,rodriguez2024more} are a principled next direction, but they require a separate verified implementation.
+
+The time-uniform proposition is evaluated numerically only at the final certification horizon. We do not claim an executed confidence sequence over all prefixes. The hierarchical prior is finite and auditable, but its fixed grids constrain the model family. The PJM study contains only four regional series and one common historical interval. Finally, infrastructure interrupted the first confirmatory invocation before test opening; the restart used unchanged hashes and is fully disclosed, but an uninterrupted run would be procedurally cleaner.
+
+\subsection{Implications for Fuzzy-System Design}
+The main design implication is that interpretability-oriented rule reduction and PAC-Bayesian complexity can align when sparsity removes complete rule blocks. Pruning only the active firing strengths is not enough if every consequent remains randomized and charged. A future certificate-aware TSK learner should therefore optimize a true structural posterior over rule inclusion, rather than relying only on sparse activation at prediction time. Such a method could make the fuzzy contribution stronger than the current deterministic radius construction.

@@ -1,0 +1,22 @@
+{
+  "schema_version": "3.2",
+  "status": "pre_outcome_lock",
+  "created_utc": "2026-07-12T18:58:31.050061+00:00",
+  "single_authorized_run_only": true,
+  "sha256": {
+    "config": "12638f877076f27c181a912d939c25c29f63e58d3a71e043e6cd66b0487b8889",
+    "hourly_data": "c4e679b6517fab52e3dfdc950b2b515df09c6d05ed80c61ef9390a2bcf688b29",
+    "experiment_code": "0e90a4fd87bda06bcc4fab6a5e9f94cd8a286ef56e51abaf18fc37b7f9dd69dc",
+    "model_code": "bc9d27b72539c0be4b5d390f794b588aff307af4c5384afee3e181372f7bb6a5",
+    "prior_code": "51685fed2764990f5132fba45e693b970afe0b388760322afe379bad23c9dfda",
+    "certificate_code": "6f12d562021402640484894ee29c651d508ae39e92967577048da94d9e7bf40d"
+  },
+  "paths": {
+    "config": "configs/v3/energy_case_study.yaml",
+    "hourly_data": "data/processed/tetouan_hourly.csv",
+    "experiment_code": "src/pacbayes_tsk/experiments/energy_case_study_v3.py",
+    "model_code": "src/pacbayes_tsk/models/sparse_tsk.py",
+    "prior_code": "src/pacbayes_tsk/pac_bayes/priors_v3.py",
+    "certificate_code": "src/pacbayes_tsk/pac_bayes/certificates_v3.py"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "attempt": 1,
+  "status": "terminated_before_atomic_publish",
+  "reason": "Execution exceeded the available wall-clock limit while repeated matrix inversions were still running.",
+  "published_outcome_files": 0,
+  "test_results_observed": false,
+  "protocol_response": "The numerical implementation was optimized algebraically using one eigendecomposition per design and ridge grid. No model grid, threshold, dataset, split, or decision rule was changed."
+}

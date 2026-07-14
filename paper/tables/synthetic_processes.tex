@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\centering
+\caption{Synthetic development processes. Each trajectory retains 2,000 observations after a burn-in of 500.}
+\label{tab:synthetic_processes}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lp{9.5cm}p{4.0cm}}
+\toprule
+Process & Definition & Purpose \\
+\midrule
+AR(2) & $Y_t=0.6Y_{t-1}-0.2Y_{t-2}+\varepsilon_t$, $\varepsilon_t\sim\mathcal N(0,0.2^2)$. & Linear short-memory dependence. \\
+SETAR & $0.65Y_{t-1}+\varepsilon_t$ if $Y_{t-1}\le0$; otherwise $-0.45Y_{t-1}+0.25Y_{t-2}+\varepsilon_t$. & Threshold nonlinearity. \\
+NARMA-10 & Standard tenth-order nonlinear moving-average recursion with $U_t\sim\mathcal U(0,0.5)$. & Nonlinear finite memory. \\
+Mackey--Glass & Euler recursion with delay 17 and additive $\mathcal N(0,0.01^2)$ noise. & Delayed nonlinear dynamics. \\
+GARCH & Zero-mean GARCH(1,1) with standardized Student-$t_5$ innovations. & Conditional heteroskedasticity and heavy tails. \\
+Structural break & AR(1) mean, coefficient, and noise scale change after 60\% of the retained sample. & Deliberate nonstationarity and clipping stress. \\
+\bottomrule
+\end{tabular}
+\end{table*}

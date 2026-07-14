@@ -1,0 +1,22 @@
+{
+  "dataset": "Power Consumption of Tetouan City",
+  "uci_dataset_id": 849,
+  "doi": "10.24432/C5B034",
+  "official_url": "https://archive.ics.uci.edu/dataset/849/power+consumption+of+tetouan+city",
+  "license": "CC BY 4.0",
+  "raw_frequency": "10 minutes",
+  "raw_rows": 52416,
+  "hourly_rows": 8736,
+  "zones": [
+    "zone_1",
+    "zone_2",
+    "zone_3"
+  ],
+  "raw_sha256_used_for_development": "ca8b2f30cf07dd872cb7f2aa45dac110ee38dbe5fc5910a6ff4bcc530dae3a40",
+  "processed_sha256": "8311ad1b6d427ab53f66c572ff574bc00171601b9165e201ad71ec486dbbc249",
+  "development_file_source": "Public GitHub mirror attributing the file to UCI",
+  "provenance_limitation": "The direct UCI binary download timed out in the execution environment. Before manuscript submission, run scripts/download_tetouan_energy.py from a networked machine and verify the official file schema and hash against the frozen development file.",
+  "case_frequency": "2 hours",
+  "case_rows": 4368,
+  "processed_file": "data/processed/tetouan_two_hour.csv"
+}

@@ -1,0 +1,8 @@
+{
+  "raw_rows": 52416,
+  "processed_rows": 4368,
+  "start": "2017-01-01T00:00:00",
+  "end": "2017-12-30T22:00:00",
+  "raw_sha256": "ca8b2f30cf07dd872cb7f2aa45dac110ee38dbe5fc5910a6ff4bcc530dae3a40",
+  "processed_sha256": "8311ad1b6d427ab53f66c572ff574bc00171601b9165e201ad71ec486dbbc249"
+}

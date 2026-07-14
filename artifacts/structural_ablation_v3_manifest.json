@@ -1,0 +1,27 @@
+{
+  "phase": "development_structural_ablation_v3_2",
+  "confirmatory": false,
+  "status": "COMPLETED",
+  "test_status": "22/22 passed",
+  "files": {
+    "configs/v3/protocol_v3.yaml": "1a12e28d336c925a0c965d3bbe46fb8d9689fa82582e51eacdb8a967cf8a04f5",
+    "configs/v3/synthetic_v3.yaml": "0893da17a78857362ab8de34b6ad06f8fccbdc8e01a079cd35759f2efb2955d9",
+    "configs/v3/structural_ablation_v3.yaml": "0b04a7ce71ab26fa3774d784b301780823033d4c90291e886e34c72ef997f4e7",
+    "src/pacbayes_tsk/models/sparse_tsk.py": "bc9d27b72539c0be4b5d390f794b588aff307af4c5384afee3e181372f7bb6a5",
+    "src/pacbayes_tsk/pac_bayes/priors_v3.py": "51685fed2764990f5132fba45e693b970afe0b388760322afe379bad23c9dfda",
+    "src/pacbayes_tsk/experiments/development_v3.py": "dd28f1ca9241d6e36ed8a9c6e4adac8edfa8800278c4cf1f2568a85e0dfd3b8f",
+    "tests/v3/test_structural_ablation_v3.py": "3e7683133e21d55bda5299f82d88261fdd6d55c77b811b3e71fe06aaf23f2cc1",
+    "docs/STRUCTURAL_SPARSITY_ABLATION_V3_REPORT_AR.md": "e745a2a11e3b99f0fd316f496238cc2e9a3c4cad6ac33937445a925591781d0c",
+    "results/development/structural_ablation_v3/activation_sparsity_candidate_matched.csv": "7db60477ecf40773a415b9d1c2f15478549b8a4f28692cb2f036941571187cc7",
+    "results/development/structural_ablation_v3/activation_sparsity_selected_pairs.csv": "d2586736a9184050eb76556de07f9578d3fc53f158b7ed62ef4201be2d0faf73",
+    "results/development/structural_ablation_v3/development_v3_audit.json": "0c9f97bd6dcd0420d9bd6a2a522e80f73ad7d450c69cbcdd4a101efe8139f0ab",
+    "results/development/structural_ablation_v3/development_v3_candidates_all.csv": "b78d56852d3980d0236e87a37770e43d22d2efeb4bd69ccabd5a5d8bd128cabd",
+    "results/development/structural_ablation_v3/development_v3_radius_chain.csv": "ae8ac4bd2d031040c3f311269be4fe55de1e8ecd189af9f82ee02d3a0f1b0a52",
+    "results/development/structural_ablation_v3/development_v3_selected_all.csv": "ca85a2fea34bcac3a17d3607d73d8525ac07ab4a6090d15ffd5a8e22437ad4a6",
+    "results/development/structural_ablation_v3/development_v3_summary.csv": "05c506af2c7c467f14d89eefc48e6a3cf39cfebbc6a505925d67c519c624cf9d",
+    "results/development/structural_ablation_v3/structural_ablation_comparison_summary.csv": "60dd056d5faa7ed8802b982d84397f2cc1f74a25a4862251f15fa78739d6e243",
+    "results/development/structural_ablation_v3/structural_ablation_family_overall.csv": "118369e2e3affd63f8c2796f1b8013bbf08aabb961163705c9ae18874434be65",
+    "results/development/structural_ablation_v3/structural_ablation_integrity.json": "061627872ea28d1ccdd241ba8a7708daeb85a5263f6fe71fc3bdae78041ced45",
+    "results/development/structural_ablation_v3/structural_sparsity_selected_pairs.csv": "a8035dfa685f4374c6ca2d00ad4981b937c75bbe059bbc76c2318ff852ee424f"
+  }
+}

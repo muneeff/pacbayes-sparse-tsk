@@ -1,0 +1,32 @@
+{
+  "generator": "tools/generate_manuscript_assets_v4.py",
+  "source_files": [
+    "paper/source_data/development_v3_summary.csv",
+    "paper/source_data/structural_ablation_family_overall.csv",
+    "paper/source_data/structural_ablation_comparison_summary.csv",
+    "results/development/energy_case_v3/energy_deployment_decisions.csv",
+    "results/confirmatory/pjm_case_v3_4/pjm_deployment_decisions.csv",
+    "results/confirmatory/pjm_case_v3_4/pjm_family_results.csv"
+  ],
+  "generated_tables": [
+    "energy_decisions.tex",
+    "pjm_family.tex",
+    "prior_work.tex",
+    "process_results.tex",
+    "structural_overall.tex",
+    "structural_pairwise.tex",
+    "synthetic_processes.tex"
+  ],
+  "generated_figures": [
+    "pjm_test_improvements.png",
+    "source_pjm_selected_certificates.png",
+    "source_pjm_test_improvements.png",
+    "structural_certificate_by_family.png"
+  ],
+  "pairwise_summary": {
+    "consequent_dimension": -95.9,
+    "localized_gaussian_kl": -22.91675762089192,
+    "localized_certificate_familywise": -0.0631363721387771,
+    "test_rmse_scaled": -0.0334691854674091
+  }
+}

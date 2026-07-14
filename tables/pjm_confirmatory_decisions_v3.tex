@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Frozen PJM confirmatory decisions and independent test improvements relative to the seven-day seasonal-naive fallback.}
+\label{tab:pjm_confirmatory_decisions}
+\begin{tabular}{llrrrr}
+\hline
+Region & Deployed model & Lag & Certificate & $\Delta$RMSE & $\Delta$Cost \\
+\hline
+AEP & Ridge & 28 & 0.0959 & 57.97\% & 58.64\% \\
+COMED & Ridge & 28 & 0.0841 & 55.40\% & 54.11\% \\
+DAYTON & Radius TSK ($K=1$) & 14 & 0.0933 & 49.13\% & 50.30\% \\
+PJME & Ridge & 28 & 0.0959 & 51.70\% & 51.42\% \\
+\hline
+\end{tabular}
+\end{table}

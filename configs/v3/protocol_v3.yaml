@@ -1,0 +1,39 @@
+schema_version: 3.0
+status: development_open
+single_authorized_run_only: true
+randomness:
+  development_seeds: [3000, 3001, 3002, 3003, 3004]
+  confirmatory_seeds: [4000, 4001, 4002, 4003, 4004]
+data:
+  synthetic:
+    length: 2000
+    burn_in: 500
+    split_fractions: {prior: 0.20, bound: 0.45, validation: 0.15, test: 0.20}
+  real:
+    split_policy: official_horizon
+    prior_fraction_of_prefix: 0.30
+model:
+  lags: [3, 5, 10, 15, 20]
+  radii: [0.50, 0.75, 1.00, 1.25, 1.50, 1.75, 2.00, 2.50, 3.00, 4.00, 5.00]
+  ridge_alphas: [0.0001, 0.001, 0.01, 0.1, 1.0]
+  max_rules: 12
+  sparse_active_rules: 3
+  dense_active_rules: all
+selection:
+  primary: validation_rmse
+  tie_break: [validation_mae, consequent_dimension, rule_count, radius, ridge_alpha, lag]
+  numeric_tolerance: 1.0e-12
+prior:
+  model_index: [lag, radius, ridge_alpha, rule_count]
+  eta_rule: 0.6931471805599453
+  constructed_from: [config, Dprior]
+certificate:
+  certified_roles: [bound, validation]
+  test_excluded: true
+  delta_total: 0.05
+  temperatures: [0.125, 0.25, 0.5, 1.0, 2.0, 4.0]
+  prior_scales: [0.5, 1.0, 2.0, 4.0, 8.0]
+  posterior_ratios: [0.01, 0.03, 0.1, 0.3, 1.0]
+confirmatory:
+  retuning_after_run: forbidden
+  rerun_after_outcome: forbidden

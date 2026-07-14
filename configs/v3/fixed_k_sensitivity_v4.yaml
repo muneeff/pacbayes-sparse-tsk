@@ -1,0 +1,30 @@
+schema_version: 4.1
+status: exploratory_development_extension
+processes: [ar2, setar, narma10, mackey_glass, garch, structural_break]
+seeds: [3000, 3001, 3002, 3003, 3004]
+model_families: [ridge, fixed_k_dense_tsk, dense_tsk, sparse_tsk]
+selection_strategies: [validation_rmse, certificate]
+prior_variants: [localized, zero_mean]
+confidence:
+  delta_total: 0.05
+  familywise_series_count: 30
+  report_pointwise_delta: true
+execution:
+  checkpoint_each_series: true
+  resume: true
+  numerical_tolerance: 1.0e-12
+  blas_threads_per_worker: 1
+ablation:
+  fixed_k_values: [2, 3, 4, 6, 8, 12]
+  fixed_k_activation: all
+  radius_dense_activation: all
+  radius_sparse_activation: top_3
+comparisons:
+  primary: radius_dense_tsk_vs_best_validation_selected_fixed_k
+  per_k: radius_dense_tsk_vs_each_fixed_k
+  degenerate_k1_excluded: true
+notes:
+  - This is an exploratory development sensitivity analysis added after the original K=12 ablation.
+  - It does not alter the frozen PJM protocol, gate, decisions, or confirmatory results.
+  - K=1 is excluded from the primary fuzzy comparison because it is an affine degenerate TSK model.
+  - Every K is charged through the same geometric rule-count prior; no K is selected free of complexity cost.

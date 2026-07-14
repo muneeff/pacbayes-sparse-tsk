@@ -1,0 +1,49 @@
+{
+  "dataset": "Hourly Energy Consumption / PJM regional load",
+  "primary_source": "https://www.kaggle.com/datasets/robikscube/hourly-energy-consumption",
+  "primary_license": "CC0 1.0 Universal",
+  "transport_mirror": "https://github.com/ping543f/ren-energy",
+  "transport_only": true,
+  "regions": [
+    "AEP",
+    "COMED",
+    "DAYTON",
+    "PJME"
+  ],
+  "processed_period": {
+    "start": "2012-01-01",
+    "end_inclusive": "2018-08-02"
+  },
+  "aggregation": "daily mean after duplicate-timestamp collapse",
+  "processed_rows": 2406,
+  "split_boundaries": {
+    "prior": {
+      "count": 481,
+      "start": "2012-01-01",
+      "end": "2013-04-25"
+    },
+    "bound": {
+      "count": 1083,
+      "start": "2013-04-26",
+      "end": "2016-04-12"
+    },
+    "validation": {
+      "count": 361,
+      "start": "2016-04-13",
+      "end": "2017-04-08"
+    },
+    "test": {
+      "count": 481,
+      "start": "2017-04-09",
+      "end": "2018-08-02"
+    }
+  },
+  "preparation_audit": "artifacts/pjm_data_preparation_audit.json",
+  "processed_sha256": "ec8c8ba641a56f47ea5308910899c222d326f7cb244c3957cd60c8e168da7cb2",
+  "raw_sha256": {
+    "aep": "109d122f7b485555c609eecdec2cd5a03172e0a08acd358d863acc93eb452585",
+    "comed": "2e79007e3f1be8765c92ff2b26314c0df0507bdd783110388a1e8d678d13fa1e",
+    "dayton": "84d3397231d5819b5cf086ef9e87cadf6dd7954085f2834be7e37257702ec768",
+    "pjme": "4eb2b16d42bf07ec41ab55cb842191594cb69452725a6d3c0991658a628fde84"
+  }
+}

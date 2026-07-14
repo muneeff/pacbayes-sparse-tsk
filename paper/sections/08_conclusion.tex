@@ -1,0 +1,8 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We presented an audited, chronological specialization of a known time-uniform PAC-Bayes supermartingale bound for ridge and TSK time-series predictors. The complete model index includes the ridge penalty and all structural choices, and the certified loss is explicitly clipped and normalized. A controlled development ablation shows that radius-controlled rule-count sparsity substantially reduces randomized dimension, KL, and certificate value relative to a dense 12-rule TSK structure, whereas Top-3 activation alone does not. A subsequent multi-$K$ sensitivity analysis qualifies this result: small fixed rule bases can match or tighten the radius-controlled certificate, so the supported mechanism is removal of complete rule blocks rather than a universal advantage of radius selection. Ridge nevertheless remains the easiest family to certify on average.
+
+The real decision studies provide a complementary result. A permissive Tetouan gate failed, while a redesigned gate frozen before an independent PJM study improved both RMSE and asymmetric cost in all four regions relative to the predeclared seasonal fallback. Because the selected models were ridge or one-rule TSK, this is evidence for complexity-aware selection and abstention rather than fuzzy-model dominance.
+
+The defensible conclusion is therefore limited but useful: structural rule reduction can tighten a PAC-Bayesian certificate, and a certificate can contribute to an operational gate when it is not confused with a direct performance guarantee. Future work should develop posterior rule selection, compare against stronger operational baselines, and replace clipping with verified heavy-tail or variance-adaptive sequential bounds.

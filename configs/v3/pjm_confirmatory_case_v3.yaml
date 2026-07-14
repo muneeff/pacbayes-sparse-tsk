@@ -1,0 +1,71 @@
+schema_version: 3.4
+status: confirmatory_pre_outcome_frozen
+case_study: pjm_four_region_daily_load
+source:
+  primary_dataset: Kaggle Hourly Energy Consumption
+  primary_url: https://www.kaggle.com/datasets/robikscube/hourly-energy-consumption
+  primary_license: CC0 1.0 Universal
+  transport_mirror: https://github.com/ping543f/ren-energy
+  provenance_note: >-
+    The four raw CSVs are transported from a public GitHub mirror. Their
+    SHA-256 hashes are frozen in the preparation audit and protocol lock.
+preprocessing:
+  raw_frequency: hourly
+  aggregation: daily_mean
+  common_start: 2012-01-01
+  common_end_inclusive: 2018-08-02
+  target_series: [aep, comed, dayton, pjme]
+  exogenous_features_used: false
+  duplicate_timestamps: collapse_by_mean
+  minimum_hourly_values_per_day: 23
+split:
+  policy: chronological_ratio
+  fractions: {prior: 0.20, bound: 0.45, validation: 0.15, test: 0.20}
+model:
+  families: [ridge, fixed_k_dense_tsk, dense_tsk]
+  lags: [7, 14, 28]
+  radii: [0.75, 1.00, 1.25, 1.50, 2.00, 2.50]
+  ridge_alphas: [0.0001, 0.001, 0.01, 0.1, 1.0]
+  max_rules: 8
+selection:
+  primary: minimum_validation_weighted_cost_among_robust_gate_candidates
+  tie_break: [validation_rmse, certificate, consequent_dimension, rule_count, family, radius, ridge_alpha, lag]
+  seasonal_fallback_lag: 7
+prior:
+  type: chronological_localized_diagonal_gaussian
+  constructed_from: [config, Dprior]
+  structural_index: [family, lag, radius, ridge_alpha, rule_count]
+certificate:
+  certified_roles: [bound, validation]
+  test_excluded: true
+  delta_total: 0.05
+  familywise_series_count: 4
+  temperatures: [0.125, 0.25, 0.5, 1.0, 2.0, 4.0]
+  prior_scales: [0.5, 1.0, 2.0, 4.0, 8.0]
+  posterior_ratios: [0.01, 0.03, 0.1, 0.3, 1.0]
+  clip_bound_prior_multiplier: 1.25
+decision:
+  fallback: seasonal_naive_7d
+  underforecast_weight: 2.0
+  overforecast_weight: 1.0
+  robust_gate:
+    certificate_threshold: 0.10
+    clipping_rate_maximum: 0.02
+    minimum_validation_rmse_improvement: 0.05
+    minimum_validation_cost_improvement: 0.05
+    validation_blocks: 4
+    minimum_nonnegative_blocks: 3
+    maximum_worst_block_degradation: 0.05
+  development_basis:
+    dataset: Tetouan three-zone two-hour development case
+    rationale:
+      - Previous 0.20 certificate threshold admitted two failed deployments.
+      - The new threshold is tightened to 0.10.
+      - A five-percent overall margin is required for both RMSE and asymmetric cost.
+      - Stability is required in at least three of four chronological validation blocks.
+      - No validation block may degrade by more than five percent.
+execution:
+  single_authorized_run_only: true
+  atomic_publish: true
+  rerun_after_outcome: forbidden
+  retuning_after_outcome: forbidden

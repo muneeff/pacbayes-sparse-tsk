@@ -1,0 +1,23 @@
+{
+  "schema_version": "3.4",
+  "status": "aborted_before_test_opening",
+  "recorded_utc": "2026-07-12T19:25:01.202345+00:00",
+  "reason": "Execution environment killed the process at the 900-second command timeout.",
+  "scientific_scope": "Only the AEP pre-test candidate/decision files were serialized. No global pretest decision table and no test-phase files or COMPLETED.json were produced.",
+  "inputs_unchanged": true,
+  "retuning_performed": false,
+  "test_outcomes_opened": false,
+  "retry_policy": "One exact computational retry with the same frozen lock, data, configuration, and code; no parameter changes.",
+  "partial_files": [
+    {
+      "path": "results/confirmatory/aborted_attempt_01_pretest_only/aep_candidates.csv",
+      "size_bytes": 70986,
+      "sha256": "c665834c100872e6f84cdb8d52d1f7bfd3d2ef9c48521b360ebade525223bc07"
+    },
+    {
+      "path": "results/confirmatory/aborted_attempt_01_pretest_only/aep_pretest_decision.json",
+      "size_bytes": 699,
+      "sha256": "4d1f680129f916faea2fd191ddc0120c9bcadd68a2b03d9914d620c6a3459569"
+    }
+  ]
+}

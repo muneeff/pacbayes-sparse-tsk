@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Development ablation over 30 synthetic series. Models are selected by validation RMSE; lower values are better.}
+\label{tab:structural_overall}
+\small
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{lrrrr}
+\toprule
+Family & $\bar K$ & $\bar D$ & Gaussian KL & Certificate \\
+\midrule
+Ridge & 1.00 & 13.4 & 5.16 & 0.1145 \\
+Fixed-$K$ TSK & 12.00 & 135.6 & 39.55 & 0.2221 \\
+Radius TSK & 3.80 & 39.7 & 16.63 & 0.1589 \\
+Radius Top-3 TSK & 3.57 & 40.2 & 16.83 & 0.1589 \\
+\bottomrule
+\end{tabular}
+\end{table}

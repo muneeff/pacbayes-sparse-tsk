@@ -1,0 +1,235 @@
+{
+  "schema_version": "3.4",
+  "status": "confirmatory_completed_no_retuning",
+  "created_utc": "2026-07-12T19:30:38.297952+00:00",
+  "case_study": "pjm_four_region_daily_load",
+  "preoutcome_lock_sha256": "41d4619578a7f8784003e6b96cf9e010c2d361d191e2124be70bc3402a088a37",
+  "completed_marker_sha256": "cf58c5ea5b39bba23b86292572826a9a2d3c17f429ed9970dbb42104756885e2",
+  "aborted_attempt_before_test": "artifacts/pjm_confirmatory_v3_aborted_attempt_01.json",
+  "authorized_retry_exit_code": 0,
+  "retuning_after_outcome": false,
+  "rerun_after_completed_outcome": false,
+  "files": [
+    {
+      "path": ".gitignore",
+      "size_bytes": 831,
+      "sha256": "9dec22d2b1937c56917d808eaab59bed83bf640650e2e880a3c1b529e981b465"
+    },
+    {
+      "path": "EXECUTION_STATUS_AR.md",
+      "size_bytes": 2043,
+      "sha256": "21514c3156f6fe6e37980b341b9ba1f2d9f51ee67be86525b5635ea11a9da70c"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 3699,
+      "sha256": "028a47852954fb3ab3f8ddd1d15baacdc96b743c6629c320be022e14ad6a2a3a"
+    },
+    {
+      "path": "artifacts/pjm_confirmatory_v3_aborted_attempt_01.json",
+      "size_bytes": 1073,
+      "sha256": "b798406af9a5e2be585fa1e61c05743fe26b01f616e92c4d62157c14578551e8"
+    },
+    {
+      "path": "artifacts/pjm_confirmatory_v3_console_output.json",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/pjm_confirmatory_v3_preoutcome_lock.json",
+      "size_bytes": 1794,
+      "sha256": "41d4619578a7f8784003e6b96cf9e010c2d361d191e2124be70bc3402a088a37"
+    },
+    {
+      "path": "artifacts/pjm_confirmatory_v3_retry01.exitcode",
+      "size_bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "artifacts/pjm_confirmatory_v3_retry01.pid",
+      "size_bytes": 6,
+      "sha256": "89d37cd00d4887826655663c4abbda5dc63620aca7852a099a802879143cd0ec"
+    },
+    {
+      "path": "artifacts/pjm_confirmatory_v3_retry01.stderr",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/pjm_confirmatory_v3_retry01.stdout",
+      "size_bytes": 3358,
+      "sha256": "617af204d6ef7168785623ed8cb891ea896dc4f5019d19f85cceccf46d6d1578"
+    },
+    {
+      "path": "artifacts/pjm_data_preparation_audit.json",
+      "size_bytes": 1018,
+      "sha256": "6b0e5dd304ca9e803d6558a5888f7e41b83c721b285ae06187428b71520eedfd"
+    },
+    {
+      "path": "configs/v3/pjm_confirmatory_case_v3.yaml",
+      "size_bytes": 2730,
+      "sha256": "734522c1e9655335fdde9ba18514d85d70d04d5d7d52b4571d29bd489556b1a5"
+    },
+    {
+      "path": "docs/GITHUB_RELEASE_CHECKLIST_AR.md",
+      "size_bytes": 962,
+      "sha256": "81bf553e985ca5bd258ab481e646f9947eb7be1750dc7986c488c01b550ece93"
+    },
+    {
+      "path": "docs/GITHUB_UPLOAD_GUIDE_AR.md",
+      "size_bytes": 2299,
+      "sha256": "99a607a5f4008c0d0d1044460c3c229ee3131ad0f1f6230bce3e4f6ae91e71e2"
+    },
+    {
+      "path": "docs/PJM_CONFIRMATORY_CASE_V3_REPORT_AR.md",
+      "size_bytes": 10010,
+      "sha256": "c93b8d27a8e8d67d25873dad64b672159fb8cecb28c0b5ffbe348117614de5da"
+    },
+    {
+      "path": "docs/PJM_DATASET_MANIFEST.json",
+      "size_bytes": 1462,
+      "sha256": "ee87d6a1df254c517834a28815f455626cf48d9ea8a358266ae6e1f5a643796c"
+    },
+    {
+      "path": "docs/THIRD_PARTY_DATA_LICENSES.md",
+      "size_bytes": 1229,
+      "sha256": "c208ec16aebf9a31078ba6b86fe10ae6b6ffd6f3a3dcba533ea4d3bbebc57511"
+    },
+    {
+      "path": "figures/pjm_confirmatory_v3/pjm_selected_certificates.png",
+      "size_bytes": 56568,
+      "sha256": "746d073887ef7c8b5dd359c39328a530c83b44fec0056136f129fb13f9a0b96b"
+    },
+    {
+      "path": "figures/pjm_confirmatory_v3/pjm_test_improvements.png",
+      "size_bytes": 63470,
+      "sha256": "de6e9113d83a075928607e3e20023c4f51daa010beb0ce6464687bcc9a122ff7"
+    },
+    {
+      "path": "paper_updates/pjm_confirmatory_methods.tex",
+      "size_bytes": 1706,
+      "sha256": "289853907bc4e09854691ea4b93dd297300772cb9b324bac5febbde590ebd2df"
+    },
+    {
+      "path": "paper_updates/pjm_confirmatory_results.tex",
+      "size_bytes": 1376,
+      "sha256": "370f37c139bf480e0d0230d632c9115cd21a3d74123c1e31a2be8dc87e4cf2a7"
+    },
+    {
+      "path": "protocol/PJM_CONFIRMATORY_CASE_V3_PROTOCOL.md",
+      "size_bytes": 2925,
+      "sha256": "b1acb4e9f5a1552e7c4a006247e119ada5ff930367eee64d9b167b8840dd7d68"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/COMPLETED.json",
+      "size_bytes": 413,
+      "sha256": "cf58c5ea5b39bba23b86292572826a9a2d3c17f429ed9970dbb42104756885e2"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/aep_candidates.csv",
+      "size_bytes": 70986,
+      "sha256": "c665834c100872e6f84cdb8d52d1f7bfd3d2ef9c48521b360ebade525223bc07"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/aep_pretest_decision.json",
+      "size_bytes": 699,
+      "sha256": "4d1f680129f916faea2fd191ddc0120c9bcadd68a2b03d9914d620c6a3459569"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/comed_candidates.csv",
+      "size_bytes": 66936,
+      "sha256": "033eb8035187c3936b798ebb49dae415eead00adfb2dc9cf19c0ba3bd9651808"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/comed_pretest_decision.json",
+      "size_bytes": 700,
+      "sha256": "c7dd59ec570e79f9b3ac9163c0a4e853bc9a5802ae8caf2b3111224f4017fdd0"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/dayton_candidates.csv",
+      "size_bytes": 66361,
+      "sha256": "0ed5124283c33eaf95f1f2a6b344560873f55d65954c55a4b4c09907bb9dca53"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/dayton_pretest_decision.json",
+      "size_bytes": 708,
+      "sha256": "36058aa31ca938c36fd8086629281800674edd261dd712bb3845f28a34e91447"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/pjm_candidates_all.csv",
+      "size_bytes": 266801,
+      "sha256": "8970dc10803df791bd932e90e1e387a5ba1fe0b32803655691b1009dc8ca1675"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/pjm_confirmatory_audit.json",
+      "size_bytes": 3357,
+      "sha256": "16d80fbdb4698cddcf76da07633e4cc724c5c904ca4dac8815cd751dc822e999"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/pjm_confirmatory_summary.csv",
+      "size_bytes": 714,
+      "sha256": "5c60e16c5d05c9216add40bdaff35991c0338a5334d2da75d947604c9916f735"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/pjm_deployment_decisions.csv",
+      "size_bytes": 2425,
+      "sha256": "74b50095c06573727216c88e4d5e0c9f020ab3662b86691b0a46a450fe650611"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/pjm_family_results.csv",
+      "size_bytes": 3676,
+      "sha256": "9040cd46f9c0d4a08f465358117dea6a66af231889e76216dd4e46b98ebaa71a"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/pjm_pretest_decisions.csv",
+      "size_bytes": 1349,
+      "sha256": "66ab2927b6ea3545e6a2a8fe052581a26c8f2a06f6947e6c6811562d9a3b9126"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/pjme_candidates.csv",
+      "size_bytes": 66172,
+      "sha256": "50423c4f141ccb310cbd5d9e826db90b4ce10fa3f74ab5a504bbaca470706d43"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/pjme_pretest_decision.json",
+      "size_bytes": 700,
+      "sha256": "2f27cff06b59dd227986c1ecccfa10c1f277c7504820c7d45cbf05df82ad9d16"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/predictions/aep_test_predictions.csv",
+      "size_bytes": 55380,
+      "sha256": "fff363e411ed3cffa2270b4b8b1287997defa0b92c5d020f2e41c380eb14e851"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/predictions/comed_test_predictions.csv",
+      "size_bytes": 54870,
+      "sha256": "257acc8fc1c7d14b36e8264bd90281ff1efef20b70e62407c7c610a06324b5c8"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/predictions/dayton_test_predictions.csv",
+      "size_bytes": 54255,
+      "sha256": "3b26d1c5bfb24795659fad95fbb3aa61437e7f9378979fd2e3c5ffe41ef88f3f"
+    },
+    {
+      "path": "results/confirmatory/pjm_case_v3_4/predictions/pjme_test_predictions.csv",
+      "size_bytes": 55088,
+      "sha256": "37017f4615e899c605c9d58887c892f1274bfb8f8c5b1f501f103a547146cbd5"
+    },
+    {
+      "path": "scripts/download_pjm_energy_v3.py",
+      "size_bytes": 1372,
+      "sha256": "852c15b618d122407a63bf969073cf1b1d17ddd4f3072c3e20b31e01af64c1a0"
+    },
+    {
+      "path": "tables/pjm_confirmatory_decisions_v3.tex",
+      "size_bytes": 559,
+      "sha256": "e04db29cc653c1f733724865171740da84a79f4ae4a4b8d06701dcc4a98a7c7f"
+    },
+    {
+      "path": "tables/pjm_confirmatory_families_v3.tex",
+      "size_bytes": 830,
+      "sha256": "a259b690dad51b8ef7b2bd3af756d436a98b3e012cb980b69d7ca30a907ad2c6"
+    }
+  ],
+  "updated_utc": "2026-07-12T19:32:31.096578+00:00"
+}

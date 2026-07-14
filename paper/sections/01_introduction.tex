@@ -1,0 +1,21 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Takagi--Sugeno (TSK) systems represent nonlinear dynamics through a convex combination of local affine rules. Their accuracy and interpretability depend on the lag order, the antecedent partition, and the number of retained rules. In time-series forecasting, these choices are commonly selected by validation error and assessed on a held-out horizon. That workflow measures predictive performance, but it does not by itself quantify the conditional risk of a data-dependent model when lagged examples overlap and the process may be nonstationary.
+
+PAC-Bayesian analysis is attractive in this setting because it separates an empirical loss from a prior--posterior complexity term. The same flexibility also creates failure modes. A prior that is localized using the certification observations is not automatically valid; squared error is not bounded without an explicit tail model or clipping; and a certificate can ignore the cost of selecting the lag, regularization strength, fuzzy radius, or rule count. Even a mathematically correct certificate need not rank predictors by raw RMSE or improve an operational decision.
+
+This paper therefore asks two narrower questions. First, does \emph{structural} sparsity in a TSK rule base measurably reduce PAC-Bayesian complexity relative to a fixed dense rule base? Second, can a certificate be used as one component of a frozen deployment gate without being misinterpreted as evidence of predictive superiority?
+
+The contributions are as follows.
+\begin{itemize}
+    \item We specify a chronological candidate family in which the complete model index is
+    $M=(F,p,\gamma,r,K)$: model family, lag, ridge penalty, optional radius, and realized rule count. Scaling, antecedent geometry, prior means, and prior variances are constructed only from an initial segment. This explicitly resolves the ambiguity caused by omitting $\gamma$ from the prior index.
+    \item We give a computable bounded-loss specialization of the time-uniform supermartingale PAC-Bayes framework of Chugg \emph{et al.} \cite{chugg2023unified}. The mathematical route is not claimed as a new general PAC-Bayes theorem. The contribution is the measurable TSK specialization, hierarchical structural code, analytic Gaussian empirical-risk upper bound, and audited implementation.
+    \item We separate radius-controlled rule-count sparsity from top-three activation sparsity. A 30-series synthetic development ablation compares ridge, fixed-$K$ TSK, radius-controlled all-active TSK, and radius-controlled top-three TSK under one structural prior. A subsequent sensitivity analysis over $K\in\{2,3,4,6,8,12\}$ distinguishes the effect of reducing rule count from any additional benefit of radius-based construction.
+    \item We report both a failed and a successful decision study. A permissive gate failed on Tetouan electricity demand. A stricter gate was then frozen and evaluated on four independent PJM regions, with every decision hashed before any test forecast was computed.
+\end{itemize}
+
+The evidence supports a complexity claim, not a universal forecasting claim. Radius control substantially reduces dimension, KL, and certificate value relative to a dense 12-rule TSK model, but the multi-$K$ sensitivity shows that small fixed rule bases can match or tighten its certificate. The defensible mechanism is therefore removal of complete rule blocks, not a universal advantage of radius selection. Radius TSK does not outperform ridge in certificate tightness, and the independent energy decisions mostly select linear predictors. The certificate controls clipped conditional sequential risk on the certification horizon; it does not certify raw test RMSE, future distributional stability, or dominance over all forecasting baselines.
+
+The remainder of the paper positions this contribution, defines the chronological model family, states the certificate and its scope, describes the development and confirmatory protocols, and reports the structural and operational results.

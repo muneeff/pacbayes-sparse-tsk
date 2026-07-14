@@ -1,0 +1,11 @@
+# PAC-Bayes validity checklist
+- [x] Model index contains lag, radius, ridge alpha, and realized rule count.
+- [x] Prior support and all finite grids are declared before certification data.
+- [x] Prior construction API accepts only prior-role data.
+- [x] Test role is excluded from certificate.
+- [x] Temperature search pays its finite-grid mass.
+- [ ] Full development rerun completed.
+- [ ] Sparse/dense/Ridge certificate ablation completed.
+- [ ] Energy case study completed.
+- [ ] Confirmatory V3 lock authorized.
+- [ ] Confirmatory V3 run completed once.

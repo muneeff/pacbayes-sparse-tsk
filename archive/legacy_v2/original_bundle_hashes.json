@@ -1,0 +1,17 @@
+[
+  {
+    "file": "lab.zip",
+    "sha256": "d27bd4d845bb00fab1ddf440f211e703150014bb4abe8f6630860c7384d20740",
+    "size_bytes": 155656910
+  },
+  {
+    "file": "results.rar",
+    "sha256": "6039638e567612f750301817fecfe3f252217afe9fa1a4ccd6b0aef9bf90e9b2",
+    "size_bytes": 49571554
+  },
+  {
+    "file": "supplementary.zip",
+    "sha256": "29ea4e54f8325f0c429a11f096376387f020cda585fb2eb6d0f2b94c768b9242",
+    "size_bytes": 96979
+  }
+]

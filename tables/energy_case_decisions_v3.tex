@@ -1,0 +1,14 @@
+\begin{table}[t]
+\centering
+\caption{Predeclared Tetouan deployment decisions. Negative changes indicate deterioration relative to the 24-hour seasonal-naive fallback.}
+\label{tab:energy_decisions_v3}
+\begin{tabular}{lrrrrrr}
+\hline
+Zone & Decision & Cert. & Clip & Test RMSE & $\Delta$RMSE & $\Delta$Cost \\
+\hline
+1 & Radius TSK ($K=4$) & 0.1226 & 0.34\% & 1579.05 & $-11.86\%$ & $-22.67\%$ \\
+2 & Fixed-$K$ TSK ($K=8$) & 0.1482 & 1.22\% & 1748.88 & $-1.51\%$ & $-19.05\%$ \\
+3 & Seasonal naive & -- & 8.01\% & 1148.92 & 0.00\% & 0.00\% \\
+\hline
+\end{tabular}
+\end{table}

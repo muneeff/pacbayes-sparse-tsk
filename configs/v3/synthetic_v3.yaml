@@ -1,0 +1,8 @@
+global: {length: 2000, burn_in: 500}
+processes:
+  ar2: {phi1: 0.60, phi2: -0.20, noise_std: 0.20}
+  setar: {threshold: 0.0, noise_std: 0.20}
+  narma10: {input_low: 0.0, input_high: 0.5}
+  mackey_glass: {beta: 0.20, gamma: 0.10, exponent: 10, tau: 17, noise_std: 0.01, initial_value: 1.20}
+  garch: {omega: 0.05, alpha: 0.10, beta: 0.85, degrees_of_freedom: 5.0}
+  structural_break: {break_fraction: 0.60, pre_mean: 0.0, pre_phi: 0.75, pre_noise_std: 0.30, post_mean: 1.5, post_phi: 0.30, post_noise_std: 0.55}

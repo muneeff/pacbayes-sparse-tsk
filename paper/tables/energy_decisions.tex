@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\centering
+\caption{Operational decision studies. Improvements are relative to the predeclared seasonal-naive fallback; negative values indicate degradation.}
+\label{tab:energy_decisions}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lllr rr}
+\toprule
+Phase & Series & Deployment & Certificate & Test RMSE imp. & Test cost imp. \\
+\midrule
+Tetouan dev. & zone 1 & dense\_tsk & 0.1226 & -11.86\% & -22.67\% \\
+Tetouan dev. & zone 2 & fixed\_k\_dense\_tsk & 0.1482 & -1.51\% & -19.05\% \\
+Tetouan dev. & zone 3 & seasonal\_naive\_24h & -- & 0.00\% & 0.00\% \\
+\midrule
+PJM confirm. & AEP & ridge & 0.0959 & 57.97\% & 58.64\% \\
+PJM confirm. & COMED & ridge & 0.0841 & 55.40\% & 54.11\% \\
+PJM confirm. & DAYTON & dense\_tsk & 0.0933 & 49.13\% & 50.30\% \\
+PJM confirm. & PJME & ridge & 0.0959 & 51.70\% & 51.42\% \\
+\bottomrule
+\end{tabular}
+\end{table*}

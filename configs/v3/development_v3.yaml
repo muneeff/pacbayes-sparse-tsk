@@ -1,0 +1,20 @@
+schema_version: 3.1
+status: development_open
+processes: [ar2, setar, narma10, mackey_glass, garch, structural_break]
+seeds: [3000, 3001, 3002, 3003, 3004]
+model_families: [ridge, dense_tsk, sparse_tsk]
+selection_strategies: [validation_rmse, certificate]
+prior_variants: [localized, zero_mean]
+confidence:
+  delta_total: 0.05
+  familywise_series_count: 30
+  report_pointwise_delta: true
+execution:
+  checkpoint_each_series: true
+  resume: true
+  numerical_tolerance: 1.0e-12
+  blas_threads_per_worker: 1
+notes:
+  - Development results may guide later protocol revisions, but confirmatory settings must be frozen afterward.
+  - Dense TSK uses the same radius-controlled rule geometry with all rules active; it isolates activation sparsity, not rule-count sparsity.
+  - Rule-count sparsity is assessed through the full radius-to-rule-count-to-dimension-to-KL-to-certificate path.

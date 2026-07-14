@@ -1,0 +1,30 @@
+{
+  "release": "V4.1-fixed-k-sensitivity",
+  "confirmatory_modified": false,
+  "files": {
+    "configs/v3/fixed_k_sensitivity_v4.yaml": "c86e0e55fa5746cb2c39467949fda32f13aedafb3ba30ae67dfd10999cb7c9cb",
+    "src/pacbayes_tsk/experiments/development_v3.py": "1c9c211fbdcee27b317d96e7c4fc82a4ce91665543542b52e3d5815ee84a1cc7",
+    "src/pacbayes_tsk/pac_bayes/priors_v3.py": "a4ca59596852b25ef7d5e77ac5fdbd485edde79ba8e5f0e61169d7df84fa6101",
+    "scripts/summarize_fixed_k_sensitivity_v4.py": "39dc66547680b5eee3f00c38cca627e058baff93bfe231ffba90ab5b8c8ac8a2",
+    "tools/06_run_fixed_k_sensitivity_v4.cmd": "974abbfca7b32d0fb4fa32b372046b3c8cb3937ead2a9b9317f59fa28701aaef",
+    "results/development/fixed_k_sensitivity_v4/development_v3_candidates_all.csv": "08075c573427a5d5bc60ea3197d3f0ceda00b44e6cef928a27f2247d829b6a13",
+    "results/development/fixed_k_sensitivity_v4/fixed_k_sensitivity_selected.csv": "b5a45572e1f5756bc9837f162bd90ee64afb3419bcf65728fe60e2ed97ddacb5",
+    "results/development/fixed_k_sensitivity_v4/fixed_k_sensitivity_summary.csv": "4b25e53b95c2a8ef365440c0a4d73554aced41817fd6af5b7ebd7ab1f0a617ef",
+    "results/development/fixed_k_sensitivity_v4/fixed_k_vs_radius_paired_statistics.csv": "fd374c67ad4afd8e3b68193c423eb7dcbd7cc9155c21d58dbf914bad3b9661ea",
+    "results/development/fixed_k_sensitivity_v4/radius_vs_best_fixed_k_statistics.csv": "809202653330df9bfda01c1a5d84445cb0bfe7106c30f538617e66a60d387100",
+    "paper/tables/fixed_k_sensitivity.tex": "f0cbfaf5b46ccfd3f07040ca0d8dd8fa1613c1566c135d64f418376c468017a1",
+    "paper/figures/fixed_k_certificate_sensitivity.png": "c73c69542c2b5cda76092858c6a3fe5d53b04f41de0cb58a8ff3af4277f82696",
+    "paper/figures/fixed_k_pareto_sensitivity.png": "695dd2d8416d3fab1182094b3f193a08f43d119f2d2cd1b3fcdbaf633976c41d",
+    "paper/sections/05_experimental_protocol.tex": "22cf9eec296bae848226ca72a052f6243b5d8aa159c1528023817042da65c6ea",
+    "paper/sections/06_results.tex": "66e590b0557264a9231c010d93bb6d64db7b0ddadcf77b85b339d85d3434294e",
+    "paper/sections/07_discussion.tex": "e809a4cb115e32fd7cdfdf6008f256f61ab159a51433fab44b5e2f1ffef94f1d",
+    "paper/sections/08_conclusion.tex": "a773b66ef9b7843f679bbc40f4a7f682034ccda0eb82b27d124990707afbb04d",
+    "paper/main.tex": "904245ae8cd575e87c39d8b0cbd04ed057d593a9cffec933ad96992d71de1c1f",
+    "paper/PACBayes_TSK_Manuscript_V4_1_FixedK.pdf": "3aacce212e31df38d627d6d058dc52cf0b9956403d61ee8a60b37ad05464e544",
+    "paper/PACBayes_TSK_Manuscript_V4.pdf": "3aacce212e31df38d627d6d058dc52cf0b9956403d61ee8a60b37ad05464e544",
+    "paper/source_data/fixed_k_sensitivity_summary.csv": "4b25e53b95c2a8ef365440c0a4d73554aced41817fd6af5b7ebd7ab1f0a617ef",
+    "paper/source_data/fixed_k_vs_radius_paired_statistics.csv": "fd374c67ad4afd8e3b68193c423eb7dcbd7cc9155c21d58dbf914bad3b9661ea",
+    "paper/source_data/radius_vs_best_fixed_k_statistics.csv": "809202653330df9bfda01c1a5d84445cb0bfe7106c30f538617e66a60d387100",
+    "docs/FIXED_K_SENSITIVITY_V4_REPORT_AR.md": "f52ad05c73fdabe225fd887521cd62467e2114bfb3de59d7b15e7caba973bbd5"
+  }
+}

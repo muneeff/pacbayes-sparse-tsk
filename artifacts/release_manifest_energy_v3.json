@@ -1,0 +1,18 @@
+{
+  "release": "energy_case_v3_complete",
+  "critical_files": {
+    "configs/v3/energy_case_study.yaml": "d78b051a479afea06d283774259b52fede20aedabe8a85dbe6af994397c8e22d",
+    "data/processed/tetouan_two_hour.csv": "8311ad1b6d427ab53f66c572ff574bc00171601b9165e201ad71ec486dbbc249",
+    "artifacts/energy_case_v3_preoutcome_lock_v3.json": "fd9182eada979c4cd6f0d862c340d04442dd23d60a86fde7a21b0c6920554e14",
+    "artifacts/energy_case_v3_manifest.json": "e6314358f8df7a013a1cfe88ad7046c04fb36c1cb915963ee06df6edec490f72",
+    "artifacts/POSTRUN_METADATA_ERRATUM_ENERGY_V3.json": "9a839efb0c48de56b1debaf12dc16c8ffb0a2d120ee2efdb4009cf5bc1c0204a",
+    "results/development/energy_case_v3/COMPLETED.json": "0268706fbc9e5943e2096a59a69206c5f07120af76a5dab45502b5f339283a6f",
+    "results/development/energy_case_v3/energy_case_audit.json": "75dc2e90256285de7079ccf59a7d5b73672ad9b7dbb61cf1ba2a3e65d5606a68",
+    "results/development/energy_case_v3/energy_deployment_decisions.csv": "21957d9e47b36bdfc9e6e30b43dfcd239c2c254fccbeac0fa992b47e87ec3d19",
+    "results/development/energy_case_v3/energy_family_results.csv": "0ca6e0e2a917e04700c38b1fe0a19b21607490c839eddf9ec622d5cf41e86a93",
+    "results/development/energy_case_v3/energy_summary_by_family.csv": "b42f86fbacccd3f6f4c88eb48f11535164d642be04394471c7f2e5b67540f520",
+    "docs/ENERGY_CASE_STUDY_V3_REPORT_AR.md": "24d5ab2a87f131ff00ed17563f81604caa5d0f4d42e1f712696fd59e7fc3c349",
+    "paper_updates/energy_case_study_v3_methods.tex": "c7af1c634c2ba434e7cf24dc2933b92d9c4d5d9d89fd0e2a8fc95b345a45c5c9",
+    "paper_updates/energy_case_study_v3_results.tex": "bfade3c1ac50bf8c391eee20b0098ee776e2a4a35b06d1e36c93d4b79dbe5f2b"
+  }
+}

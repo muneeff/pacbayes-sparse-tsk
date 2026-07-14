@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering
+\caption{Positioning relative to representative PAC-Bayes literature. ``This work'' uses a known time-uniform supermartingale route; its contribution is the chronological, computable specialization and the structural/operational evaluation.}
+\label{tab:prior_work}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{2.5cm}p{2.2cm}p{2.4cm}p{3.0cm}p{5.4cm}}
+\toprule
+Work & Data regime & Loss / guarantee & Main computational focus & Difference from the present study \\
+\midrule
+Seldin et al. \cite{seldin2012martingales} & Martingales & PAC-Bayes martingale inequalities & General concentration & Provides foundational martingale PAC-Bayes inequalities; no chronological TSK construction or rule-count audit. \\
+Chugg et al. \cite{chugg2023unified} & Sequential, non-IID & Time-uniform PAC-Bayes recipes & General supermartingale framework & The bound used here is a bounded-loss specialization, not a competing general theorem. \\
+P\'erez-Ortiz et al. \cite{perezortiz2021tighter} & IID classification & Tight neural-network risk certificates & Joint prior/posterior optimization & Motivates computable non-vacuous certificates, but not temporal dependence or fuzzy structure. \\
+Foong et al. \cite{foong2021small} & IID, small samples & Tightness limits & Bound-vs-test comparison & Motivates reporting vacuity and clipping; it does not address sequential dependence. \\
+Haddouche--Guedj \cite{haddouche2023heavy} & Sequential/heavy-tailed & Supermartingale bounds for heavy tails & Unbounded-loss control & Offers a route beyond clipping; the current implementation deliberately uses bounded clipped loss. \\
+Alquier--Wintenberger \cite{alquier2012model} and Eringis et al. \cite{eringis2024dynamical} & Weakly dependent time series / stable systems & Generalization under dependence & Rates or stability/mixing conditions & These require dependence or stability assumptions; the primary certificate here uses predictability and bounded loss instead. \\
+This work & Overlapping, possibly nonstationary forecast windows & Conditional sequential clipped risk & Hierarchical structural coding; radius-vs-fixed-$K$ ablation; frozen deployment gate & Empirically separates structural sparsity from activation sparsity and tests a negative development gate followed by an independent confirmatory energy case. \\
+\bottomrule
+\end{tabular}
+\end{table*}

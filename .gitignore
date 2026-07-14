@@ -1,0 +1,56 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.aux
+*.bbl
+*.blg
+*.log
+*.synctex.gz
+*.rar
+*.zip
+src/*.egg-info/
+
+# Raw third-party files are reproducibly downloaded and hash-verified.
+data/raw/**
+!data/raw/.gitkeep
+
+# Keep only declared paper evidence in Git; bulk/intermediate grids can go to Zenodo.
+results/**
+!results/**/.gitkeep
+!results/development/energy_case_v3/
+!results/development/energy_case_v3/**
+!results/confirmatory/pjm_case_v3_4/
+!results/confirmatory/pjm_case_v3_4/**
+!results/confirmatory/aborted_attempt_01_pretest_only/
+!results/confirmatory/aborted_attempt_01_pretest_only/**
+
+# Generic run manifests are ignored unless explicitly released below.
+artifacts/*run*.json
+!artifacts/development_v3_run_manifest.json
+!artifacts/energy_case_v3_run_manifest.json
+!artifacts/pjm_confirmatory_v3_run_manifest.json
+
+# LaTeX build artifacts in the manuscript folder
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+paper/*.fdb_latexmk
+paper/*.fls
+paper/main.pdf
+# Released evidence for V4.1--V4.3
+!results/development/fixed_k_sensitivity_v4/
+!results/development/fixed_k_sensitivity_v4/**
+
+!results/statistics/v4_2/
+!results/statistics/v4_2/**
+
+!results/posthoc/v4_3/
+!results/posthoc/v4_3/**
+
+!results/interpretability/v4_3/
+!results/interpretability/v4_3/**

@@ -1,0 +1,59 @@
+schema_version: 3.3
+status: pre_outcome_frozen_after_compute_only_abort
+case_study: tetouan_city_two_hour_power_consumption
+source:
+  official_repository: UCI Machine Learning Repository
+  dataset_id: 849
+  doi: 10.24432/C5B034
+  official_url: https://archive.ics.uci.edu/dataset/849/power+consumption+of+tetouan+city
+  license: CC BY 4.0
+  execution_download_note: >-
+    The execution environment used a public GitHub mirror that attributes the
+    file to UCI because the direct UCI binary download timed out. The exact raw
+    SHA-256 is frozen in the dataset manifest; an official-download verifier is
+    included and must be run before manuscript submission.
+preprocessing:
+  raw_frequency: 10min
+  aggregation: two_hour_mean
+  expected_raw_rows: 52416
+  expected_case_rows: 4368
+  target_series: [zone_1, zone_2, zone_3]
+  exogenous_features_used: false
+split:
+  policy: chronological_ratio
+  fractions: {prior: 0.20, bound: 0.45, validation: 0.15, test: 0.20}
+model:
+  families: [ridge, fixed_k_dense_tsk, dense_tsk]
+  lags: [3, 6, 12]
+  radii: [0.75, 1.00, 1.25, 1.50, 2.00, 2.50]
+  ridge_alphas: [0.0001, 0.001, 0.01, 0.1, 1.0]
+  max_rules: 8
+selection:
+  primary: minimum_validation_rmse_among_certificate_eligible_candidates
+  tie_break: [certificate, consequent_dimension, rule_count, family, radius, ridge_alpha, lag]
+  seasonal_fallback_lag: 12
+  require_no_worse_than_seasonal_validation: true
+prior:
+  type: chronological_localized_diagonal_gaussian
+  constructed_from: [config, Dprior]
+  structural_index: [family, lag, radius, ridge_alpha, rule_count]
+certificate:
+  certified_roles: [bound, validation]
+  test_excluded: true
+  delta_total: 0.05
+  familywise_series_count: 3
+  temperatures: [0.125, 0.25, 0.5, 1.0, 2.0, 4.0]
+  prior_scales: [0.5, 1.0, 2.0, 4.0, 8.0]
+  posterior_ratios: [0.01, 0.03, 0.1, 0.3, 1.0]
+  clip_bound_prior_multiplier: 1.25
+decision:
+  certificate_threshold: 0.20
+  clipping_rate_maximum: 0.05
+  fallback: seasonal_naive_12x2h
+  underforecast_weight: 2.0
+  overforecast_weight: 1.0
+execution:
+  single_authorized_run_only: true
+  atomic_publish: true
+  rerun_after_outcome: forbidden
+  aborted_attempts_before_outcome_review: 2

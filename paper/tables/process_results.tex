@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\centering
+\caption{Synthetic development results selected by validation RMSE (five seeds per process). RMSE is on the prior-standardized scale.}
+\label{tab:process_results}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+& \multicolumn{2}{c}{Test RMSE} & \multicolumn{2}{c}{Certificate} & \multicolumn{2}{c}{Target clipping} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Process & Ridge & Radius TSK & Ridge & Radius TSK & Cert. & Test \\
+\midrule
+AR(2) & 0.9098 & 0.9126 & 0.1128 & 0.1271 & 0.62\% & 0.35\% \\
+SETAR & 1.0140 & 0.9798 & 0.1131 & 0.1467 & 0.42\% & 0.50\% \\
+NARMA-10 & 0.7670 & 0.7656 & 0.1093 & 0.1188 & 0.97\% & 0.30\% \\
+Mackey--Glass & 0.0656 & 0.0539 & 0.1129 & 0.2403 & 0.92\% & 1.30\% \\
+GARCH & 1.0398 & 1.0926 & 0.0941 & 0.1114 & 0.25\% & 0.20\% \\
+Structural break & 1.5236 & 1.4841 & 0.1445 & 0.2093 & 23.87\% & 71.55\% \\
+\bottomrule
+\end{tabular}
+\end{table*}

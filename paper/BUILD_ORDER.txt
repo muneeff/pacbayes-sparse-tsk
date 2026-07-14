@@ -1,0 +1,4 @@
+1. Run: tools\02_generate_manuscript_assets.cmd
+2. Confirm generated files under paper\tables and paper\figures
+3. Run: tools\04_compile_manuscript.cmd
+4. Final PDF: paper\PACBayes_TSK_Manuscript_V4.pdf

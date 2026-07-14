@@ -1,0 +1,82 @@
+\section{Computable Sequential PAC-Bayes Certificate}
+\label{sec:certificate}
+
+\subsection{Hierarchical Prior over Structures}
+Condition on the information $\mathcal G_0$ available after $\mathcal D_{\mathrm{prior}}$. The family, lag, ridge-penalty, and radius grids are fixed by configuration. The implemented code length assigns uniform mass to family, lag, and ridge penalty; radius-controlled families additionally pay a uniform radius-grid mass. TSK structures pay
+\begin{equation}
+\pi_K(K)=\frac{\exp(-\eta K)}{\sum_{j=1}^{K_{\max}}\exp(-\eta j)},\qquad \eta=\log 2.
+\label{eq:kprior}
+\end{equation}
+The resulting structural cost is $C(M)=-\log\pi(M)$. Since only the prior-realized $K$ is valid for a particular radius, the displayed masses can sum to less than one over executable candidates; the unused mass is assigned to a dummy hypothesis. This completion makes the code a proper prior and can only make the reported candidate costs conservative.
+
+For a selected structure, the base diagonal prior standard deviation is derived from prior residual variance and the diagonal of the regularized inverse Gram matrix. A finite scale mixture $s\in\{0.5,1,2,4,8\}$ defines
+\begin{equation}
+P_{M,s}=\mathcal N\!\left(\mu_{P,M},\operatorname{diag}(s^2b_M^2)\right).
+\label{eq:prior_gauss}
+\end{equation}
+The posterior is
+\begin{equation}
+Q_{M,s,\rho}=\mathcal N\!\left(\mu_{Q,M},\operatorname{diag}(s^2\rho^2b_M^2)\right),
+\label{eq:posterior_gauss}
+\end{equation}
+where $\rho\in\{0.01,0.03,0.1,0.3,1\}$. Choosing a prior scale pays $\log5$ through the mixture inequality. Posterior-ratio selection needs no discrete penalty because the PAC-Bayes event is simultaneous over all posteriors $Q\ll P$. In the localization development ablation, localized and zero-mean prior variants are included as two prior-mixture components and each pays $\log2$; the operational studies use only the chronological localized prior.
+
+The exact diagonal-Gaussian divergence is
+\begin{equation}
+\mathrm{KL}(Q_M\|P_M)=\frac12\sum_{j=1}^{D_M}\left[
+\log\frac{\sigma_{P,j}^2}{\sigma_{Q,j}^2}-1+
+\frac{\sigma_{Q,j}^2+(\mu_{Q,j}-\mu_{P,j})^2}{\sigma_{P,j}^2}
+\right].
+\label{eq:gaussian_kl}
+\end{equation}
+The total charged complexity is the structural code, prior-mixture cost, and Gaussian KL.
+
+\subsection{Time-Uniform Bounded-Loss Specialization}
+For $h=(M,a)$, write $\mu_t(h)=\mathbb E[\ell_t(h)\mid\mathcal G_{t-1}]$ and
+\begin{align}
+\widehat R_t(Q)&=\frac1t\sum_{i=1}^{t}\mathbb E_Q[\ell_i],\\
+R_t^{\mathrm{seq}}(Q)&=\frac1t\sum_{i=1}^{t}\mathbb E_Q[\mu_i].
+\label{eq:risks}
+\end{align}
+
+\begin{assumption}[Predictable bounded loss]
+For each fixed $h$, the forecast at time $t$ is $\mathcal G_{t-1}$-measurable and $0\le\ell_t(h)\le1$ almost surely.
+\end{assumption}
+
+\begin{proposition}[Bounded-loss time-uniform specialization]
+\label{prop:bound}
+Let $P$ be $\mathcal G_0$-measurable and let $\Lambda$ be a finite positive temperature grid with mass function $\nu$. Conditionally on $\mathcal G_0$, with probability at least $1-\delta$, simultaneously for every $t\ge1$, every $\mathcal G_t$-measurable $Q_t\ll P$, and every $\lambda\in\Lambda$,
+\begin{equation}
+R_t^{\mathrm{seq}}(Q_t)\le \widehat R_t(Q_t)+\frac{\lambda}{8}+
+\frac{\mathrm{KL}(Q_t\|P)+\log[1/(\delta\nu(\lambda))]}{\lambda t}.
+\label{eq:main_bound}
+\end{equation}
+\end{proposition}
+
+Proposition~\ref{prop:bound} is the conditional-Hoeffding instance of the established PAC-Bayes supermartingale recipe \cite{seldin2012martingales,chugg2023unified}. For fixed $h$, $\exp\{\lambda\sum_{i\le t}(\mu_i-\ell_i)-t\lambda^2/8\}$ is a nonnegative supermartingale. Mixing over $P$, applying Ville's inequality, then the Donsker--Varadhan change of measure proves the statement; a union bound charges the finite temperature grid. The proof and the prior-mixture completion are given in the supplementary material.
+
+The reported value is the minimum untruncated right-hand side over the fixed temperature grid, clipped at one only for presentation. Familywise studies allocate $\delta/S$ to each of $S$ predeclared series.
+
+\subsection{Analytic Empirical-Risk Upper Bound}
+For fixed antecedents, $f_{M,a}(x)=\phi_M(x)^\top a$ before projection. Therefore
+\begin{equation}
+\mathbb E_Q[(\bar Y-\phi^\top a)^2]=(\bar Y-\phi^\top\mu_Q)^2+
+\phi^\top\operatorname{diag}(\sigma_Q^2)\phi.
+\label{eq:secondmoment}
+\end{equation}
+Projection cannot increase squared distance to $\bar Y\in[-B,B]$. Using the concavity of $u\mapsto\min(1,u)$ gives the pointwise upper bound
+\begin{equation}
+\widehat r_i(Q)=\min\left\{1,
+\frac{(\bar Y_i-\phi_i^\top\mu_Q)^2+
+\phi_i^\top\operatorname{diag}(\sigma_Q^2)\phi_i}{4B^2}
+\right\}.
+\label{eq:empirical_upper}
+\end{equation}
+The implementation substitutes $t^{-1}\sum_i\widehat r_i(Q)$ for $\widehat R_t(Q)$, which is conservative.
+
+\begin{corollary}[Clipped Bayesian model average]
+The clipped Bayesian model-average risk is no larger than the Gibbs risk in Proposition~\ref{prop:bound}, by convexity of squared loss.
+\end{corollary}
+
+\subsection{Scope of the Guarantee}
+The guarantee is for average conditional risk of the clipped Gibbs predictor, and by convexity its clipped model average, over the observed certification horizon. It is valid for adapted overlapping windows and does not require an estimated mixing coefficient. It is not a guarantee for raw RMSE, an arbitrary deterministic parameter-mean implementation, the future test horizon, or performance relative to a seasonal baseline. Those quantities remain empirical evaluations and are deliberately separated from the certificate.

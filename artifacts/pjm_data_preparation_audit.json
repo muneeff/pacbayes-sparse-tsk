@@ -1,0 +1,36 @@
+{
+  "source_files": {
+    "aep": "AEP_hourly.csv",
+    "comed": "COMED_hourly.csv",
+    "dayton": "DAYTON_hourly.csv",
+    "pjme": "PJME_hourly.csv"
+  },
+  "source_sha256": {
+    "aep": "109d122f7b485555c609eecdec2cd5a03172e0a08acd358d863acc93eb452585",
+    "comed": "2e79007e3f1be8765c92ff2b26314c0df0507bdd783110388a1e8d678d13fa1e",
+    "dayton": "84d3397231d5819b5cf086ef9e87cadf6dd7954085f2834be7e37257702ec768",
+    "pjme": "4eb2b16d42bf07ec41ab55cb842191594cb69452725a6d3c0991658a628fde84"
+  },
+  "source_rows": {
+    "aep": 121273,
+    "comed": 66497,
+    "dayton": 121275,
+    "pjme": 145366
+  },
+  "duplicate_timestamps_collapsed": {
+    "aep": 8,
+    "comed": 8,
+    "dayton": 8,
+    "pjme": 8
+  },
+  "common_start": "2012-01-01T00:00:00",
+  "common_end": "2018-08-02T00:00:00",
+  "processed_rows": 2406,
+  "minimum_hourly_observations_per_day": {
+    "aep": 23,
+    "comed": 23,
+    "dayton": 23,
+    "pjme": 23
+  },
+  "processed_sha256": "ec8c8ba641a56f47ea5308910899c222d326f7cb244c3957cd60c8e168da7cb2"
+}

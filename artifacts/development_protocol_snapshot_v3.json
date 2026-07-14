@@ -1,0 +1,332 @@
+{
+  "schema_version": "3.0",
+  "created_utc": "2026-07-12T17:58:13.049055+00:00",
+  "protocol": {
+    "path": "protocol/EXPERIMENT_PROTOCOL_V3.md",
+    "sha256": "6a418e87b6f847da41fa13605531789a788286480c3810a7d97a9d868da441e5"
+  },
+  "tracked_files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "3e9e90850e51257759a604e7da7e9305c3aaa79c3ed51a9afa4bc77114ca727f",
+      "size_bytes": 506
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "b5666180e43d7d45644d7a91c216a7a792a3a57281aa270caf78a3e8b9a013ad",
+      "size_bytes": 184
+    },
+    {
+      "path": "CITATION.cff",
+      "sha256": "47930b5662e0345fc22724e74fd239c8214f2403e1e5e0f66fea20c46161a028",
+      "size_bytes": 267
+    },
+    {
+      "path": "EXECUTION_STATUS_AR.md",
+      "sha256": "cc18e171f97b5f78eaefdee2e126f38c006c34db64d985bfd43e536887c79d8d",
+      "size_bytes": 3002
+    },
+    {
+      "path": "README.md",
+      "sha256": "f6e67ef7915874e52738d4112ec3ecc508878da36caa7e42da034f9acf775da4",
+      "size_bytes": 868
+    },
+    {
+      "path": "configs/v3/energy_case_study.yaml",
+      "sha256": "dca7fcb1648fccafec13a42c214609b77e10776cb9b912df4a2acd3957164e5c",
+      "size_bytes": 480
+    },
+    {
+      "path": "configs/v3/protocol_v3.yaml",
+      "sha256": "1a12e28d336c925a0c965d3bbe46fb8d9689fa82582e51eacdb8a967cf8a04f5",
+      "size_bytes": 1228
+    },
+    {
+      "path": "configs/v3/synthetic_v3.yaml",
+      "sha256": "0893da17a78857362ab8de34b6ad06f8fccbdc8e01a079cd35759f2efb2955d9",
+      "size_bytes": 510
+    },
+    {
+      "path": "docs/DATASETS.md",
+      "sha256": "4427b36bd0443ef8830799ba44972cd3cb68d88ac46f4cf55eef16953b682647",
+      "size_bytes": 270
+    },
+    {
+      "path": "docs/GITHUB_UPLOAD_GUIDE_AR.md",
+      "sha256": "aa74bfaff88ae55bbc0ff6e7358e2ff0a71dd68616da043ec86d04e10d0dd812",
+      "size_bytes": 743
+    },
+    {
+      "path": "docs/PACBAYES_VALIDITY_CHECKLIST.md",
+      "sha256": "121dabd2fcaaacc251529e92265b59f9240ec62a96e2d471713feedb0198ed7b",
+      "size_bytes": 560
+    },
+    {
+      "path": "docs/REPRODUCIBILITY.md",
+      "sha256": "4a9f5b22dc9ec9d900a2e75fb8bc39056fb13b2b2de136bb189ade52fe636be7",
+      "size_bytes": 302
+    },
+    {
+      "path": "docs/RESULTS_SCHEMA.md",
+      "sha256": "9f90203472980f2e49b7241dfa3a295d574c79add6906291bc4490ad21538181",
+      "size_bytes": 313
+    },
+    {
+      "path": "protocol/EXPERIMENT_PROTOCOL_V3.md",
+      "sha256": "6a418e87b6f847da41fa13605531789a788286480c3810a7d97a9d868da441e5",
+      "size_bytes": 1647
+    },
+    {
+      "path": "protocol/LOCK_POLICY.md",
+      "sha256": "fdb5b8bf233270f27cac781dd5c7693ff04cc6cb2aa2aa38a03fc1ab394e712f",
+      "size_bytes": 342
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "64a8e4798801a68db9d0b24c41e81544f74f3ce809f7cfd514d25241afdf3f2a",
+      "size_bytes": 634
+    },
+    {
+      "path": "requirements-lock.txt",
+      "sha256": "ef8a77614b409811fbd39827681a3f4076f1afc30dc4c4143f636d0977f45ea9",
+      "size_bytes": 127
+    },
+    {
+      "path": "scripts/freeze_protocol_v3.py",
+      "sha256": "1a8228ace5c10915a6363c84c207992b5014f70c5759a04062ecf432c50616ef",
+      "size_bytes": 630
+    },
+    {
+      "path": "scripts/generate_synthetic_v3.py",
+      "sha256": "bd3691219d4d443653025d61f0ed3b5a83f275cf5a37c275150aa04038cf8618",
+      "size_bytes": 1125
+    },
+    {
+      "path": "scripts/run_development_smoke_v3.py",
+      "sha256": "21e30ba0d3f974b3b56e17ab754d321d7448ea842210637081c0c1f46d206b31",
+      "size_bytes": 7129
+    },
+    {
+      "path": "scripts/validate_v3.py",
+      "sha256": "3add9ae049160487935fdd502ed609218d7748525aad97cfbf0318f75f0de52d",
+      "size_bytes": 923
+    },
+    {
+      "path": "src/pacbayes_tsk/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "src/pacbayes_tsk/clustering/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "src/pacbayes_tsk/data/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "src/pacbayes_tsk/data/causal_imputation.py",
+      "sha256": "0d6512bc11d6c8ea6e96aa4f204baf47eb8565b3d52386c1916817eac1cfdb79",
+      "size_bytes": 3033
+    },
+    {
+      "path": "src/pacbayes_tsk/data/downloads.py",
+      "sha256": "01bcb10f547580082856b258e5b7a4a3d51edff2e72100a0fdd3340e4538be82",
+      "size_bytes": 5438
+    },
+    {
+      "path": "src/pacbayes_tsk/data/preprocessing.py",
+      "sha256": "768c5d718d62f12b1de5d9752be5d0107b75d3731f269333168a1190a678162f",
+      "size_bytes": 11597
+    },
+    {
+      "path": "src/pacbayes_tsk/data/real_data.py",
+      "sha256": "97b0dc435421c604ea856d20ebcebc0a10595a96d555975ce5754348d91b92f4",
+      "size_bytes": 9778
+    },
+    {
+      "path": "src/pacbayes_tsk/data/real_supervised.py",
+      "sha256": "eafa82ecca14ada7ebdc34432ca648d3bc11d13d18fbcd8ada23cdba3f27881f",
+      "size_bytes": 18933
+    },
+    {
+      "path": "src/pacbayes_tsk/data/splits_v3.py",
+      "sha256": "ddb0400511188f3439231000057405250a095ac70cadc90e6269d767b27ed2df",
+      "size_bytes": 2538
+    },
+    {
+      "path": "src/pacbayes_tsk/data/supervised.py",
+      "sha256": "4004ca2315274981de7d68962285cd710b5930f0b8ad3bf1417f0d961f2c350e",
+      "size_bytes": 11029
+    },
+    {
+      "path": "src/pacbayes_tsk/data/synthetic_generators.py",
+      "sha256": "fc0a20ce6a8f76ce97bbc2cb76d8945f4be0602c1a55dd4fa2b79f7a2866948b",
+      "size_bytes": 14294
+    },
+    {
+      "path": "src/pacbayes_tsk/data/synthetic_v3.py",
+      "sha256": "2ff87cfd5af14ffd6ecafdf3f1f97ba8a67b6a725a7a2c9e68afc2b185bf5b3a",
+      "size_bytes": 5719
+    },
+    {
+      "path": "src/pacbayes_tsk/data/tsf_reader.py",
+      "sha256": "5429caeb524d9d796ef27873b165e420d28eb90383e12d464ebc64ff74e30f37",
+      "size_bytes": 7509
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/confirmatory_protocol.py",
+      "sha256": "7cf0ab215189cd78c61d9a93596d1b94a49648bfa200a41b8c7a81830ad494f2",
+      "size_bytes": 4516
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/confirmatory_protocol_v2.py",
+      "sha256": "d82f7b0771d39cb70e857ccbc9bf911b6c088153332fdbeeb6c7973111cf320a",
+      "size_bytes": 5879
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/confirmatory_run.py",
+      "sha256": "c1f60bf9955948bd3ff1f9117af0902ccf78dba2106c0f104c34766a4f3f8c0a",
+      "size_bytes": 15586
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/confirmatory_run_v2.py",
+      "sha256": "370f735062d6cb6f5af7c5d551eab0bd8ddbacb589c29000d01ae1c4181fc577",
+      "size_bytes": 15459
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/frozen_sparse_tsk.py",
+      "sha256": "377e26ff2cd57f777e18b6b036d638cfd870ce707c3596acb377797f551d28c5",
+      "size_bytes": 5914
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/garch_radius_extension.py",
+      "sha256": "47491ea83cfb5ae821cf03aa06283cb7cba283c39bce9a685cd8fdbe97de13ec",
+      "size_bytes": 12525
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/metrics.py",
+      "sha256": "4130cfcdbe471711de63bcfd4d4a22050cac7d7fd02d804dd507ec6fab05b90d",
+      "size_bytes": 5666
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/pac_bayes_certificate.py",
+      "sha256": "32d04ffb29a18cf9f621d2d204fbde03d52d3478db4024172954429783e1c32c",
+      "size_bytes": 16637
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/relative_rmse.py",
+      "sha256": "aeb225489a6dcc800bc599e2edfcd52ea8ba5e6e938988b29bd38100cc6a6e76",
+      "size_bytes": 2419
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/sparse_tsk_reselection.py",
+      "sha256": "1080a7f0ff165650494a7b5766038bf4e4314a2da7ded49e4786fedde59e8187",
+      "size_bytes": 12976
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/sparse_tsk_sensitivity.py",
+      "sha256": "0df058ef4e22b650d472d994ccc8715638f3d303527bf1b64f09c9079c57261a",
+      "size_bytes": 11192
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/temporal_pac_bayes.py",
+      "sha256": "325ddad253b34523ded2ce43fd42f949d5f4178545e787714f1cdb450dbbf38c",
+      "size_bytes": 19491
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/temporal_theory_audit.py",
+      "sha256": "5852e7c8aa3a76f7dcce6472e8a488401428559e18541b48ec44e1a3d484b6d1",
+      "size_bytes": 23645
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/tourism_fine_radius.py",
+      "sha256": "10c4b4f8d95b2b0fc53fc43c7dc6a03a6a165ac07d4ce0d44bea2ae51cda2800",
+      "size_bytes": 16170
+    },
+    {
+      "path": "src/pacbayes_tsk/evaluation/tourism_radius_extension_2_5.py",
+      "sha256": "241e70fff8d13ee75903da4ab6a85f3b0829a22dde870d40d662d9a4a0d0b34f",
+      "size_bytes": 17405
+    },
+    {
+      "path": "src/pacbayes_tsk/experiments/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "src/pacbayes_tsk/experiments/freeze_v3.py",
+      "sha256": "cda77e913f7bb875070e22b64e50af385261b920ae88fc8e22f54621d89a0113",
+      "size_bytes": 1042
+    },
+    {
+      "path": "src/pacbayes_tsk/models/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "src/pacbayes_tsk/models/baselines.py",
+      "sha256": "870cee90018fbba2bed20ca4f48bab4c7941572efee320cf349606b2f748fe1f",
+      "size_bytes": 6096
+    },
+    {
+      "path": "src/pacbayes_tsk/models/sparse_tsk.py",
+      "sha256": "b5ca88ca67a6c700a701f7d8064a19faccea890b208ba6a7611699bb83d01eb0",
+      "size_bytes": 22494
+    },
+    {
+      "path": "src/pacbayes_tsk/models/statistical_baselines.py",
+      "sha256": "52518839f4f736dca06d965b9247ffeaf8c59d35b3e8458ca35759f3838ae351",
+      "size_bytes": 11202
+    },
+    {
+      "path": "src/pacbayes_tsk/optimization/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "src/pacbayes_tsk/pac_bayes/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "src/pacbayes_tsk/pac_bayes/certificates_v3.py",
+      "sha256": "6f12d562021402640484894ee29c651d508ae39e92967577048da94d9e7bf40d",
+      "size_bytes": 2189
+    },
+    {
+      "path": "src/pacbayes_tsk/pac_bayes/priors_v3.py",
+      "sha256": "3ec5874cd9ff8af52128b8e4aa784c4cd87d15bee0c26748f27860250a795ed7",
+      "size_bytes": 2617
+    },
+    {
+      "path": "src/pacbayes_tsk/visualization/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "tests/v3/test_pacbayes_v3.py",
+      "sha256": "f461a26b86d44e7abd49961356a938cccefd81459825a0b0e2333da6aeba4941",
+      "size_bytes": 1121
+    },
+    {
+      "path": "tests/v3/test_splits_v3.py",
+      "sha256": "67dd1da425af14ab6cbe01a45eb139064abe7a8fb3605a9268204d962ccc6209",
+      "size_bytes": 652
+    },
+    {
+      "path": "tests/v3/test_synthetic_v3.py",
+      "sha256": "824b862f29f036975252fe1ffff7ff822922bf1b25c85b03ab3fc810e5faae01",
+      "size_bytes": 706
+    }
+  ],
+  "single_authorized_run_only": true,
+  "status": "FROZEN_NOT_RUN"
+}

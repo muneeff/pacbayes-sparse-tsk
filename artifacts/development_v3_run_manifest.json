@@ -1,0 +1,79 @@
+{
+  "schema_version": "3.1",
+  "phase": "development",
+  "status": "COMPLETED",
+  "confirmatory": false,
+  "created_utc": "2026-07-12T18:15:23.390456+00:00",
+  "command": "python scripts/run_development_v3.py --workers 6",
+  "series_count": 30,
+  "processes": [
+    "ar2",
+    "setar",
+    "narma10",
+    "mackey_glass",
+    "garch",
+    "structural_break"
+  ],
+  "seeds": [
+    3000,
+    3001,
+    3002,
+    3003,
+    3004
+  ],
+  "test_status": "18/18 passed",
+  "python": "3.13.5 (main, May  5 2026, 21:05:52) [GCC 14.2.0]",
+  "platform": "Linux-4.4.0-x86_64-with-glibc2.41",
+  "files": {
+    "configs/v3/protocol_v3.yaml": {
+      "sha256": "1a12e28d336c925a0c965d3bbe46fb8d9689fa82582e51eacdb8a967cf8a04f5",
+      "size_bytes": 1228
+    },
+    "configs/v3/synthetic_v3.yaml": {
+      "sha256": "0893da17a78857362ab8de34b6ad06f8fccbdc8e01a079cd35759f2efb2955d9",
+      "size_bytes": 510
+    },
+    "configs/v3/development_v3.yaml": {
+      "sha256": "1a9c3636edf4f629e2d54b76b8537d4278d6cc1c70dd8e1f465d36dea5af6219",
+      "size_bytes": 878
+    },
+    "src/pacbayes_tsk/experiments/development_v3.py": {
+      "sha256": "37b1310a3e855f35890ad6e51ec133ccdb49530a269ac6e431ab3433dadd8183",
+      "size_bytes": 29286
+    },
+    "scripts/run_development_v3.py": {
+      "sha256": "316d7e1131e27e0def52985b46ad976de246a445a9a248b4ae503bccedad809e",
+      "size_bytes": 4520
+    },
+    "results/development/full_v3/development_v3_candidates_all.csv": {
+      "sha256": "d0e037efe2d95c5ddaa9b82dd76ff714bb38264294109c44420ae9905c5a8a01",
+      "size_bytes": 7584670
+    },
+    "results/development/full_v3/development_v3_selected_all.csv": {
+      "sha256": "91a29ecbe0c26bf9d0c72e9a150c60d98113ef4cfec62ce560fa5637d549e00e",
+      "size_bytes": 132832
+    },
+    "results/development/full_v3/development_v3_summary.csv": {
+      "sha256": "9d7f9b9e124206449a1d8051669a93cfe3d86f180bce914102f83712e9f5a3fc",
+      "size_bytes": 9344
+    },
+    "results/development/full_v3/development_v3_radius_chain.csv": {
+      "sha256": "a98083436b9a0de9068a16d5f9c196b9d820edafa371ac7cfd2653dc260f9bd2",
+      "size_bytes": 53993
+    },
+    "results/development/full_v3/development_v3_audit.json": {
+      "sha256": "fad37a785e35221980d0714a558dfe17f80ea2446186f195366a1b087fe4079d",
+      "size_bytes": 685
+    },
+    "docs/DEVELOPMENT_V3_REPORT_AR.md": {
+      "sha256": "a323df00ea18558acc7d46369080f74249b99370042024e0f517620fff7e027b",
+      "size_bytes": 9131
+    }
+  },
+  "constraints": {
+    "selection_uses_test": false,
+    "certificate_uses_test": false,
+    "confirmatory_not_run": true,
+    "development_results_may_not_be_called_confirmatory": true
+  }
+}

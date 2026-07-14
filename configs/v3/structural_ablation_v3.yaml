@@ -1,0 +1,30 @@
+schema_version: 3.2
+status: development_open
+processes: [ar2, setar, narma10, mackey_glass, garch, structural_break]
+seeds: [3000, 3001, 3002, 3003, 3004]
+model_families: [ridge, fixed_k_dense_tsk, dense_tsk, sparse_tsk]
+selection_strategies: [validation_rmse, certificate]
+prior_variants: [localized, zero_mean]
+confidence:
+  delta_total: 0.05
+  familywise_series_count: 30
+  report_pointwise_delta: true
+execution:
+  checkpoint_each_series: true
+  resume: true
+  numerical_tolerance: 1.0e-12
+  blas_threads_per_worker: 1
+ablation:
+  fixed_k: 12
+  fixed_k_activation: all
+  radius_dense_activation: all
+  radius_sparse_activation: top_3
+comparisons:
+  structural_sparsity: fixed_k_dense_tsk_vs_dense_tsk
+  activation_sparsity: dense_tsk_vs_sparse_tsk
+notes:
+  - This is an exploratory development ablation, not a confirmatory run.
+  - fixed_k_dense_tsk uses exactly K=12 rules built from Dprior only.
+  - dense_tsk uses a radius-controlled realized K with all rules active.
+  - sparse_tsk uses the same radius-controlled construction with at most three active rules per sample.
+  - All four families share one finite hierarchical prior in this run.

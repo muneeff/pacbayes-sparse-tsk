@@ -1,0 +1,23 @@
+{
+  "schema_version": "3.3",
+  "phase": "development_real_energy_case",
+  "confirmatory": false,
+  "case_frequency": "2-hour mean",
+  "files": {
+    "results/development/energy_case_v3/COMPLETED.json": "0268706fbc9e5943e2096a59a69206c5f07120af76a5dab45502b5f339283a6f",
+    "results/development/energy_case_v3/energy_case_audit.json": "75dc2e90256285de7079ccf59a7d5b73672ad9b7dbb61cf1ba2a3e65d5606a68",
+    "results/development/energy_case_v3/energy_deployment_decisions.csv": "21957d9e47b36bdfc9e6e30b43dfcd239c2c254fccbeac0fa992b47e87ec3d19",
+    "results/development/energy_case_v3/energy_family_results.csv": "0ca6e0e2a917e04700c38b1fe0a19b21607490c839eddf9ec622d5cf41e86a93",
+    "results/development/energy_case_v3/energy_candidates_all.csv": "0c25ff9b82f297d76fd920f37deb19450fd79b100278521a024661c3c8989839",
+    "configs/v3/energy_case_study.yaml": "d78b051a479afea06d283774259b52fede20aedabe8a85dbe6af994397c8e22d",
+    "artifacts/energy_case_v3_preoutcome_lock_v3.json": "fd9182eada979c4cd6f0d862c340d04442dd23d60a86fde7a21b0c6920554e14",
+    "docs/ENERGY_CASE_STUDY_V3_REPORT_AR.md": "f1a12bbe75eb3ec5315f3961470cc4833c696c1acf33ceb03e17db4036d503db"
+  },
+  "summary": {
+    "zones": 3,
+    "candidates": 305,
+    "deployed_model_zones": 2,
+    "mean_test_rmse_improvement_vs_fallback": -0.04457196496881453,
+    "mean_test_cost_improvement_vs_fallback": -0.1390900395788347
+  }
+}

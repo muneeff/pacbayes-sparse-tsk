@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated paper."
+title: "PAC-Bayesian Sparse TSK V3 Reproducibility Artifact"
+version: 0.4.0
+authors:
+  - family-names: Ahmed
+    given-names: Muneef Abdulkareem Farea
+date-released: 2026-07-12

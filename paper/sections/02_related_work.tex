@@ -1,0 +1,18 @@
+\section{Related Work and Positioning}
+\label{sec:related_work}
+
+\subsection{PAC-Bayes under Dependence and Sequential Observation}
+PAC-Bayes for dependent observations is established. Chromatic and blocking arguments cover dependency graphs and stationary mixing processes \cite{ralaivola2010chromatic}; oracle inequalities have been developed for weakly dependent time-series prediction \cite{alquier2012model,alquier2013prediction}; and recent results address Markov models and stable nonlinear dynamical systems \cite{banerjee2021tempered,eringis2024dynamical}. These approaches typically require explicit dependence, stationarity, boundedness, or stability assumptions.
+
+Martingale and supermartingale methods provide a different route. Seldin \emph{et al.} derived PAC-Bayesian inequalities for martingales \cite{seldin2012martingales}. Online and time-uniform constructions subsequently allowed data-dependent posterior sequences while keeping the prior predictable \cite{haddouche2022online,chugg2023unified}. We use this route because overlapping lag windows form an adapted sequence, and because it avoids treating an estimated mixing coefficient as known. The bounded-loss formula used here is a direct specialization of this literature, not a new general concentration inequality.
+
+\subsection{Computable and Non-Vacuous Certificates}
+A formal inequality becomes useful only when the prior, posterior, and empirical term can be computed without hidden data reuse. Data-dependent priors can be valid when their information source is explicitly separated or otherwise controlled \cite{parrado2012dataprior,rivasplata2020beyond}. Work on neural-network certificates shows that prior localization and posterior-scale selection are decisive for tightness \cite{perezortiz2021tighter}. Foong \emph{et al.} show that small-sample PAC-Bayes bounds may remain looser than direct test bounds even after careful optimization \cite{foong2021small}. Heavy-tail and unbounded-loss PAC-Bayes results offer alternatives to clipping \cite{haddouche2021unleashed,haddouche2023heavy,rodriguez2024more}; the current implementation does not claim those guarantees and instead reports clipping explicitly.
+
+\subsection{Sparse TSK Systems}
+Bayesian TSK models, block-sparse dynamic fuzzy models, and sparse rule or coefficient learning are well developed \cite{gu2018btsk,li2018blocksparse,li2022bayesiants,lughofer2010sparsefis,luo2013hierarchical,wiktorowicz2022timeseries}. Clustering-based rule construction and online TSK identification are also classical \cite{Chiu1994Cluster,angelov2004online}. Existing work generally targets prediction, parameter estimation, or interpretability; it does not provide the specific audited chain from a prior-only radius cover to a realized randomized dimension, KL cost, and sequential certificate.
+
+\input{tables/prior_work}
+
+\subsection{Precise Novelty Claim}
+The present study does not introduce a new clustering algorithm, a new general PAC-Bayes theorem, or a proof that TSK models dominate linear or seasonal forecasts. Its contribution is the intersection of: (i) a chronologically valid finite prior over complete forecasting structures; (ii) a computable sequential certificate for a linear-in-consequents TSK model; (iii) a controlled fixed-$K$ versus radius-controlled structural ablation; and (iv) an operational protocol that records a negative development case before an independent frozen confirmatory case. Table~\ref{tab:prior_work} makes the distinction from the closest PAC-Bayes literature explicit.

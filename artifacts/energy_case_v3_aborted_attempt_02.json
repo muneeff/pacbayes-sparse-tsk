@@ -1,0 +1,14 @@
+{
+  "attempt": 2,
+  "status": "terminated_before_atomic_publish",
+  "reason": "The hourly three-zone run still exceeded the execution wall-clock limit.",
+  "final_output_published": false,
+  "temporary_files_created": [
+    "zone_1_candidates.csv",
+    "zone_1_pretest_decision.json",
+    "zone_1_test_predictions.csv"
+  ],
+  "temporary_outcome_contents_reviewed": false,
+  "temporary_directory_destroyed": true,
+  "protocol_response": "For computational feasibility only, the case frequency was changed from hourly to two-hour means, the fixed-K reference was reduced from K=12 to K=8, the model lag grid became [3,6,12], and the radius grid became [0.75,1.0,1.25,1.5,2.0,2.5]. No outcome value from the temporary run was inspected."
+}

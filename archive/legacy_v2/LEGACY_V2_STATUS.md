@@ -1,0 +1,2 @@
+# Legacy V2 status
+V2 is preserved outside this clean tree in the original `lab.zip`/local project. Its stored certificate summaries reproduce 200/210 non-vacuous certificates, but V2 must not be represented as the final confirmatory evidence for V3. Known discrepancies: real-data split description, five synthetic DGP definitions, tie-break wording, and incomplete model-index notation for ridge alpha. No V2 result is overwritten by this repository.
