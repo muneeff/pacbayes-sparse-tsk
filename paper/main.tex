@@ -1,16 +1,20 @@
-\documentclass[journal]{IEEEtran}
+\documentclass[preprint,12pt]{elsarticle}
 
 \usepackage{amsmath,amsfonts,amssymb,bm}
 \usepackage{amsthm}
 \usepackage{graphicx}
 \usepackage{booktabs,array,multirow}
-\usepackage{cite}
 \usepackage{url}
 \usepackage{textcomp}
-\usepackage{stfloats}
-\usepackage{algorithm,algorithmic}
+\usepackage[protrusion=true,expansion=false]{microtype}
 \usepackage[hidelinks]{hyperref}
-\usepackage{microtype}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{longtable}
+\biboptions{sort&compress}
+
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}[theorem]{Corollary}
@@ -18,43 +22,115 @@
 \newtheorem{assumption}[theorem]{Assumption}
 \newtheorem{remark}[theorem]{Remark}
 
-\hyphenation{op-tical net-works semi-conduc-tor PAC-Bayesian Takagi--Sugeno}
+
+\hyphenation{
+	PAC-Bayesian
+	Takagi-Sugeno
+}
+
+
+\journal{Engineering Applications of Artificial Intelligence}
+
 
 \begin{document}
-
-\title{An Auditable Complexity-Aware PAC-Bayesian Framework for Linear and Takagi--Sugeno Time-Series Forecasting under Temporal Dependence}
-
-\author{Muneef Abdulkareem Farea Ahmed%
-\thanks{M. A. F. Ahmed is with the Faculty of Computer and Information Technology, Sana'a University, Sana'a, Yemen (e-mail: muneef.ahmed@su.edu.ye).}}
-
-\markboth{Manuscript under review}%
-{Ahmed: Auditable PAC-Bayesian Framework for Linear and TSK Forecasting}
-
-\maketitle
-
+	
+	
+	\begin{frontmatter}
+		
+		
+		\title{
+			Auditable Complexity-Controlled Takagi--Sugeno Forecasting with Sequential PAC-Bayesian Risk Assessment for Engineering Time-Series Applications
+		}
+		
+		
+		\author[su]{Muneef Abdulkareem Farea Ahmed\corref{cor1}}
+		
+		\ead{muneef.ahmed@su.edu.ye}
+		
+		\ead[url]{https://orcid.org/0009-0000-3974-6414}
+		
+		\cortext[cor1]{Corresponding author.}
+		
+		
+		\affiliation[su]{
+			organization={Faculty of Computer and Information Technology,
+				Sana'a University},
+			city={Sana'a},
+			country={Yemen}
+		}
+		
+		
+		
 \begin{abstract}
-PAC-Bayesian certificates for time-series predictors can be mathematically valid yet operationally misleading when the prior reuses certification data, the loss is left unbounded, or model-selection choices are not charged. This paper presents an auditable computational framework for linear and first-order Takagi--Sugeno (TSK) forecasting with overlapping, potentially nonstationary windows. The framework specializes an established time-uniform supermartingale PAC-Bayes result; it does not claim a new general concentration theorem. A chronological segment constructs every candidate prior, and an explicit hierarchical code charges model family, lag, ridge penalty, optional radius, realized rule count, localization variant, and prior scale. The guarantee directly covers clipped Gibbs risk and, by convexity, the clipped Bayesian model average; deterministic posterior-center forecasts are evaluated empirically and use the certificate only as a screening signal.
-
-A 30-series synthetic development study separates structural rule reduction from sparse activation. Relative to a fixed 12-rule TSK model, radius-controlled TSK reduced randomized dimension, Gaussian KL, and certificate value, with paired confidence intervals excluding zero. A sensitivity analysis over $K\in\{2,3,4,6,8,12\}$ shows that the large contrast with $K=12$ is mainly a rule-count effect: small fixed rule bases can match or tighten the radius-controlled certificate, and radius control does not significantly dominate the best fairly charged fixed $K$. Actual multi-rule examples from SETAR and Tetouan are reported to show what the learned structures represent. A permissive Tetouan deployment gate failed, whereas a stricter gate frozen before an independent four-region PJM evaluation improved RMSE and asymmetric cost over a seven-day seasonal-naive fallback. Secondary post-hoc SARIMA and ETS benchmarks, designed after the PJM outcomes were opened, often match or outperform the deployed models and therefore further limit the operational claim. The evidence supports an auditable integration of structural complexity, risk screening, validation margins, and abstention; it does not establish universal superiority of radius selection or nonlinear fuzzy forecasting.
+	
+	Engineering forecasting systems require reliable mechanisms for deciding when a
+	learned predictor is suitable for deployment. Validation-only selection can be
+	misleading under temporal dependence, nonstationarity, and increasing model
+	complexity.
+	
+	This paper proposes an auditable complexity-controlled forecasting framework
+	that combines linear and first-order Takagi--Sugeno (TSK) predictors with
+	sequential PAC-Bayesian risk assessment for deployment-oriented model selection.
+	
+	Each candidate predictor is represented through an explicit structural
+	description including model family, lag configuration, regularization settings,
+	fuzzy rule structure, and realized rule count. A chronological prior construction
+	and sequential certification procedure quantify the trade-off between empirical
+	performance and structural complexity. A frozen deployment gate combines risk
+	certificates, validation margins, and temporal stability criteria before
+	replacing a seasonal baseline.
+	
+	The framework is evaluated using synthetic temporal processes and independent
+	electricity-load forecasting tasks from PJM regional datasets. Results show that
+	complexity-controlled selection can reduce TSK structural complexity without
+	sacrificing competitive forecasting performance. When simpler predictors provide
+	stronger evidence from the data, the framework retains them rather than forcing
+	more complex models.
+	
+	The proposed approach provides an auditable decision layer for trustworthy
+	engineering forecasting systems, complementing predictive accuracy with
+	transparent risk and complexity assessment.
+	
 \end{abstract}
-
-\begin{IEEEkeywords}
-PAC-Bayesian learning, Takagi--Sugeno fuzzy systems, time-series forecasting, martingales, temporal dependence, structural sparsity, risk certificates.
-\end{IEEEkeywords}
-
-\input{sections/01_introduction}
-\input{sections/02_related_work}
-\input{sections/03_model_and_chronology}
-\input{sections/04_certificate}
-\input{sections/05_experimental_protocol}
-\input{sections/06_results}
-\input{sections/07_discussion}
-\input{sections/08_conclusion}
-
-\section*{Data and Code Availability}
-The complete code, frozen configurations, raw result tables, pre-outcome locks, and audit manifests are included in the accompanying reproducibility artifact. The public repository URL will be inserted in the final submission; the review package uses an anonymized archive.
-
-\bibliographystyle{IEEEtran}
-\bibliography{refs}
-
+		
+		\begin{keyword}
+			
+			Trustworthy artificial intelligence \sep
+			engineering forecasting \sep
+			decision support systems \sep
+			Takagi--Sugeno fuzzy systems \sep
+			PAC-Bayesian risk assessment \sep
+			model auditing \sep
+			complexity control
+			
+		\end{keyword}
+		
+		
+	\end{frontmatter}
+	
+	
+	
+	\input{sections/01_introduction}
+	
+	\input{sections/02_related_work}
+	
+	\input{sections/03_model_and_chronology}
+	
+	\input{sections/04_certificate}
+	
+	\input{sections/05_experimental_protocol}
+	
+	\input{sections/06_results}
+	
+	\input{sections/07_discussion}
+	
+	\input{sections/08_conclusion}
+	
+	
+	
+	\bibliographystyle{elsarticle-num}
+	
+	\bibliography{refs}
+	
+	
 \end{document}

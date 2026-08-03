@@ -9,6 +9,9 @@ The energy studies show that a valid certificate can contribute to a broader scr
 
 The main conclusion is therefore modest: PAC-Bayesian complexity can be made explicit and auditable for linear and TSK time-series models, and true structural rule reduction can tighten that accounting. Future work should learn a posterior over rule inclusion, align the certified and operational prediction objects more directly, compare against stronger forecasting baselines in a new externally timestamped protocol, and replace clipping with verified heavy-tail or variance-adaptive sequential guarantees.
 
+A particularly important direction is to develop a certificate-aware structural learning objective that jointly optimizes predictive fit and the PAC-Bayesian complexity term, rather than selecting rule structures through externally specified
+radius or fixed-$K$ heuristics.
+
 
 \section*{Data and Code Availability}
 
@@ -40,3 +43,8 @@ agencies in the public, commercial, or not-for-profit sectors.
 The author declares that he has no known competing financial
 interests or personal relationships that could have appeared to
 influence the work reported in this paper.
+
+\section*{Declaration of Generative AI and AI-Assisted
+	Technologies in the Manuscript Preparation Process}
+
+During the preparation of this manuscript, the author used OpenAI ChatGPT to assist with language refinement, structural editing, and the organization of software and reproducibility documentation. The author independently reviewed and verified the mathematical arguments, experimental procedures, code, results, references, and final manuscript, and takes full responsibility for the content of the work.

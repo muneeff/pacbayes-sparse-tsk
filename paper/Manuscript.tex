@@ -1,0 +1,118 @@
+\documentclass[preprint,12pt]{elsarticle}
+
+% =========================================================
+% Packages
+% =========================================================
+\usepackage{amsmath,amsfonts,amssymb,bm}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs,array,multirow}
+\usepackage{url}
+\usepackage{textcomp}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{longtable}
+% Numbered citations compressed as [1--3]
+\biboptions{sort&compress}
+
+% =========================================================
+% Theorem environments
+% =========================================================
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{remark}[theorem]{Remark}
+
+\hyphenation{
+	op-tical
+	net-works
+	semi-conduc-tor
+	PAC-Bayesian
+	Takagi-Sugeno
+}
+
+% =========================================================
+% Journal
+% =========================================================
+\journal{Engineering Applications of Artificial Intelligence}
+
+\begin{document}
+	
+	% =========================================================
+	% Front matter
+	% =========================================================
+	\begin{frontmatter}
+		
+		\title{
+			An Auditable Complexity-Aware PAC-Bayesian Framework for
+			Linear and Takagi--Sugeno Time-Series Forecasting under
+			Temporal Dependence
+		}
+		
+	
+		
+	\begin{abstract}
+		PAC-Bayesian certificates can provide useful risk guarantees for
+		time-series forecasting, but their practical value depends on how the
+		prior, loss, and model-selection choices are constructed. This paper
+		presents an auditable framework for linear and first-order
+		Takagi--Sugeno (TSK) forecasting under overlapping and potentially
+		nonstationary observations. The method uses a chronological data split
+		to construct valid priors and an explicit hierarchical code to account
+		for model family, lag, regularization, radius, rule count, localization,
+		and prior scale. The resulting certificate applies to clipped Gibbs risk
+		and the clipped Bayesian model average, while deterministic forecasts
+		use it only as a screening criterion.
+		
+		Experiments on 30 synthetic series show that reducing complete TSK rule
+		blocks lowers parameter dimension, Gaussian KL divergence, and the
+		certificate relative to a dense 12-rule model. However, a sensitivity
+		analysis over several fixed rule counts shows that much of this gain is
+		due to using fewer rules, and radius control does not consistently
+		outperform small fixed-$K$ models. Multi-rule examples illustrate the
+		learned local structures. In the energy studies, a stricter frozen gate
+		improves performance over a seasonal-naive fallback on four PJM regions,
+		although post-hoc SARIMA and ETS models remain competitive. Overall, the
+		results support auditable complexity control and conservative model
+		screening rather than a general claim of TSK superiority.
+	\end{abstract}
+	
+	
+		\begin{keyword}
+			PAC-Bayesian learning \sep
+			Takagi--Sugeno fuzzy systems \sep
+			time-series forecasting \sep
+			martingales \sep
+			temporal dependence \sep
+			structural sparsity \sep
+			risk certificates
+		\end{keyword}
+		
+	\end{frontmatter}
+	
+	% =========================================================
+	% Main manuscript
+	% =========================================================
+	\input{sections/01_introduction}
+	\input{sections/02_related_work}
+	\input{sections/03_model_and_chronology}
+	\input{sections/04_certificate}
+	\input{sections/05_experimental_protocol}
+	\input{sections/06_results}
+	\input{sections/07_discussion}
+	\input{sections/08_conclusion}
+	
+	% =========================================================
+	% References
+	% =========================================================
+	\bibliographystyle{elsarticle-num}
+	\bibliography{refs}
+	
+\end{document}

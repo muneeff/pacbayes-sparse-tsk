@@ -11,7 +11,7 @@ The paired inference in Table~\ref{tab:structural_inference} establishes the con
 
 By contrast, Top-3 activation does not materially change the certificate. At the series level, the mean Top-3 minus all-active difference is $-1.5\times10^{-5}$ with 95\% CI $[-0.0018,0.0014]$ and Holm-adjusted $p=1.000$; the test-RMSE interval also includes zero. Across 5,600 matched candidate pairs, the descriptive mean certificate difference is approximately $-5\times10^{-5}$. Since Top-3 does not reduce $K(p+1)$, it should be described as a computational approximation, not the source of the PAC-Bayesian complexity gain.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=\columnwidth]{figures/structural_certificate_by_family.png}
 \caption{Mean familywise certificate under validation-RMSE selection across 30 synthetic development series. Ridge is tightest; radius control substantially improves on the originally prespecified fixed $K=12$ TSK baseline.}
@@ -28,14 +28,14 @@ When each series is allowed to choose its best fixed $K$ by validation RMSE, rad
 
 These results materially narrow the structural claim. Radius construction is useful as an adaptive mechanism that avoids large unnecessary rule bases, but the certificate gain relative to $K=12$ is mainly a rule-count effect. The current evidence does not show that radius control dominates a predeclared and fairly charged small fixed-$K$ grid.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=\columnwidth]{figures/fixed_k_certificate_sensitivity.png}
 \caption{Mean familywise certificate for fixed-$K$ TSK under validation-RMSE selection. Error bars are bootstrap intervals for the per-series means; the dashed line is the radius-controlled TSK mean.}
 \label{fig:fixed_k_sensitivity}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=\columnwidth]{figures/fixed_k_pareto_sensitivity.png}
 \caption{Development mean test RMSE versus mean familywise certificate across fixed rule counts and radius-controlled TSK. The plot is descriptive and does not imply a universal Pareto ordering.}
@@ -61,7 +61,7 @@ The localized prior improves the selected familywise certificate over a zero-mea
 
 \subsection{Actual Multi-Rule Fuzzy Structures}
 \input{tables/fuzzy_rule_examples}
-
+The labels ``SETAR seed 3001'' and ``Tetouan Zone 1'' identify specific fitted diagnostic examples; they are not linguistic rule names or externally validated physical regimes.
 Table~\ref{tab:fuzzy_rule_examples} reports two reconstructed posterior-center TSK models in original units. The five SETAR rules partition different lag configurations and attach distinct local affine dynamics; for example, the dominant rule places most weight on $y_{t-1}$, while another assigns a negative coefficient to $y_{t-1}$ and a larger positive coefficient to $y_{t-2}$. The four Tetouan rules have similar average load levels but different recent-versus-oldest prototypes and different combinations of the most recent, six-step, and twelve-step lags. This demonstrates that the implementation contains genuine local rule variation rather than repeated copies of one global affine model.
 
 The interpretation must remain limited. These prototypes are data-driven summaries, not linguistic rules validated by domain experts. The Tetouan model also failed operationally on the held-out horizon, so interpretability does not imply predictive reliability. Full centers, spreads, local intercepts, all lag coefficients, supports, and firing frequencies are provided in the supplementary CSV artifact.
@@ -71,13 +71,13 @@ The initial Tetouan gate admits a radius TSK model in zone 1 and a fixed-$K$ TSK
 
 This negative result demonstrates that a non-vacuous certificate plus overall validation performance is not a sufficient deployment rule under temporal shift. It motivated the stricter margin and block-stability requirements in the independent confirmatory protocol.
 
-\subsection{Independent PJM Confirmatory Outcome}
+\subsection{Independent Internally Locked PJM Holdout Outcome}
 \input{tables/energy_decisions}
 \input{tables/pjm_bootstrap_ci}
 
 The frozen PJM gate admits a learned model in all four regions. Test RMSE improves by 57.97\%, 55.40\%, 49.13\%, and 51.70\% for AEP, COMED, DAYTON, and PJME, respectively. Corresponding asymmetric-cost improvements are 58.64\%, 54.11\%, 50.30\%, and 51.42\%; mean improvements are 53.55\% and 53.62\%. Table~\ref{tab:pjm_bootstrap_ci} reports secondary 14-day moving-block-bootstrap intervals. Every lower bound remains positive, and the same conclusion holds under 7- and 28-day block-length sensitivity analyses. Selected certificates range from 0.0841 to 0.0959, and test target and forecast clipping are zero.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=\columnwidth]{figures/pjm_test_improvements.png}
 \caption{Independent PJM test improvements over the frozen seven-day seasonal-naive fallback.}

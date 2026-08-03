@@ -1,25 +1,89 @@
 \section{Introduction}
 \label{sec:introduction}
-
-Time-series predictors are commonly selected by validation error and assessed on a held-out horizon. This workflow measures empirical forecasting performance, but it does not by itself quantify the conditional risk of a data-dependent model when lagged examples overlap, the observations are temporally dependent, and the underlying process may change over time. The limitation is especially relevant for flexible forecasting systems whose complexity depends on several jointly selected structural and numerical choices.
-
-Takagi--Sugeno (TSK) systems represent nonlinear dynamics through convex combinations of local affine rules. Their behavior depends on the lag order, antecedent geometry, number of rules, and regularization of the consequent parameters. These choices affect accuracy, interpretability, and effective statistical complexity. In many forecasting studies, however, the rule count and consequent dimension are treated as implementation details rather than explicit components of a generalization certificate.
-
-PAC-Bayesian analysis provides a natural language for relating empirical loss to a prior--posterior complexity term. In sequential forecasting, a certificate can nevertheless be misleading if the prior is localized with certification observations, squared loss is treated as bounded without justification, or lag, regularization, radius, and rule-count choices are selected without paying their complexity cost. Moreover, a non-vacuous certificate need not identify the predictor with the lowest raw test RMSE or the best operational cost.
-
-This study develops an auditable computational framework for linear and first-order TSK forecasting under overlapping and potentially nonstationary windows. The time-uniform supermartingale argument used in the analysis is established in the PAC-Bayes literature and is not presented as a new concentration theorem. The methodological contribution lies in the chronological construction of the candidate priors, explicit hierarchical charging of the complete model index, analytic evaluation of a Gaussian empirical-risk upper bound, separation of structural sparsity from activation sparsity, and integration of the certificate into a frozen model-selection and abstention protocol.
-
-The central claim is deliberately limited. We do not introduce a new fuzzy clustering algorithm, prove that radius-based rule construction dominates all fixed rule bases, or show that TSK models universally outperform linear and seasonal predictors. Instead, we ask whether complete removal of rule blocks makes TSK complexity auditable and whether a valid certificate can serve as one conservative screening component inside a broader deployment rule.
-
-The contributions are as follows.
+Reliable energy load forecasting is a cornerstone of modern power-grid operation, 
+directly affecting unit commitment, reserve scheduling, and market clearing 
+decisions. In deregulated markets such as the PJM Interconnection, day-ahead and 
+real-time forecasts must remain accurate across diverse regional load profiles that 
+exhibit strong seasonality, overlapping temporal dependence, and occasional 
+structural shifts driven by weather extremes or policy changes. Conventional 
+workflows select predictors by validation error and assess them on a held-out 
+horizon. While this measures empirical forecasting performance, it does not by 
+itself quantify the conditional risk of a data-dependent model when lagged examples 
+overlap, the observations are temporally dependent, and the underlying process may 
+change over time.
+Takagi\-\-Sugeno (TSK) fuzzy systems represent an attractive middle ground for this 
+setting: they capture nonlinear dynamics through convex combinations of local 
+affine rules, offer interpretable antecedent--consequent structures, and can be 
+trained efficiently when the rule base is fixed. Their operational behaviour, 
+however, depends on several jointly selected structural and numerical choices---lag 
+order, antecedent geometry, number of rules, and regularization of the consequent 
+parameters---that affect accuracy, interpretability, and effective statistical 
+complexity. In many forecasting studies, the rule count and consequent dimension 
+are treated as implementation details rather than explicit components of a 
+generalization audit. Consequently, a deployed TSK model may carry uncharged 
+complexity that undermines its reliability when the process shifts.
+PAC-Bayesian analysis provides a natural language for relating empirical loss to a 
+prior--posterior complexity term, yet its practical value in sequential forecasting 
+depends on how the prior, the loss, and the model-selection choices are 
+constructed. A certificate can be misleading if the prior is localized with 
+certification observations, squared loss is treated as bounded without 
+justification, or lag, regularization, radius, and rule-count choices are selected 
+without paying their complexity cost. Moreover, a non-vacuous certificate need not 
+identify the predictor with the lowest raw test RMSE or the best operational cost; 
+it is, instead, a conservative screening statistic that can be integrated into a 
+broader expert-system deployment rule.
+This study develops an auditable expert-system framework for linear and first-order 
+TSK load forecasting under overlapping and potentially nonstationary windows. The 
+time-uniform supermartingale argument used in the analysis is established in the 
+PAC-Bayes literature and is not presented as a new concentration theorem. The 
+methodological contribution lies in the chronological construction of the candidate 
+priors, explicit hierarchical charging of the complete model index, analytic 
+evaluation of a Gaussian empirical-risk upper bound, separation of structural 
+sparsity from activation sparsity, and integration of the certificate into a frozen 
+model-selection and abstention protocol that mimics operational decision-making.
+The central claim is deliberately limited. We do not introduce a new fuzzy 
+clustering algorithm, prove that radius-based rule construction dominates all fixed 
+rule bases, or show that TSK models universally outperform linear and seasonal 
+predictors. Instead, we ask whether complete removal of rule blocks makes TSK 
+complexity auditable and whether a valid certificate can serve as one conservative 
+screening component inside a broader deployment rule for energy forecasting.
+The contributions of this expert-system framework are as follows.
 \begin{itemize}
-    \item We define a chronological candidate family with complete structural index $M=(F,p,\gamma,r,K)$, where $F$ denotes the model family, $p$ the lag, $\gamma$ the ridge penalty, $r$ an optional radius, and $K$ the realized rule count. Scaling, antecedent geometry, prior means, and prior variances are constructed only from the initial segment.
-    \item We provide a computable bounded-loss specialization of the established time-uniform supermartingale PAC-Bayes framework \cite{chugg2023unified}. The contribution is the measurable linear/TSK specialization, augmented hierarchical prior, analytic empirical-risk upper bound, and audited implementation.
-    \item We distinguish structural rule-count reduction from sparse activation. A synthetic development study compares ridge, fixed-$K$ TSK, radius-controlled all-active TSK, and radius-controlled Top-3 TSK. A subsequent sensitivity analysis over $K\in\{2,3,4,6,8,12\}$ separates the effect of reducing rule count from any additional benefit of radius construction.
-    \item We expose actual posterior-center fuzzy rules from a multi-rule SETAR model and from the Tetouan development model. These examples support inspection of the learned local structures without treating them as physical truth or as directly certified deterministic predictors.
-    \item We report a negative Tetouan development gate and an internally locked PJM holdout evaluation. Secondary SARIMA and exponential-smoothing benchmarks are explicitly labeled post hoc because they were designed after the PJM outcomes were opened and do not modify the frozen gate or its original claim.
+	\item We define a chronological candidate family with complete structural
+	index $M=(F,p,\gamma,r,K)$, where $F$ denotes the model family, $p$ the
+	lag, $\gamma$ the ridge penalty, $r$ an optional radius, and $K$ the realized
+	rule count. Scaling, antecedent geometry, prior means, and prior variances are constructed only from the initial segment, ensuring auditability.
+	\item We provide a computable bounded-loss specialization of the established	time-uniform supermartingale PAC-Bayes framework \cite{chugg2023unified}. The contribution is the measurable linear/TSK specialization, augmented hierarchical prior, analytic empirical-risk upper bound, and audited	implementation suitable for operational screening.
+	\item We distinguish structural rule-count reduction from sparse activation.
+	A synthetic development study compares ridge, fixed-$K$ TSK, radius-controlled
+	all-active TSK, and radius-controlled Top-3 TSK. A subsequent sensitivity
+	analysis over $K \in \{2,3,4,6,8,12\}$ separates the effect of reducing rule
+	count from any additional benefit of radius construction.
+	\item We expose actual posterior-center fuzzy rules from a multi-rule SETAR
+	model and from the Tetouan development model. These examples support
+	inspection of the learned local structures without treating them as physical
+	truth or as directly certified deterministic predictors.
+	\item We report a negative Tetouan development gate and an internally locked
+	PJM holdout evaluation. Secondary SARIMA, exponential-smoothing, and deep
+	learning benchmarks are explicitly labeled post hoc because they were designed
+	after the PJM outcomes were opened and do not modify the frozen gate or its
+	original claim.
 \end{itemize}
 
-The evidence supports an integration claim rather than a fuzzy-model superiority claim. Structural rule reduction substantially lowers dimension, KL, and certificate value relative to an unnecessarily dense 12-rule TSK model. Small fixed rule bases can, however, match or tighten the radius-controlled certificate, and ridge remains the easiest family to certify on average. The independent energy decisions mostly select linear predictors, while the secondary statistical baselines show that stronger forecasting alternatives can improve further on the deployed models. The certificate therefore functions as an auditable risk-screening quantity, not as a direct guarantee of raw RMSE, future stability, or model-class dominance.
+The evidence supports an integration claim for operational expert-system deployment
+rather than a fuzzy-model superiority claim. Structural rule reduction substantially
+lowers dimension, KL divergence, and certificate value relative to an unnecessarily
+dense 12-rule TSK model. Small fixed rule bases can, however, match or tighten the
+radius-controlled certificate, and ridge remains the easiest family to certify on
+average. The independent PJM energy decisions mostly select linear predictors,
+while the secondary statistical and deep-learning baselines show that stronger
+forecasting alternatives can improve further on the deployed models. The
+certificate therefore functions as an auditable risk-screening quantity inside a
+broader expert-system decision rule, not as a direct guarantee of raw RMSE, future
+stability, or model-class dominance.
 
-The remainder of the paper reviews the relevant literature, defines the chronological model family and the three prediction objects used in the study, formalizes the augmented hierarchical prior, describes the development and operational protocols, and reports the structural, interpretability, and decision results.
+The remainder of the paper reviews the relevant literature with emphasis on
+forecasting applications and expert-system architectures, defines the chronological
+model family and the three prediction objects used in the study, formalizes the
+augmented hierarchical prior, describes the development and operational protocols,
+and reports the structural, interpretability, and decision results.

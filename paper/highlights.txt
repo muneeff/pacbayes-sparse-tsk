@@ -1,0 +1,9 @@
+• Chronological priors prevent certification-data reuse in time-series forecasting.
+
+• Hierarchical coding charges model, lag, regularization, radius, and rule count.
+
+• Structural rule removal lowers dimension, KL divergence, and certificate values.
+
+• Small fixed-K models can match radius-controlled TSK under fair complexity costs.
+
+• Certificates support screening and abstention, not universal TSK superiority.
