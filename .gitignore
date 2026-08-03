@@ -67,3 +67,9 @@ paper/supplementary.pdf
 paper/PACBayes_TSK_Manuscript_V4.pdf
 paper/PACBayes_TSK_Manuscript_V4_1_FixedK.pdf
 paper/PACBayes_TSK_Manuscript_V4_2_Statistics.pdf
+
+# Local V5 manuscript-normalization backups
+archive/paper_legacy_flat_v5_*/
+archive/paper_pre_normalization_v5_*.zip.sha256.txt
+archive/vendor_elsarticle_v5_*/
+
