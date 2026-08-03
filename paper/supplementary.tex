@@ -207,7 +207,17 @@
 	
 	Candidate selection then minimized validation RMSE using the frozen tie-breaking order.
 	
-	The PJM gate was frozen after the Tetouan development result and before test opening. A candidate was eligible only if all predefined conditions were satisfied, including certificate threshold, clipping constraint, validation improvements, block-wise stability, and worst-block degradation limits.
+	The PJM gate was frozen after the Tetouan development result and before test opening. A candidate was eligible only if all seven conditions were satisfied:
+
+\begin{enumerate}
+\item untruncated certificate $\le 0.10$;
+\item certification target clipping $\le 2\%$;
+\item validation RMSE improvement over the seven-day seasonal-naive fallback $\ge 5\%$;
+\item validation asymmetric-cost improvement over the fallback $\ge 5\%$;
+\item nonnegative RMSE improvement in at least three of four chronological validation blocks;
+\item nonnegative asymmetric-cost improvement in at least three of four chronological validation blocks;
+\item neither the worst RMSE block nor the worst asymmetric-cost block degrades by more than $5\%$.
+\end{enumerate}
 	
 	Among eligible candidates, minimum validation asymmetric cost was preferred, followed by RMSE, certificate, dimension, rule count, family, radius, ridge penalty, and lag. If no candidate qualified, the seasonal-naive fallback was deployed.
 	
