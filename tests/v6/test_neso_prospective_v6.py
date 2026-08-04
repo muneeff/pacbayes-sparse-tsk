@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import inspect
 import json
 import math
 from pathlib import Path
@@ -12,6 +13,7 @@ import pytest
 from pacbayes_tsk.evaluation.bma_gate_v5 import (
     BMAGateThresholds,
 )
+import pacbayes_tsk.experiments.neso_prospective_v6 as neso_v6
 from pacbayes_tsk.experiments.neso_prospective_v6 import (
     NESOV6Settings,
     ProspectiveNESOV6Error,
@@ -218,3 +220,20 @@ def test_execution_snapshot_detects_hash_mismatch(
         match="snapshot mismatch",
     ):
         _verify_execution_snapshot(snapshot)
+
+def test_full_processed_file_is_touched_only_after_pretest_decision() -> None:
+    pretest_verifier = inspect.getsource(neso_v6._verify_data_chain)
+    runner = inspect.getsource(neso_v6.run_prospective_neso_v6)
+
+    assert "sha256_file(processed_path)" not in pretest_verifier
+    decision_position = runner.index(
+        "_atomic_json(decision_path, pretest.decision)"
+    )
+    deferred_hash_position = runner.index(
+        "_verify_processed_data_hash_after_decision"
+    )
+    full_load_position = runner.index(
+        "full = load_neso_daily(processed_path)"
+    )
+    assert decision_position < deferred_hash_position < full_load_position
+

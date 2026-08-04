@@ -1106,7 +1106,6 @@ def _load_json(path: str | Path) -> dict[str, Any]:
 
 def _verify_data_chain(
     *,
-    processed_path: str | Path,
     config_path: str | Path,
     protocol_path: str | Path,
     execution_snapshot_path: str | Path,
@@ -1139,10 +1138,6 @@ def _verify_data_chain(
             preparation.get("raw_sha256"),
             download.get("raw_sha256"),
         ),
-        "processed_sha256": (
-            preparation.get("processed_sha256"),
-            sha256_file(processed_path),
-        ),
     }
     failed = {
         name: {"observed": observed, "expected": expected}
@@ -1157,6 +1152,23 @@ def _verify_data_chain(
         "download": download,
         "preparation": preparation,
     }
+
+
+def _verify_processed_data_hash_after_decision(
+    *,
+    processed_path: str | Path,
+    preparation_audit_path: str | Path,
+) -> str:
+    # Verify the complete processed file only after the pre-test decision.
+    preparation = _load_json(preparation_audit_path)
+    expected = preparation.get("processed_sha256")
+    actual = sha256_file(processed_path)
+    if expected != actual:
+        raise ProspectiveNESOV6Error(
+            "Processed-data hash mismatch after the pre-test decision: "
+            f"expected={expected}, actual={actual}"
+        )
+    return actual
 
 
 def _read_pretest_prefix(
@@ -1274,7 +1286,6 @@ def run_prospective_neso_v6(
                 "The frozen NESO V6 run must contain 365 daily rows."
             )
         data_chain = _verify_data_chain(
-            processed_path=processed_path,
             config_path=config_path,
             protocol_path=protocol_path,
             execution_snapshot_path=execution_snapshot_path,
@@ -1320,8 +1331,14 @@ def run_prospective_neso_v6(
         )
         pretest_decision_sha256 = sha256_file(decision_path)
 
-        # Test targets are opened only after the complete decision above
-        # has been serialized and hashed.
+        # The complete processed file is not hashed or loaded until the
+        # pre-test decision above has been serialized and hashed.
+        processed_data_sha256 = (
+            _verify_processed_data_hash_after_decision(
+                processed_path=processed_path,
+                preparation_audit_path=preparation_audit_path,
+            )
+        )
         full = load_neso_daily(processed_path)
         test_metrics, test_predictions = evaluate_test_phase_v6(
             values_full_original=full["nd_mw"].to_numpy(
@@ -1384,9 +1401,7 @@ def run_prospective_neso_v6(
             ),
             "config_sha256": sha256_file(config_path),
             "protocol_sha256": sha256_file(protocol_path),
-            "processed_data_sha256": sha256_file(
-                processed_path
-            ),
+            "processed_data_sha256": processed_data_sha256,
             "download_audit_sha256": sha256_file(
                 download_audit_path
             ),
