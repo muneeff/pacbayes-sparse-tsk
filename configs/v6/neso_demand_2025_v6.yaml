@@ -1,0 +1,129 @@
+schema_version: 6.0
+status: prospective_pre_download_frozen
+experiment_id: neso_gb_demand_2025_certificate_subset_v6
+case_study: great_britain_daily_national_demand_2025
+
+source:
+  publisher: National Energy System Operator
+  portal_dataset: Historic Demand Data
+  resource_title: Historic Demand Data 2025
+  dataset_id: 8f2fe0af-871c-488d-8bad-960426f24601
+  resource_id: b2bde559-3455-4021-b179-dfe60c0337b0
+  download_url: https://api.neso.energy/dataset/8f2fe0af-871c-488d-8bad-960426f24601/resource/b2bde559-3455-4021-b179-dfe60c0337b0/download/demanddata_2025.csv
+  api_url: https://api.neso.energy/api/3/action/datastore_search
+  license: National Energy SO Open Data Licence v1.0
+  required_attribution: Supported by National Energy SO Open Data
+  snapshot_policy: one_download_after_protocol_freeze
+  retrospective_revision_policy: >-
+    Record the downloaded bytes, UTC timestamp, HTTP metadata, and SHA-256.
+    Do not refresh the source during the authorized experiment, even if NESO
+    later publishes retrospective corrections.
+
+preprocessing:
+  raw_target_column: ND
+  date_column: SETTLEMENT_DATE
+  settlement_period_column: SETTLEMENT_PERIOD
+  raw_frequency: half_hourly_with_clock_change
+  parse_dates_day_first: true
+  duplicate_key: [SETTLEMENT_DATE, SETTLEMENT_PERIOD]
+  duplicate_policy: abort
+  missing_target_policy: abort
+  nonfinite_target_policy: abort
+  allowed_periods_per_day: [46, 48, 50]
+  expected_start: 2025-01-01
+  expected_end_inclusive: 2025-12-31
+  expected_daily_rows: 365
+  aggregation: daily_mean_of_ND_MW
+  exogenous_features_used: false
+  scaling_constructed_from: Dprior_only
+
+split:
+  policy: chronological_fixed_counts
+  counts:
+    prior: 73
+    bound: 164
+    validation: 55
+    test: 73
+  test_opened_only_after_selection_and_gate_freeze: true
+
+model:
+  family: certificate_subset_first_order_tsk
+  lags: [1, 7, 14]
+  ridge_alphas: [0.001, 0.01, 0.1, 1.0]
+  dictionary:
+    construction: fixed_k_antecedent_from_Dprior_only
+    rule_count: 8
+    max_active_rules: 8
+    refinement_iterations: 2
+  consequent_fit:
+    prior_location_role: prior
+    posterior_location_role: bound
+    refit_after_selection: forbidden
+
+subset_prior:
+  support: all_nonempty_subsets_of_frozen_dictionary
+  eta_rule: 0.6931471805599453
+  minimum_size: 1
+  maximum_size: 8
+  mass_formula: >-
+    exp(-eta_rule * |S|) /
+    (sum_{j=1}^K exp(-eta_rule*j) * binomial(K, |S|))
+  base_structural_index: [lag, ridge_alpha]
+  base_structural_mass: uniform
+  subset_identity_is_charged: true
+
+structural_search:
+  objective: minimum_time_uniform_exact_clipped_gibbs_certificate_untruncated
+  strategy: exhaustive
+  expected_subset_count_per_lag_alpha: 255
+  expected_total_structural_candidates: 3060
+  tie_break:
+    - total_kl
+    - exact_empirical_gibbs_risk
+    - subset_size
+    - subset_lexicographic
+    - ridge_alpha
+    - lag
+  test_excluded: true
+
+certificate:
+  certified_roles: [bound, validation]
+  test_excluded: true
+  delta_total: 0.05
+  familywise_series_count: 1
+  temperatures: [0.125, 0.25, 0.5, 1.0, 2.0, 4.0]
+  prior_scales: [0.5, 1.0, 2.0, 4.0, 8.0]
+  posterior_ratios: [0.01, 0.03, 0.1, 0.3, 1.0]
+  clip_bound:
+    constructed_from: Dprior_only
+    multiplier: 1.25
+    minimum_scaled: 1.0
+  empirical_risk: exact_expected_normalized_squared_loss_after_clipping
+  operational_forecast: exact_clipped_gaussian_bayesian_model_average
+
+decision:
+  fallback: seasonal_naive_7d
+  robust_gate:
+    certificate_threshold_untruncated: 0.10
+    certification_target_clipping_rate_maximum: 0.02
+    minimum_validation_rmse_improvement: 0.05
+    minimum_validation_cost_improvement: 0.05
+    validation_blocks: 4
+    minimum_nonnegative_blocks: 3
+    maximum_worst_block_degradation: 0.05
+  asymmetric_cost:
+    underforecast_weight: 2.0
+    overforecast_weight: 1.0
+  gate_origin: inherited_unchanged_from_frozen_PJM_v3_robust_gate
+  outcome:
+    pass: deploy_selected_exact_clipped_BMA_without_refit
+    fail: abstain_and_use_seasonal_fallback
+
+execution:
+  single_authorized_run_only: true
+  atomic_publish: true
+  download_before_protocol_freeze: forbidden
+  test_access_before_selection_freeze: forbidden
+  retuning_after_outcome: forbidden
+  rerun_after_outcome: forbidden
+  unexpected_data_or_compute_error: abort_before_outcome_review
