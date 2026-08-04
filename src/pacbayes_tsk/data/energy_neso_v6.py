@@ -88,7 +88,8 @@ def load_raw_neso_2025(path: str | Path) -> pd.DataFrame:
 
     dates = pd.to_datetime(
         frame[RAW_DATE_COLUMN],
-        dayfirst=True,
+        format="%Y-%m-%d",
+        exact=True,
         errors="raise",
     )
     if dates.isna().any():

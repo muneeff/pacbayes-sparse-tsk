@@ -1104,35 +1104,101 @@ def _load_json(path: str | Path) -> dict[str, Any]:
     return payload
 
 
+def _snapshot_tracked_hash(
+    snapshot: dict[str, Any],
+    relative_path: str,
+) -> str:
+    normalized = relative_path.replace("\\", "/")
+    matches = [
+        row
+        for row in snapshot.get("tracked_files", [])
+        if str(row.get("path", "")).replace("\\", "/")
+        == normalized
+    ]
+    if len(matches) != 1:
+        raise ProspectiveNESOV6Error(
+            f"Snapshot does not contain exactly one {normalized} entry."
+        )
+    return str(matches[0]["sha256"])
+
+
 def _verify_data_chain(
     *,
     config_path: str | Path,
     protocol_path: str | Path,
     execution_snapshot_path: str | Path,
+    parent_execution_snapshot_path: str | Path,
     download_audit_path: str | Path,
     preparation_audit_path: str | Path,
 ) -> dict[str, Any]:
     download = _load_json(download_audit_path)
     preparation = _load_json(preparation_audit_path)
+    current = _load_json(execution_snapshot_path)
+    parent = _load_json(parent_execution_snapshot_path)
+    cfg = yaml.safe_load(
+        Path(config_path).read_text(encoding="utf-8")
+    )
+    amendment = cfg.get("amendment", {})
+
     expected_resource = (
         "b2bde559-3455-4021-b179-dfe60c0337b0"
+    )
+    parent_sha = sha256_file(parent_execution_snapshot_path)
+    current_sha = sha256_file(execution_snapshot_path)
+    parent_config_sha = _snapshot_tracked_hash(
+        parent,
+        "configs/v6/neso_demand_2025_v6.yaml",
+    )
+    parent_protocol_sha = _snapshot_tracked_hash(
+        parent,
+        "protocol/EXPERIMENT_PROTOCOL_V6.md",
     )
     checks = {
         "resource_id": (
             download.get("resource_id"),
             expected_resource,
         ),
-        "execution_snapshot_sha256": (
-            download.get("execution_snapshot_sha256"),
-            sha256_file(execution_snapshot_path),
+        "current_snapshot_kind": (
+            current.get("snapshot_kind"),
+            "PRE_OUTCOME_AMENDMENT_V6_001",
         ),
-        "config_sha256": (
+        "config_amendment_id": (
+            amendment.get("id"),
+            "V6-001",
+        ),
+        "config_parent_snapshot": (
+            amendment.get("parent_execution_snapshot_sha256"),
+            parent_sha,
+        ),
+        "current_parent_snapshot": (
+            current.get("parent_execution_snapshot", {}).get(
+                "sha256"
+            ),
+            parent_sha,
+        ),
+        "download_parent_snapshot": (
+            download.get("execution_snapshot_sha256"),
+            parent_sha,
+        ),
+        "download_parent_config": (
             download.get("config_sha256"),
+            parent_config_sha,
+        ),
+        "download_parent_protocol": (
+            download.get("protocol_sha256"),
+            parent_protocol_sha,
+        ),
+        "current_config": (
+            current.get("config", {}).get("sha256"),
             sha256_file(config_path),
         ),
-        "protocol_sha256": (
-            download.get("protocol_sha256"),
-            sha256_file(protocol_path),
+        "current_download_audit": (
+            current.get("download", {}).get("audit_sha256"),
+            sha256_file(download_audit_path),
+        ),
+        "current_download_raw": (
+            current.get("download", {}).get("raw_sha256"),
+            download.get("raw_sha256"),
         ),
         "raw_chain": (
             preparation.get("raw_sha256"),
@@ -1146,11 +1212,13 @@ def _verify_data_chain(
     }
     if failed:
         raise ProspectiveNESOV6Error(
-            f"Prospective data-chain mismatch: {failed}"
+            f"Prospective V6-001 data-chain mismatch: {failed}"
         )
     return {
         "download": download,
         "preparation": preparation,
+        "current_execution_snapshot_sha256": current_sha,
+        "parent_execution_snapshot_sha256": parent_sha,
     }
 
 
@@ -1256,6 +1324,7 @@ def run_prospective_neso_v6(
     config_path: str | Path,
     protocol_path: str | Path,
     execution_snapshot_path: str | Path,
+    parent_execution_snapshot_path: str | Path,
     download_audit_path: str | Path,
     preparation_audit_path: str | Path,
     output_dir: str | Path,
@@ -1289,6 +1358,9 @@ def run_prospective_neso_v6(
             config_path=config_path,
             protocol_path=protocol_path,
             execution_snapshot_path=execution_snapshot_path,
+            parent_execution_snapshot_path=(
+                parent_execution_snapshot_path
+            ),
             download_audit_path=download_audit_path,
             preparation_audit_path=preparation_audit_path,
         )
@@ -1399,6 +1471,10 @@ def run_prospective_neso_v6(
             "execution_snapshot_sha256": sha256_file(
                 execution_snapshot_path
             ),
+            "parent_execution_snapshot_sha256": sha256_file(
+                parent_execution_snapshot_path
+            ),
+            "amendment_id": "V6-001",
             "config_sha256": sha256_file(config_path),
             "protocol_sha256": sha256_file(protocol_path),
             "processed_data_sha256": processed_data_sha256,

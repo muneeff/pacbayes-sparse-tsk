@@ -237,3 +237,31 @@ def test_full_processed_file_is_touched_only_after_pretest_decision() -> None:
     )
     assert decision_position < deferred_hash_position < full_load_position
 
+def test_amended_run_signature_requires_parent_snapshot() -> None:
+    signature = inspect.signature(neso_v6.run_prospective_neso_v6)
+    assert "execution_snapshot_path" in signature.parameters
+    assert "parent_execution_snapshot_path" in signature.parameters
+
+
+def test_parent_snapshot_hash_lookup_is_exact() -> None:
+    snapshot = {
+        "tracked_files": [
+            {
+                "path": "configs/v6/neso_demand_2025_v6.yaml",
+                "sha256": "abc",
+            }
+        ]
+    }
+    assert neso_v6._snapshot_tracked_hash(
+        snapshot,
+        "configs/v6/neso_demand_2025_v6.yaml",
+    ) == "abc"
+    with pytest.raises(
+        neso_v6.ProspectiveNESOV6Error,
+        match="exactly one",
+    ):
+        neso_v6._snapshot_tracked_hash(
+            snapshot,
+            "protocol/EXPERIMENT_PROTOCOL_V6.md",
+        )
+

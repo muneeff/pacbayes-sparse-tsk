@@ -1,5 +1,15 @@
 schema_version: 6.0
-status: prospective_pre_download_frozen
+status: prospective_pre_outcome_amended_001
+amendment:
+  id: V6-001
+  scope: input_date_parser_only
+  parent_execution_snapshot_path: artifacts/prospective_execution_snapshot_v6.json
+  parent_execution_snapshot_sha256: c0bb169c88073854fd3d936190238d110a2d5bce5931e2bebd6e7db42d338d34
+  amendment_execution_snapshot_path: artifacts/prospective_execution_snapshot_v6_amendment_001.json
+  download_audit_path: artifacts/neso_v6_download_audit.json
+  downloaded_raw_sha256: 8b8be946bbb084bc28fbf95a71fad0fceb5543b98e02755235130a42beaee4e0
+  outcome_reviewed_before_amendment: false
+  redownload_forbidden: true
 experiment_id: neso_gb_demand_2025_certificate_subset_v6
 case_study: great_britain_daily_national_demand_2025
 
@@ -24,7 +34,8 @@ preprocessing:
   date_column: SETTLEMENT_DATE
   settlement_period_column: SETTLEMENT_PERIOD
   raw_frequency: half_hourly_with_clock_change
-  parse_dates_day_first: true
+  date_format: "%Y-%m-%d"
+  parse_dates_day_first: false
   duplicate_key: [SETTLEMENT_DATE, SETTLEMENT_PERIOD]
   duplicate_policy: abort
   missing_target_policy: abort

@@ -1,0 +1,22 @@
+{
+  "config_sha256": "6cbe6b76903f3c242c711ee90d5ef625e4864fdfa9a66f66f72142f0b8f7a976",
+  "downloaded_utc": "2026-08-04T18:52:14.714702+00:00",
+  "execution_snapshot": "artifacts/prospective_execution_snapshot_v6.json",
+  "execution_snapshot_sha256": "c0bb169c88073854fd3d936190238d110a2d5bce5931e2bebd6e7db42d338d34",
+  "final_url": "https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-national-grid/national-grid/resources/b2bde559-3455-4021-b179-dfe60c0337b0/demanddata_2025.csv?response-content-disposition=attachment%3B%20filename%3Ddemanddata_2025.csv&response-content-type=application%2Foctet-stream&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=604800&X-Amz-Credential=564ecf1b9cb7e605192d2953e7a993b9%2F20260804%2Fauto%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Date=20260804T185217Z&X-Amz-Signature=107d7572f4595a9643fc76e111ccd1d73f5b16adc1e03789117137c03201e06a",
+  "http_headers": {
+    "Content-Length": "1869771",
+    "Content-Type": "application/octet-stream",
+    "ETag": "\"bd5451a8a2306071a1376af75855cafb\"",
+    "Last-Modified": "Tue, 09 Jun 2026 13:25:08 GMT"
+  },
+  "protocol_sha256": "3b959c3c0f18059349cfb67efa1fe4a0689cce599d5006722351e6bd6772e9d1",
+  "raw_file": "data/raw/neso_demanddata_2025.csv",
+  "raw_sha256": "8b8be946bbb084bc28fbf95a71fad0fceb5543b98e02755235130a42beaee4e0",
+  "required_attribution": "Supported by National Energy SO Open Data",
+  "resource_id": "b2bde559-3455-4021-b179-dfe60c0337b0",
+  "schema_version": "6.0",
+  "size_bytes": 1869771,
+  "source_url": "https://api.neso.energy/dataset/8f2fe0af-871c-488d-8bad-960426f24601/resource/b2bde559-3455-4021-b179-dfe60c0337b0/download/demanddata_2025.csv",
+  "status": "DOWNLOADED_NOT_PREPARED"
+}

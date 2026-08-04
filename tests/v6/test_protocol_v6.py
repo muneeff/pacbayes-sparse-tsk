@@ -19,7 +19,11 @@ def _load() -> dict:
 
 def test_v6_protocol_is_pre_download_and_single_run() -> None:
     cfg = _load()
-    assert cfg["status"] == "prospective_pre_download_frozen"
+    assert cfg["status"] == "prospective_pre_outcome_amended_001"
+    assert cfg["amendment"]["id"] == "V6-001"
+    assert cfg["amendment"]["scope"] == "input_date_parser_only"
+    assert cfg["amendment"]["outcome_reviewed_before_amendment"] is False
+    assert cfg["amendment"]["redownload_forbidden"] is True
     assert cfg["execution"]["single_authorized_run_only"] is True
     assert cfg["execution"]["download_before_protocol_freeze"] == "forbidden"
     assert cfg["execution"]["rerun_after_outcome"] == "forbidden"

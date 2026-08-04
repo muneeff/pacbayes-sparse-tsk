@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Run the single authorized prospective NESO V6 experiment."""
+"""Run the single authorized prospective NESO V6-001 experiment."""
 
 from __future__ import annotations
 
@@ -27,6 +27,13 @@ def main() -> None:
     )
     parser.add_argument(
         "--execution-snapshot",
+        default=(
+            "artifacts/"
+            "prospective_execution_snapshot_v6_amendment_001.json"
+        ),
+    )
+    parser.add_argument(
+        "--parent-execution-snapshot",
         default="artifacts/prospective_execution_snapshot_v6.json",
     )
     parser.add_argument(
@@ -48,6 +55,9 @@ def main() -> None:
         config_path=args.config,
         protocol_path=args.protocol,
         execution_snapshot_path=args.execution_snapshot,
+        parent_execution_snapshot_path=(
+            args.parent_execution_snapshot
+        ),
         download_audit_path=args.download_audit,
         preparation_audit_path=args.preparation_audit,
         output_dir=args.output_dir,

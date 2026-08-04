@@ -29,7 +29,7 @@ def _raw_frame() -> pd.DataFrame:
         for period in range(1, period_count + 1):
             rows.append(
                 {
-                    "SETTLEMENT_DATE": date.strftime("%d/%m/%Y"),
+                    "SETTLEMENT_DATE": date.strftime("%Y-%m-%d"),
                     "SETTLEMENT_PERIOD": period,
                     "ND": (
                         25_000.0
@@ -89,7 +89,7 @@ def test_prepare_publishes_daily_data_and_hash_audit(
 
 def test_daily_mean_uses_only_nd_values(tmp_path: Path) -> None:
     frame = _raw_frame()
-    first_day = frame["SETTLEMENT_DATE"].eq("01/01/2025")
+    first_day = frame["SETTLEMENT_DATE"].eq("2025-01-01")
     expected = float(frame.loc[first_day, "ND"].mean())
     raw_path = _write_raw(tmp_path / "raw.csv", frame)
     processed = tmp_path / "daily.csv"
@@ -113,7 +113,7 @@ def test_duplicate_settlement_key_is_rejected(tmp_path: Path) -> None:
 def test_invalid_daily_period_count_is_rejected(tmp_path: Path) -> None:
     frame = _raw_frame()
     mask = (
-        frame["SETTLEMENT_DATE"].eq("02/01/2025")
+        frame["SETTLEMENT_DATE"].eq("2025-01-02")
         & frame["SETTLEMENT_PERIOD"].eq(48)
     )
     frame = frame.loc[~mask].copy()
@@ -137,7 +137,7 @@ def test_missing_or_nonfinite_nd_is_rejected(
 def test_missing_calendar_day_is_rejected(tmp_path: Path) -> None:
     frame = _raw_frame()
     frame = frame[
-        ~frame["SETTLEMENT_DATE"].eq("15/06/2025")
+        ~frame["SETTLEMENT_DATE"].eq("2025-06-15")
     ].copy()
     path = _write_raw(tmp_path / "missing_day.csv", frame)
     with pytest.raises(NESODataV6Error, match="calendar coverage"):
@@ -153,3 +153,14 @@ def test_prospective_artifacts_are_never_overwritten(
     processed.write_text("already exists", encoding="utf-8")
     with pytest.raises(FileExistsError, match="Refusing"):
         prepare_neso_daily_dataset(raw_path, processed, audit)
+
+def test_non_iso_date_representation_is_rejected(tmp_path: Path) -> None:
+    frame = _raw_frame()
+    frame["SETTLEMENT_DATE"] = pd.to_datetime(
+        frame["SETTLEMENT_DATE"],
+        format="%Y-%m-%d",
+        errors="raise",
+    ).dt.strftime("%d/%m/%Y")
+    path = _write_raw(tmp_path / "non_iso_dates.csv", frame)
+    with pytest.raises(ValueError):
+        load_raw_neso_2025(path)
