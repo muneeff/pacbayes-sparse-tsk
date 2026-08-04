@@ -1,0 +1,36 @@
+\begin{table}[htbp]
+\centering
+\caption{
+Frozen deployment decisions produced by the proposed auditable forecasting
+framework. Improvements are reported relative to the predeclared seasonal-naive
+fallback; negative values indicate degradation.
+}
+\label{tab:energy_decisions}
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabularx}{\linewidth}{
+  >{\RaggedRight\arraybackslash}p{2.15cm}
+  >{\RaggedRight\arraybackslash}X
+  >{\centering\arraybackslash}p{1.35cm}
+  >{\centering\arraybackslash}p{1.55cm}
+  >{\centering\arraybackslash}p{1.55cm}
+}
+\toprule
+Case &
+Deployment &
+Cert. &
+\parbox[c]{1.55cm}{\centering Test RMSE\\improvement} &
+\parbox[c]{1.55cm}{\centering Test cost\\improvement} \\
+\midrule
+Tetouan Zone 1 & Radius-controlled TSK & 0.1226 & -11.86\% & -22.67\% \\
+Tetouan Zone 2 & Fixed-$K$ TSK & 0.1482 & -1.51\% & -19.05\% \\
+Tetouan Zone 3 & Seasonal naive & -- & 0.00\% & 0.00\% \\
+\midrule
+PJM holdout -- AEP & Ridge & 0.0959 & 57.97\% & 58.64\% \\
+PJM holdout -- COMED & Ridge & 0.0841 & 55.40\% & 54.11\% \\
+PJM holdout -- DAYTON & Radius-controlled TSK & 0.0933 & 49.13\% & 50.30\% \\
+PJM holdout -- PJME & Ridge & 0.0959 & 51.70\% & 51.42\% \\
+\bottomrule
+\end{tabularx}
+\end{table}

@@ -7,9 +7,9 @@
 \usepackage{url}
 \usepackage{textcomp}
 \usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{float}
 \usepackage[hidelinks]{hyperref}
 \usepackage{placeins}
-\usepackage{float}
 \usepackage{tabularx}
 \usepackage{ragged2e}
 \usepackage{longtable}
@@ -38,9 +38,11 @@
 	\begin{frontmatter}
 		
 		
-		\title{
-			Auditable Complexity-Controlled Takagi--Sugeno Forecasting with Sequential PAC-Bayesian Risk Assessment for Engineering Time-Series Applications
-		}
+\title{
+An Auditable Complexity-Aware PAC-Bayesian Framework for
+Linear and Takagi--Sugeno Time-Series Forecasting under
+Temporal Dependence
+}
 		
 		
 		\author[su]{Muneef Abdulkareem Farea Ahmed\corref{cor1}}
@@ -62,48 +64,43 @@
 		
 		
 \begin{abstract}
-	
-	Engineering forecasting systems require reliable mechanisms for deciding when a
-	learned predictor is suitable for deployment. Validation-only selection can be
-	misleading under temporal dependence, nonstationarity, and increasing model
-	complexity.
-	
-	This paper proposes an auditable complexity-controlled forecasting framework
-	that combines linear and first-order Takagi--Sugeno (TSK) predictors with
-	sequential PAC-Bayesian risk assessment for deployment-oriented model selection.
-	
-	Each candidate predictor is represented through an explicit structural
-	description including model family, lag configuration, regularization settings,
-	fuzzy rule structure, and realized rule count. A chronological prior construction
-	and sequential certification procedure quantify the trade-off between empirical
-	performance and structural complexity. A frozen deployment gate combines risk
-	certificates, validation margins, and temporal stability criteria before
-	replacing a seasonal baseline.
-	
-	The framework is evaluated using synthetic temporal processes and independent
-	electricity-load forecasting tasks from PJM regional datasets. Results show that
-	complexity-controlled selection can reduce TSK structural complexity without
-	sacrificing competitive forecasting performance. When simpler predictors provide
-	stronger evidence from the data, the framework retains them rather than forcing
-	more complex models.
-	
-	The proposed approach provides an auditable decision layer for trustworthy
-	engineering forecasting systems, complementing predictive accuracy with
-	transparent risk and complexity assessment.
-	
+PAC-Bayesian certificates can support deployment decisions for time-series
+forecasters, but their operational value depends on separating the prediction
+object covered by the certificate from the forecast actually evaluated. This
+paper presents an auditable framework for linear and first-order
+Takagi--Sugeno (TSK) forecasting under overlapping and potentially
+nonstationary observations. Chronological prior construction and an explicit
+hierarchical code account for model family, lag, regularization, radius, rule
+count, localization, and prior scale. The original frozen experiments use
+deterministic posterior-center forecasts and treat the certificate as one
+screening signal. A strictly retrospective alignment audit additionally
+computes the exact clipped Gaussian Bayesian model average (BMA) and the exact
+expected clipped squared loss while preserving frozen candidate identities,
+the original PJM gate thresholds, and exclusion of test outcomes from decisions; for Tetouan, the PJM gate is transferred only as a post-hoc diagnostic.
+
+Experiments on 30 synthetic series show that removing complete TSK rule blocks
+reduces dimension, Gaussian KL divergence, and certificate value relative to a
+dense 12-rule model, although small fixed rule bases can match radius control.
+The original Tetouan gate admits two models that fail on the held-out horizon,
+whereas the internally locked PJM gate selects four simple linear or affine
+predictors that outperform the seasonal fallback. In the retrospective
+exact-BMA audit, both Tetouan selections fail the stricter gate and all four
+frozen PJM selections pass; this audit was added after outcomes were opened and
+is not a new prospective or internally locked experiment. Secondary post-hoc SARIMA and ETS models
+remain competitive. The evidence therefore supports auditable complexity
+accounting, prediction-object alignment, conservative screening, and
+abstention rather than a general claim of TSK superiority.
 \end{abstract}
 		
-		\begin{keyword}
-			
-			Trustworthy artificial intelligence \sep
-			engineering forecasting \sep
-			decision support systems \sep
-			Takagi--Sugeno fuzzy systems \sep
-			PAC-Bayesian risk assessment \sep
-			model auditing \sep
-			complexity control
-			
-		\end{keyword}
+\begin{keyword}
+PAC-Bayesian learning \sep
+Takagi--Sugeno fuzzy systems \sep
+time-series forecasting \sep
+martingales \sep
+temporal dependence \sep
+structural sparsity \sep
+risk certificates
+\end{keyword}
 		
 		
 	\end{frontmatter}

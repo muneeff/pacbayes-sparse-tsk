@@ -69,10 +69,10 @@ The interpretation must remain limited. These prototypes are data-driven summari
 \subsection{Negative Tetouan Development Outcome}
 The initial Tetouan gate admits a radius TSK model in zone 1 and a fixed-$K$ TSK model in zone 2, while zone 3 abstains. Both learned deployments fail on the test horizon: RMSE changes are $-11.86\%$ and $-1.51\%$, and asymmetric-cost changes are $-22.67\%$ and $-19.05\%$. With seven-day moving blocks, the zone-1 RMSE interval is $[-24.45,-1.04]\%$ and its cost interval is $[-34.95,-10.98]\%$; zone 2 has RMSE interval $[-13.04,8.55]\%$ and cost interval $[-35.35,-3.70]\%$. Zone 3 is identically the fallback. Averaged over all three zones, RMSE worsens by 4.46\% and cost worsens by 13.91\%.
 
-This negative result demonstrates that a non-vacuous certificate plus overall validation performance is not a sufficient deployment rule under temporal shift. It motivated the stricter margin and block-stability requirements in the independent confirmatory protocol.
+This negative result demonstrates that a non-vacuous certificate plus overall validation performance is not a sufficient deployment rule under temporal shift. It motivated the stricter margin and block-stability requirements in the later internally locked PJM holdout protocol.
 
 \subsection{Independent Internally Locked PJM Holdout Outcome}
-\input{tables/energy_decisions}
+\input{tables/energy_decisions_v5}
 \input{tables/pjm_bootstrap_ci}
 
 The frozen PJM gate admits a learned model in all four regions. Test RMSE improves by 57.97\%, 55.40\%, 49.13\%, and 51.70\% for AEP, COMED, DAYTON, and PJME, respectively. Corresponding asymmetric-cost improvements are 58.64\%, 54.11\%, 50.30\%, and 51.42\%; mean improvements are 53.55\% and 53.62\%. Table~\ref{tab:pjm_bootstrap_ci} reports secondary 14-day moving-block-bootstrap intervals. Every lower bound remains positive, and the same conclusion holds under 7- and 28-day block-length sensitivity analyses. Selected certificates range from 0.0841 to 0.0959, and test target and forecast clipping are zero.
@@ -84,7 +84,34 @@ The frozen PJM gate admits a learned model in all four regions. Test RMSE improv
 \label{fig:pjm_improvements}
 \end{figure}
 
-The confirmatory result does not establish nonlinear fuzzy superiority. AEP, COMED, and PJME select ridge. DAYTON selects a radius-controlled one-rule TSK with lag 14; with one rule, this is an affine predictor. No fixed-eight-rule TSK candidate passes the frozen gate. The operational evidence therefore supports a complexity-aware gate that can shrink to a simple model, not a claim that a multi-rule TSK system caused the gain.
+The internally locked PJM holdout result does not establish nonlinear fuzzy superiority. AEP, COMED, and PJME select ridge. DAYTON selects a radius-controlled one-rule TSK with lag 14; with one rule, this is an affine predictor. No fixed-eight-rule TSK candidate passes the frozen gate. The operational evidence therefore supports a complexity-aware gate that can shrink to a simple model, not a claim that a multi-rule TSK system caused the gain.
+
+\subsection{Retrospective Exact-BMA Alignment Audit}
+\input{tables/retrospective_bma_alignment}
+
+Table~\ref{tab:retrospective_bma_alignment} reports the strictly retrospective
+alignment audit. The two frozen Tetouan deployments are rejected by the
+stricter exact-BMA gate. Zone 1 fails both the exact certificate threshold and
+the worst-block degradation condition; zone 2 fails the exact certificate
+threshold alone. Exact-BMA test performance is worse than the seasonal fallback in both
+zones. The post-hoc transfer of the PJM gate rejects both candidates,
+showing only that this later rule would have abstained; it does not show
+that the original Tetouan protocol would have done so. This is a post-hoc
+diagnostic of abstention value, not a causal, prospective, or internally
+locked estimate. Tetouan zone 3 is not
+listed because its frozen deployment is already the fallback and has no
+selected posterior.
+
+All four frozen PJM selections pass every exact-BMA gate condition. Each has
+nonnegative improvement in all four validation blocks and a positive
+worst-block margin. Their exact-BMA test improvements over the seven-day
+seasonal fallback remain approximately $49$--$58\%$ in RMSE and
+$50$--$59\%$ in the asymmetric forecasting-error score. Relative to the
+original posterior-center forecasts, exact BMA changes PJM RMSE by less than
+$0.11\%$ in magnitude. Its value here is therefore theoretical and
+operational alignment, not an additional accuracy claim. Because the audit
+was designed after the original outcomes were opened, it cannot strengthen
+the original internally locked interpretation.
 
 \subsection{Secondary Post-Hoc Statistical Benchmarks}
 The post-hoc SARIMA and ETS comparisons provide a stricter context for the PJM result. Across the four regions, selected SARIMA specifications improve RMSE over the seasonal-naive fallback by 56.82\% on average and improve on the originally deployed point forecasts by 6.99\%. ETS improves over the fallback by 54.77\% on average and over the deployed forecasts by 2.43\%. SARIMA has lower test RMSE than the deployed model in all four regions; ETS is better in AEP and DAYTON, essentially tied in COMED, and worse in PJME. The full per-region table is reported in the supplementary material.

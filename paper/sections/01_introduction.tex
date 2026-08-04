@@ -32,20 +32,20 @@ without paying their complexity cost. Moreover, a non-vacuous certificate need n
 identify the predictor with the lowest raw test RMSE or the best operational cost; 
 it is, instead, a conservative screening statistic that can be integrated into a 
 broader expert-system deployment rule.
-This study develops an auditable expert-system framework for linear and first-order 
-TSK load forecasting under overlapping and potentially nonstationary windows. The 
-time-uniform supermartingale argument used in the analysis is established in the 
-PAC-Bayes literature and is not presented as a new concentration theorem. The 
-methodological contribution lies in the chronological construction of the candidate 
-priors, explicit hierarchical charging of the complete model index, analytic 
-evaluation of a Gaussian empirical-risk upper bound, separation of structural 
-sparsity from activation sparsity, and integration of the certificate into a frozen 
-model-selection and abstention protocol that mimics operational decision-making.
-The central claim is deliberately limited. We do not introduce a new fuzzy 
-clustering algorithm, prove that radius-based rule construction dominates all fixed 
-rule bases, or show that TSK models universally outperform linear and seasonal 
-predictors. Instead, we ask whether complete removal of rule blocks makes TSK 
-complexity auditable and whether a valid certificate can serve as one conservative 
+This study develops an auditable expert-system framework for linear and first-order
+TSK load forecasting under overlapping and potentially nonstationary windows. The
+time-uniform supermartingale argument used in the analysis is established in the
+PAC-Bayes literature and is not presented as a new concentration theorem. The
+methodological contribution lies in chronological construction of candidate priors,
+explicit hierarchical charging of the complete model index, conservative and exact
+clipped-Gaussian empirical-risk evaluation, separation of structural sparsity from
+activation sparsity, and integration of the certificate into an auditable
+model-selection and abstention protocol.
+The central claim is deliberately limited. We do not introduce a new fuzzy
+clustering algorithm, prove that radius-based rule construction dominates all fixed
+rule bases, or show that TSK models universally outperform linear and seasonal
+predictors. Instead, we ask whether complete removal of rule blocks makes TSK
+complexity auditable and whether a valid certificate can serve as one conservative
 screening component inside a broader deployment rule for energy forecasting.
 The contributions of this expert-system framework are as follows.
 \begin{itemize}
@@ -63,6 +63,13 @@ The contributions of this expert-system framework are as follows.
 	model and from the Tetouan development model. These examples support
 	inspection of the learned local structures without treating them as physical
 	truth or as directly certified deterministic predictors.
+	\item We add a strictly retrospective prediction-object alignment audit.
+	It computes exact clipped Gaussian BMA forecasts and exact expected clipped
+	loss while preserving frozen candidate identities, the original PJM gate
+	thresholds, and test exclusion from all certificate and gate calculations.
+	For Tetouan, the PJM gate is transferred only as a post-hoc diagnostic.
+	The audit is not relabeled as a new prospective or internally locked
+	experiment.
 	\item We report a negative Tetouan development gate and an internally locked
 	PJM holdout evaluation. Secondary SARIMA, exponential-smoothing, and deep
 	learning benchmarks are explicitly labeled post hoc because they were designed
@@ -81,6 +88,12 @@ forecasting alternatives can improve further on the deployed models. The
 certificate therefore functions as an auditable risk-screening quantity inside a
 broader expert-system decision rule, not as a direct guarantee of raw RMSE, future
 stability, or model-class dominance.
+The retrospective exact-BMA audit closes the certified-versus-operational
+prediction mismatch diagnostically: the frozen PJM selections remain eligible,
+whereas the two failed Tetouan deployments are rejected by the stricter gate.
+Because this analysis was added after the outcomes were opened, it supports
+robustness and abstention interpretation only and does not strengthen the original
+internally locked claim.
 
 The remainder of the paper reviews the relevant literature with emphasis on
 forecasting applications and expert-system architectures, defines the chronological

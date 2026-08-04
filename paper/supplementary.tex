@@ -222,6 +222,38 @@
 	Among eligible candidates, minimum validation asymmetric cost was preferred, followed by RMSE, certificate, dimension, rule count, family, radius, ridge penalty, and lag. If no candidate qualified, the seasonal-naive fallback was deployed.
 	
 	The first execution stopped due to an infrastructure interruption after the AEP pretest decision had been written and before any test outcome had been opened. The restart used unchanged code, data, configuration, and recorded hashes. This event is reported as a computational recovery rather than as an uninterrupted execution.
+
+\section{Retrospective Exact-BMA Alignment Audit}
+\label{sup:exact_bma_alignment}
+
+This audit was designed after the original Tetouan and PJM outcomes were
+opened. It therefore does not alter the frozen candidate identities,
+posterior centers, the original PJM gate thresholds, pretest decisions, or
+the interpretation of the original holdout study. For Tetouan, the PJM gate
+is transferred only as a post-hoc diagnostic and is not represented as the
+original frozen gate.
+
+For each frozen selected candidate, the scalar Gaussian predictive
+distribution induced by the diagonal posterior is reconstructed. The exact
+clipped BMA and exact expected normalized clipped squared loss are evaluated
+from truncated-normal moments. Prior-scale multiplier, posterior-scale ratio,
+and temperature are searched only on the original finite grids using the
+bound-plus-validation certification roles. The Gaussian KL, structural code,
+prior-scale mixture penalty, familywise confidence allocation, clipping
+interval, and fallback remain unchanged. Test observations are excluded from
+this computation.
+
+The seven-condition PJM gate is preserved unchanged for PJM and accepts all
+four frozen PJM selections, each of which improves in all four validation
+blocks. Transferred post hoc to Tetouan as a cross-study diagnostic, the
+same gate rejects both selected candidates: zone 1 fails the certificate
+and worst-block conditions, and zone 2 fails the certificate condition.
+Subsequent test evaluation shows deterioration for both Tetouan candidates
+and strong improvement for all four PJM candidates relative to their frozen
+seasonal fallbacks. These test comparisons are explicitly post hoc and are
+reported as a robustness and abstention diagnostic rather than a new prospective or internally locked
+experiment. Machine-readable summaries and reconstructed
+prediction trajectories are included in the V5 reproducibility artifact.
 	
 	
 	\section{Secondary Post-Hoc Statistical Benchmarks}
@@ -231,7 +263,7 @@
 	
 	Hyperparameters were selected using the original validation segment. Selected models were fitted using pretest observations and evaluated using rolling one-step forecasts.
 	
-	\input{posthoc_energy_benchmarks}
+	\input{tables/posthoc_energy_benchmarks}
 	
 	
 	\section{Actual Multi-Rule TSK Examples}
@@ -245,7 +277,7 @@
 	
 	Antecedents are fitted using prior data and posterior-center consequents using the bound set exactly as described in the main paper.
 	
-	\input{fuzzy_rule_examples}
+	\input{tables/fuzzy_rule_examples}
 	
 	The complete machine-readable table contains one row per rule and lag, including antecedent centers, spreads, consequent coefficients, intercepts, prior support, and mean certification firing weights.
 	

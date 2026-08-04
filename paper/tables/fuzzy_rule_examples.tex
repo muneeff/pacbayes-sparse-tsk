@@ -1,206 +1,54 @@
 \begin{table}[htbp]
 \centering
-	
-	\caption{
-		Examples of actual multi-rule posterior-center TSK models. 
-		Antecedent prototypes and consequent coefficients are reported in original data
-		units. Mean firing is computed over bound and validation observations.
-		The listed rules provide structural audit examples; PAC-Bayes guarantees apply
-		to the Gibbs predictor and clipped Bayesian model average rather than these
-		deterministic point predictors.
-	}
-	
-	\label{tab:fuzzy_rule_examples}
-	
-	\small
-	
-	\renewcommand{\arraystretch}{1.2}
-	\setlength{\tabcolsep}{4pt}
-	
-	
-	\begin{tabularx}{\linewidth}
-		{
-			>{\raggedright\arraybackslash}p{2.1cm}
-			>{\raggedright\arraybackslash}p{0.6cm}
-			>{\raggedright\arraybackslash}p{1.0cm}
-			>{\raggedright\arraybackslash}p{1.0cm}
-			>{\raggedright\arraybackslash}p{1.1cm}
-			>{\raggedright\arraybackslash}p{1.2cm}
-			>{\raggedright\arraybackslash}X
-		}
-		
-		\toprule
-		
-		Example
-		&
-		Rule
-		&
-		Prior
-		support
-		&
-		Mean
-		firing
-		&
-		Center
-		mean
-		&
-		Recent--
-		oldest
-		&
-		Dominant local consequent terms
-		\\
-		
-		\midrule
-		
-		
-		SETAR seed 3001
-		&
-		R1
-		&
-		143
-		&
-		34.1\%
-		&
-		-0.11
-		&
-		0.04
-		&
-		$+0.458y(t-1)+0.179y(t-2)+0.119y(t-3)$
-		\\
-		
-		
-		SETAR seed 3001
-		&
-		R4
-		&
-		74
-		&
-		19.0\%
-		&
-		0.06
-		&
-		0.24
-		&
-		$+0.487y(t-2)-0.422y(t-1)-0.037y(t-3)$
-		\\
-		
-		
-		SETAR seed 3001
-		&
-		R3
-		&
-		82
-		&
-		18.5\%
-		&
-		-0.37
-		&
-		0.09
-		&
-		$+0.685y(t-1)+0.067y(t-2)-0.006y(t-3)$
-		\\
-		
-		
-		SETAR seed 3001
-		&
-		R5
-		&
-		61
-		&
-		15.3\%
-		&
-		-0.01
-		&
-		-0.23
-		&
-		$+0.183y(t-1)+0.106y(t-3)+0.003y(t-2)$
-		\\
-		
-		
-		SETAR seed 3001
-		&
-		R2
-		&
-		37
-		&
-		13.1\%
-		&
-		-0.19
-		&
-		-0.56
-		&
-		$+0.576y(t-1)-0.160y(t-3)+0.067y(t-2)$
-		\\
-		
-		
-		\midrule
-		
-		
-		Tetouan Zone 1
-		&
-		R1
-		&
-		216
-		&
-		25.5\%
-		&
-		31094.05
-		&
-		5904.95
-		&
-		$+0.641y(t-12)+0.463y(t-1)+0.259y(t-6)$
-		\\
-		
-		
-		Tetouan Zone 1
-		&
-		R2
-		&
-		216
-		&
-		25.0\%
-		&
-		31033.57
-		&
-		-2317.05
-		&
-		$+0.927y(t-1)-0.198y(t-2)+0.164y(t-7)$
-		\\
-		
-		
-		Tetouan Zone 1
-		&
-		R4
-		&
-		216
-		&
-		24.9\%
-		&
-		31018.71
-		&
-		-1208.12
-		&
-		$+0.888y(t-1)+0.459y(t-12)-0.299y(t-4)$
-		\\
-		
-		
-		Tetouan Zone 1
-		&
-		R3
-		&
-		214
-		&
-		24.5\%
-		&
-		30957.31
-		&
-		-3487.66
-		&
-		$+0.542y(t-12)-0.466y(t-10)+0.356y(t-2)$
-		\\
-		
-		
-		\bottomrule
-		
-	\end{tabularx}
+\caption{
+Examples of actual multi-rule posterior-center TSK models.
+Antecedent prototypes and consequent coefficients are reported in original data
+units. Mean firing is computed over bound and validation observations.
+The listed rules provide structural audit examples; PAC-Bayes guarantees apply
+to the Gibbs predictor and clipped Bayesian model average rather than these
+deterministic point predictors.
+}
+\label{tab:fuzzy_rule_examples}
+\scriptsize
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabularx}{\linewidth}{
+  >{\RaggedRight\arraybackslash}p{1.55cm}
+  >{\centering\arraybackslash}p{0.45cm}
+  >{\centering\arraybackslash}p{0.72cm}
+  >{\centering\arraybackslash}p{0.85cm}
+  >{\raggedleft\arraybackslash}p{1.25cm}
+  >{\raggedleft\arraybackslash}p{1.25cm}
+  >{\RaggedRight\arraybackslash}X
+}
+\toprule
+Example &
+Rule &
+\shortstack{Prior\\support} &
+\shortstack{Mean\\firing} &
+\shortstack{Center\\mean} &
+\shortstack{Recent--\\oldest} &
+Dominant local consequent terms \\
+\midrule
+SETAR seed 3001 & R1 & 143 & 34.1\% & -0.11 & 0.04 &
+$+0.458y(t-1)+0.179y(t-2)+0.119y(t-3)$ \\
+SETAR seed 3001 & R4 & 74 & 19.0\% & 0.06 & 0.24 &
+$+0.487y(t-2)-0.422y(t-1)-0.037y(t-3)$ \\
+SETAR seed 3001 & R3 & 82 & 18.5\% & -0.37 & 0.09 &
+$+0.685y(t-1)+0.067y(t-2)-0.006y(t-3)$ \\
+SETAR seed 3001 & R5 & 61 & 15.3\% & -0.01 & -0.23 &
+$+0.183y(t-1)+0.106y(t-3)+0.003y(t-2)$ \\
+SETAR seed 3001 & R2 & 37 & 13.1\% & -0.19 & -0.56 &
+$+0.576y(t-1)-0.160y(t-3)+0.067y(t-2)$ \\
+\midrule
+Tetouan Zone 1 & R1 & 216 & 25.5\% & 31094.05 & 5904.95 &
+$+0.641y(t-12)+0.463y(t-1)+0.259y(t-6)$ \\
+Tetouan Zone 1 & R2 & 216 & 25.0\% & 31033.57 & -2317.05 &
+$+0.927y(t-1)-0.198y(t-2)+0.164y(t-7)$ \\
+Tetouan Zone 1 & R4 & 216 & 24.9\% & 31018.71 & -1208.12 &
+$+0.888y(t-1)+0.459y(t-12)-0.299y(t-4)$ \\
+Tetouan Zone 1 & R3 & 214 & 24.5\% & 30957.31 & -3487.66 &
+$+0.542y(t-12)-0.466y(t-10)+0.356y(t-2)$ \\
+\bottomrule
+\end{tabularx}
 \end{table}

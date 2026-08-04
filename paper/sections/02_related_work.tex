@@ -2,17 +2,80 @@
 \label{sec:related_work}
 
 \subsection{PAC-Bayes under Dependence and Sequential Observation}
-PAC-Bayes for dependent observations is established. Chromatic and blocking arguments cover dependency graphs and stationary mixing processes \cite{ralaivola2010chromatic}; oracle inequalities have been developed for weakly dependent time-series prediction \cite{alquier2012model,alquier2013prediction}; and recent results address Markov models and stable nonlinear dynamical systems \cite{banerjee2021tempered,eringis2024dynamical}. These approaches typically require explicit dependence, stationarity, boundedness, or stability assumptions.
 
-Martingale and supermartingale methods provide a different route. Seldin \emph{et al.} derived PAC-Bayesian inequalities for martingales \cite{seldin2012martingales}. Online and time-uniform constructions subsequently allowed data-dependent posterior sequences while keeping the prior predictable \cite{haddouche2022online,chugg2023unified}. We use this route because overlapping lag windows form an adapted sequence, and because it avoids treating an estimated mixing coefficient as known. The bounded-loss formula used here is a direct specialization of this literature, not a new general concentration inequality.
+PAC-Bayesian analysis is not restricted to independent observations.
+Chromatic and blocking constructions address dependency graphs and stationary mixing processes \cite{ralaivola2010chromatic}, while oracle inequalities have been developed for weakly dependent time-series prediction \cite{alquier2012model,alquier2013prediction}. More recent results cover Markov
+models, stochastic linear systems, and stable nonlinear dynamical systems, including recurrent neural networks
+\cite{banerjee2021tempered,eringis2021stochastic,eringis2024dynamical}.
+These approaches provide important guarantees, but generally rely on explicit mixing, stationarity, stability, or model-specific assumptions.
 
-\subsection{Computable and Non-Vacuous Certificates}
-A formal inequality becomes useful only when the prior, posterior, and empirical term can be computed without hidden data reuse. Data-dependent priors can be valid when their information source is explicitly separated or otherwise controlled \cite{parrado2012dataprior,rivasplata2020beyond}. Work on neural-network certificates shows that prior localization and posterior-scale selection are decisive for tightness \cite{perezortiz2021tighter}. Foong \emph{et al.} show that small-sample PAC-Bayes bounds may remain looser than direct test bounds even after careful optimization \cite{foong2021small}. Heavy-tail and unbounded-loss PAC-Bayes results offer alternatives to clipping \cite{haddouche2021unleashed,haddouche2023heavy,rodriguez2024more}; the current implementation does not claim those guarantees and instead reports clipping explicitly.
+Martingale and supermartingale constructions offer a different route.
+Seldin \emph{et al.} established PAC-Bayesian inequalities for martingales \cite{seldin2012martingales}. Online PAC-Bayes methods subsequently allowed
+posterior distributions to evolve sequentially while preserving a predictable prior \cite{haddouche2022online}. Chugg \emph{et al.} unified this line of work through a general time-uniform recipe based on nonnegative supermartingales, mixture arguments, convex duality, and Ville's inequality
+\cite{chugg2023unified}. Their framework accommodates nonstationary losses and non-IID observations and produces bounds that remain valid at arbitrary
+stopping times.
 
-\subsection{Sparse TSK Systems}
-Bayesian TSK models, block-sparse dynamic fuzzy models, and sparse rule or coefficient learning are well developed \cite{gu2018btsk,li2018blocksparse,li2022bayesiants,lughofer2010sparsefis,luo2013hierarchical,wiktorowicz2022timeseries}. Clustering-based rule construction and online TSK identification are also classical \cite{Chiu1994Cluster,angelov2004online}. Existing work generally targets prediction, parameter estimation, or interpretability; it does not provide the specific audited chain from a prior-only radius cover to a realized randomized dimension, KL cost, and sequential certificate.
+The present work uses this sequential route because overlapping lagged forecasting windows form an adapted process. The bounded-loss certificate used
+here is a computable specialization of the existing time-uniform PAC-Bayes framework, rather than a new general concentration theorem.
+
+\subsection{PAC-Bayesian Bound Minimization and Model Selection}
+
+PAC-Bayes bounds may serve not only as post-training certificates, but also as optimization and model-selection objectives. McAllester showed that stochastic model selection can be controlled through empirical risk and the Kullback--Leibler divergence between posterior and prior distributions, and
+that the bound-optimizing posterior has Gibbs form \cite{mcallester2003stochastic}. Earlier work also established the connection between PAC-Bayesian guarantees and Bayesian model averaging \cite{mcallester1999averaging}.
+
+More recent studies directly optimize PAC-Bayesian objectives. Wang \emph{et al.} minimize a robust PAC-Bayesian bound with respect to a neural
+network posterior and derive a tractable regularizer linked to the local loss geometry \cite{wang2023direct}. Differentiable PAC-Bayes objectives have also
+been developed for partially aggregated neural predictors \cite{biggs2021differentiable}. These studies demonstrate that a PAC-Bayesian
+bound can be incorporated into the learning objective rather than being used only for retrospective evaluation.
+
+PAC-Bayesian criteria have additionally been proposed for engineering model selection. Yan \emph{et al.} introduce a probably approximately
+correct-Bayesian criterion for selecting Wiener degradation processes using an upper bound on unseen-data generalization error, and compare it with AIC and
+BIC \cite{yan2026pbc}. Their contribution concerns selection among degradation models, rather than structural learning within a fuzzy rule base.
+
+\subsection{Structural Learning and Sparsity in TSK Systems}
+
+Structure identification in Takagi--Sugeno--Kang systems is a mature research area. Classical methods construct rules through clustering, evolving
+architectures, evolutionary optimization, or incremental structure learning \cite{Chiu1994Cluster,angelov2004online}. These methods primarily optimize
+prediction error, compactness, or interpretability.
+
+Sparse formulations explicitly exploit the block structure of TSK models.
+Lughofer and Kindermann introduced sparsity-constrained fuzzy-system learning that jointly controls rule weights and model complexity  \cite{lughofer2010sparsefis}. Luo \emph{et al.} formulate T--S identification as a hierarchical structured sparse representation problem in which complete
+rule blocks are selected and the consequent coefficients of retained rules are further sparsified \cite{luo2013hierarchical}. Related work extends block
+sparsity to multi-input--multi-output systems and dynamic identification \cite{luo2014joint,luo2015dynamic}.
+
+Bayesian TSK formulations also perform structural learning. Gu and Wang propose a Bayesian TSK model that jointly determines the number of rules and estimates antecedent and consequent parameters through maximum-a-posteriori inference with particle filtering \cite{gu2018btsk}. Li \emph{et al.} employ hierarchical block-sparse priors and variational Bayesian inference to select influential rules and consequent parameters for dynamic blast-furnace prediction \cite{li2018blocksparse}. A later Bayesian TSK formulation addresses dynamic prediction through Bayesian-based parameter and structure estimation \cite{li2022bayesiants}.
+
+Recent constructive systems continue to improve rule-base compactness. Zhang \emph{et al.} propose an adaptive constructive fuzzy system with forward rule
+selection, backward redundancy elimination, and a spectrally bounded generalized cross-validation criterion \cite{zhang2026acfs}. This method
+constructs a compact rule base efficiently, but its structural decisions are driven by residual reduction and cross-validation rather than a sequential
+PAC-Bayesian certificate.
+
+\subsection{Prediction Objects, Gibbs Risk, and Operational Averaging}
+
+A PAC-Bayesian guarantee normally controls a randomized or Gibbs predictor, whereas many practical regression systems deploy a deterministic parameter
+estimate. This distinction is important when the certified empirical risk and the operational forecast correspond to different prediction objects.
+Bayesian model averaging and posterior predictive means provide deterministic aggregates of randomized parameter distributions, but the validity of
+transferring a randomized-predictor guarantee to an aggregate depends on the loss and aggregation operation.
+
+For squared loss, convexity permits comparison between the expected randomized risk and the risk of an appropriate posterior average. In bounded forecasting, however, clipping must be included inside the expectation. The present work therefore computes both the exact expected clipped Gaussian squared loss and the exact clipped Gaussian Bayesian model average, rather than replacing them with an unclipped posterior-center approximation.
 
 \input{tables/prior_work}
 
-\subsection{Precise Novelty Claim}
-The present study does not introduce a new clustering algorithm, a new general PAC-Bayes theorem, or a proof that TSK models dominate linear or seasonal forecasts. Its contribution is the intersection of: (i) a chronologically valid finite prior over complete forecasting structures; (ii) a computable sequential certificate for a linear-in-consequents TSK model; (iii) a controlled fixed-$K$ versus radius-controlled structural ablation; and (iv) an operational protocol that records a negative development case before an independent frozen confirmatory case. Table~\ref{tab:prior_work} makes the distinction from the closest PAC-Bayes literature explicit.
+\subsection{Research Gap and Positioning}
+
+The preceding literature establishes each major ingredient separately.
+Time-uniform PAC-Bayes theory provides sequential guarantees under adapted and potentially nonstationary observations \cite{chugg2023unified}. Direct PAC-Bayesian bound minimization shows that a generalization bound can form part of a learning objective \cite{wang2023direct}. Stochastic PAC-Bayesian model selection provides complexity control over model indices \cite{mcallester2003stochastic}. Bayesian, sparse, and constructive TSK methods select rules and parameters using posterior inference, sparse penalties, residual reduction, or cross-validation  \cite{gu2018btsk,li2018blocksparse,luo2013hierarchical,zhang2026acfs}.
+
+To the best of our knowledge, the reviewed literature does not combine these components into a structural forecasting method that:
+\begin{enumerate}
+	\item treats the identity of a complete TSK rule subset as part of the 	hypothesis;
+	\item explicitly charges both subset size and subset identity through a hierarchical prior;
+	\item selects the rule subset and Gaussian posterior scales by directly minimizing a time-uniform sequential PAC-Bayesian certificate;
+	\item evaluates the exact expected clipped Gibbs loss during structural selection;
+	\item deploys the exact clipped Gaussian Bayesian model average as the operational forecast; and
+	\item applies a predeclared abstention rule without consulting the held-out test outcomes.
+\end{enumerate}
+
+The proposed contribution is therefore not a new clustering algorithm, a new general PAC-Bayes concentration theorem, or the first sparse TSK model.
+Instead, it is a certificate-aware structural learning framework that connects complete-rule-subset selection, explicit structural coding, sequential
+generalization assessment, and operational posterior averaging under temporal dependence.

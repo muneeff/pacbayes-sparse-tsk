@@ -50,50 +50,53 @@
 	% =========================================================
 	\begin{frontmatter}
 		
-		\title{
-			An Auditable Complexity-Aware PAC-Bayesian Framework for
-			Linear and Takagi--Sugeno Time-Series Forecasting under
-			Temporal Dependence
-		}
+\title{
+An Auditable Complexity-Aware PAC-Bayesian Framework for
+Linear and Takagi--Sugeno Time-Series Forecasting under
+Temporal Dependence
+}
 		
 	
 		
 	\begin{abstract}
-		PAC-Bayesian certificates can provide useful risk guarantees for
-		time-series forecasting, but their practical value depends on how the
-		prior, loss, and model-selection choices are constructed. This paper
-		presents an auditable framework for linear and first-order
-		Takagi--Sugeno (TSK) forecasting under overlapping and potentially
-		nonstationary observations. The method uses a chronological data split
-		to construct valid priors and an explicit hierarchical code to account
-		for model family, lag, regularization, radius, rule count, localization,
-		and prior scale. The resulting certificate applies to clipped Gibbs risk
-		and the clipped Bayesian model average, while deterministic forecasts
-		use it only as a screening criterion.
-		
-		Experiments on 30 synthetic series show that reducing complete TSK rule
-		blocks lowers parameter dimension, Gaussian KL divergence, and the
-		certificate relative to a dense 12-rule model. However, a sensitivity
-		analysis over several fixed rule counts shows that much of this gain is
-		due to using fewer rules, and radius control does not consistently
-		outperform small fixed-$K$ models. Multi-rule examples illustrate the
-		learned local structures. In the energy studies, a stricter frozen gate
-		improves performance over a seasonal-naive fallback on four PJM regions,
-		although post-hoc SARIMA and ETS models remain competitive. Overall, the
-		results support auditable complexity control and conservative model
-		screening rather than a general claim of TSK superiority.
-	\end{abstract}
+PAC-Bayesian certificates can support deployment decisions for time-series
+forecasters, but their operational value depends on separating the prediction
+object covered by the certificate from the forecast actually evaluated. This
+paper presents an auditable framework for linear and first-order
+Takagi--Sugeno (TSK) forecasting under overlapping and potentially
+nonstationary observations. Chronological prior construction and an explicit
+hierarchical code account for model family, lag, regularization, radius, rule
+count, localization, and prior scale. The original frozen experiments use
+deterministic posterior-center forecasts and treat the certificate as one
+screening signal. A strictly retrospective alignment audit additionally
+computes the exact clipped Gaussian Bayesian model average (BMA) and the exact
+expected clipped squared loss while preserving frozen candidate identities,
+the original PJM gate thresholds, and exclusion of test outcomes from decisions; for Tetouan, the PJM gate is transferred only as a post-hoc diagnostic.
+
+Experiments on 30 synthetic series show that removing complete TSK rule blocks
+reduces dimension, Gaussian KL divergence, and certificate value relative to a
+dense 12-rule model, although small fixed rule bases can match radius control.
+The original Tetouan gate admits two models that fail on the held-out horizon,
+whereas the internally locked PJM gate selects four simple linear or affine
+predictors that outperform the seasonal fallback. In the retrospective
+exact-BMA audit, both Tetouan selections fail the stricter gate and all four
+frozen PJM selections pass; this audit was added after outcomes were opened and
+is not a new prospective or internally locked experiment. Secondary post-hoc SARIMA and ETS models
+remain competitive. The evidence therefore supports auditable complexity
+accounting, prediction-object alignment, conservative screening, and
+abstention rather than a general claim of TSK superiority.
+\end{abstract}
 	
 	
-		\begin{keyword}
-			PAC-Bayesian learning \sep
-			Takagi--Sugeno fuzzy systems \sep
-			time-series forecasting \sep
-			martingales \sep
-			temporal dependence \sep
-			structural sparsity \sep
-			risk certificates
-		\end{keyword}
+\begin{keyword}
+PAC-Bayesian learning \sep
+Takagi--Sugeno fuzzy systems \sep
+time-series forecasting \sep
+martingales \sep
+temporal dependence \sep
+structural sparsity \sep
+risk certificates
+\end{keyword}
 		
 	\end{frontmatter}
 	

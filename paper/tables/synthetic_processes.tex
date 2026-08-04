@@ -2,9 +2,14 @@
 \centering
 \caption{Synthetic development processes. Each trajectory retains 2,000 observations after a burn-in of 500.}
 \label{tab:synthetic_processes}
-\small
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lp{9.5cm}p{4.0cm}}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{
+  >{\hsize=.70\hsize\RaggedRight\arraybackslash}X
+  >{\hsize=1.60\hsize\RaggedRight\arraybackslash}X
+  >{\hsize=.70\hsize\RaggedRight\arraybackslash}X
+}
 \toprule
 Process & Definition & Purpose \\
 \midrule
@@ -15,5 +20,5 @@ Mackey--Glass & Euler recursion with delay 17 and additive $\mathcal N(0,0.01^2)
 GARCH & Zero-mean GARCH(1,1) with standardized Student-$t_5$ innovations. & Conditional heteroskedasticity and heavy tails. \\
 Structural break & AR(1) mean, coefficient, and noise scale change after 60\% of the retained sample. & Deliberate nonstationarity and clipping stress. \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}

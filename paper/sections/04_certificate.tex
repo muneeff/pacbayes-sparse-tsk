@@ -108,6 +108,25 @@ Projection cannot increase squared distance to $\bar Y\in[-B,B]$. Using the conc
 \end{equation}
 The implementation substitutes $t^{-1}\sum_i\widehat r_i(Q)$ for $\widehat R_t(Q)$, which is conservative.
 
+For the retrospective V5 alignment audit, the Gaussian form in
+\eqref{eq:scalar_predictive_gaussian} also permits exact evaluation of
+\begin{equation}
+ \widehat R_t^{\mathrm{exact}}(Q)=
+ \frac{1}{t}\sum_{i=1}^{t}
+ \mathbb E_{a\sim Q}\!\left[
+ \frac{\left(
+ \bar Y_i-\Pi_{[-B,B]}f_{M,a}(X_i)
+ \right)^2}{4B^2}\right].
+\label{eq:exact_clipped_empirical_risk}
+\end{equation}
+The implementation computes this expectation from clipped-normal first and
+second moments and verifies numerically that it does not exceed the
+conservative quantity in \eqref{eq:empirical_upper}. The retrospective
+posterior-scale search uses the same predeclared prior-scale,
+posterior-ratio, and temperature grids and charges the same Gaussian,
+structural, and prior-scale penalties. The conservative certificates and
+all frozen V3 decisions remain unchanged.
+
 \begin{corollary}[Clipped Bayesian model average]\label{cor:bma}
 The clipped Bayesian model-average risk is no larger than the Gibbs risk in Proposition~\ref{prop:bound}, by convexity of squared loss.
 \end{corollary}

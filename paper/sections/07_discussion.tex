@@ -11,7 +11,23 @@ Top-3 activation provides a complementary negative result. It changes the number
 \subsection{Interpretability and Its Boundary}
 The reconstructed SETAR and Tetouan rules show that the implementation learns distinct local affine relationships associated with different antecedent prototypes. This is useful for auditing the model and checking that a multi-rule TSK system is not merely duplicating one global regression. It is not evidence that the prototypes correspond to physically validated regimes, and it is not evidence that interpretability guarantees robustness. The Tetouan multi-rule model is the clearest warning: its rules are inspectable, yet the deployment decision fails on the held-out horizon.
 
-The operational point forecasts are deterministic posterior-center predictions, whereas the PAC-Bayesian guarantee directly covers the Gibbs predictor and, by convexity, the clipped Bayesian model average. Before clipping, the posterior mean of a linear-in-consequents TSK predictor equals the posterior-center prediction. After clipping, equality with the clipped BMA generally fails. The certificate is therefore used as a screening statistic rather than represented as a direct guarantee for the deployed point forecast.
+The original operational forecasts are deterministic posterior-center
+predictions, whereas the PAC-Bayesian guarantee directly covers the Gibbs
+predictor and, by convexity, the clipped Bayesian model average. Before
+clipping, the posterior mean of a linear-in-consequents TSK predictor equals
+the posterior-center prediction. After clipping, equality with the clipped
+BMA generally fails. The frozen V3 results must therefore remain described as
+posterior-center results.
+
+The retrospective V5 audit evaluates this prediction-object mismatch only at
+the diagnostic level. With exact clipped BMA and exact empirical Gibbs risk, all four frozen PJM
+selections still satisfy their unchanged PJM gate. A post-hoc transfer of
+that gate rejects the two frozen Tetouan deployments; this does not
+establish what the original Tetouan gate would have decided. This pattern is consistent with the intended role
+of screening and abstention, but it is not a new prospective or internally locked result because
+the alignment audit was specified after both outcome sets were available. A
+prospective replication must make exact clipped BMA the operational forecast
+from the outset.
 
 \subsection{Operational Evidence and Stronger Baselines}
 The negative Tetouan study and positive internally locked PJM holdout illustrate why a certificate alone is not a deployment rule. The redesigned PJM gate combines certificate thresholding with validation margins and blockwise temporal-stability checks. Moving-block-bootstrap intervals remain positive for the original PJM comparison with seasonal naive, but these intervals quantify uncertainty only for the observed trajectories and do not prove population-level transfer to other regions or future regimes.

@@ -1,0 +1,27 @@
+\begin{table*}[htbp]
+\centering
+\caption{Strictly retrospective exact-clipped-BMA alignment audit of the
+frozen selected energy candidates. Candidate identities are preserved. The
+original seven-condition gate and thresholds are preserved for PJM and
+transferred to Tetouan only as a post-hoc abstention diagnostic;
+posterior-scale selection and gate evaluation exclude test outcomes. Positive changes indicate improvement over the predeclared seasonal
+fallback. ``Score'' denotes the two-to-one asymmetric forecasting-error
+score, not a monetized economic cost.}
+\label{tab:retrospective_bma_alignment}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrrrr}
+\toprule
+Case & Series & Exact cert. & Gate &
+Val. RMSE & Val. score & Test RMSE & Test score \\
+\midrule
+Tetouan & Zone 1 & 0.1196 & Fail & 20.19\% & 16.63\% & -9.07\% & -21.22\% \\
+Tetouan & Zone 2 & 0.1368 & Fail & 35.19\% & 35.65\% & -25.70\% & -65.03\% \\
+\midrule
+PJM & AEP    & 0.0953 & Pass & 53.11\% & 54.58\% & 57.96\% & 58.63\% \\
+PJM & COMED  & 0.0839 & Pass & 46.95\% & 49.54\% & 55.45\% & 54.11\% \\
+PJM & DAYTON & 0.0929 & Pass & 45.60\% & 46.29\% & 49.14\% & 50.21\% \\
+PJM & PJME   & 0.0958 & Pass & 53.86\% & 52.96\% & 51.71\% & 51.42\% \\
+\bottomrule
+\end{tabular}
+\end{table*}
