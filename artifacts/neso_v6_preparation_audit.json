@@ -1,0 +1,40 @@
+{
+  "duplicate_keys": 0,
+  "end": "2025-12-31",
+  "processed_file": "neso_demand_2025_daily.csv",
+  "processed_rows": 365,
+  "processed_sha256": "73e5b48acc60d04d4cb11dbb0a2050b24cd738ba2503207ee9d08976776dc463",
+  "raw_columns": [
+    "SETTLEMENT_DATE",
+    "SETTLEMENT_PERIOD",
+    "ND",
+    "TSD",
+    "ENGLAND_WALES_DEMAND",
+    "EMBEDDED_WIND_GENERATION",
+    "EMBEDDED_WIND_CAPACITY",
+    "EMBEDDED_SOLAR_GENERATION",
+    "EMBEDDED_SOLAR_CAPACITY",
+    "NON_BM_STOR",
+    "PUMP_STORAGE_PUMPING",
+    "SCOTTISH_TRANSFER",
+    "IFA_FLOW",
+    "IFA2_FLOW",
+    "BRITNED_FLOW",
+    "MOYLE_FLOW",
+    "EAST_WEST_FLOW",
+    "NEMO_FLOW",
+    "NSL_FLOW",
+    "ELECLINK_FLOW",
+    "VIKING_FLOW",
+    "GREENLINK_FLOW"
+  ],
+  "raw_file": "neso_demanddata_2025.csv",
+  "raw_rows": 17520,
+  "raw_sha256": "8b8be946bbb084bc28fbf95a71fad0fceb5543b98e02755235130a42beaee4e0",
+  "settlement_period_count_distribution": {
+    "46": 1,
+    "48": 363,
+    "50": 1
+  },
+  "start": "2025-01-01"
+}
