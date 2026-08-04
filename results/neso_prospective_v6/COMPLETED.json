@@ -1,0 +1,17 @@
+{
+  "completed_utc": "2026-08-04T19:40:18.028931+00:00",
+  "deployment": "seasonal_naive_7d",
+  "gate_passed": false,
+  "hashes": {
+    "candidates_all.csv": "faf190ae98895b50cd63a3131f18850c03ad3ea570bd4f0e38bef0dbc072bfa4",
+    "pretest_decision.json": "b3e37c7e2d41ba74bf4dfa16e40ef59a03df8fafaef374897790e851fab840fb",
+    "run_audit.json": "13d091a2560f423f8b1a987a2624f8a38724f0519bc73477b9756c84052516a5",
+    "test_metrics.json": "506f099a147061699ae7a172b0675efd9279a5933dff1d3a2b6471f314126a26",
+    "test_predictions.csv": "664623b510993eb0a8e6ff10417e4ad2bf86a504c20c0ce058515010dd77fb78",
+    "validation_predictions.csv": "6118e06b0778835476382d5006769d237d57eedfa7d65bd21baa9e5be23b4a40"
+  },
+  "runtime_seconds": 32.76390869996976,
+  "schema_version": "6.0",
+  "single_authorized_run": true,
+  "status": "COMPLETED"
+}

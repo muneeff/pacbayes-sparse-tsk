@@ -1,0 +1,27 @@
+{
+  "deployed_forecast": {
+    "asymmetric_score": 2804.5753424657523,
+    "mae": 1847.3002283105018,
+    "rmse": 2399.1272305827324
+  },
+  "deployed_rmse_improvement_vs_fallback": 0.0,
+  "deployed_score_improvement_vs_fallback": 0.0,
+  "deployment": "seasonal_naive_7d",
+  "posterior_refit_after_selection": false,
+  "schema_version": "6.0",
+  "seasonal_naive_7d": {
+    "asymmetric_score": 2804.5753424657523,
+    "mae": 1847.3002283105018,
+    "rmse": 2399.1272305827324
+  },
+  "selected_bma_rmse_improvement_vs_fallback": -0.14295038978098182,
+  "selected_bma_score_improvement_vs_fallback": -0.6213799198192709,
+  "selected_exact_clipped_bma": {
+    "asymmetric_score": 4547.282143894226,
+    "mae": 2335.805213266644,
+    "rmse": 2742.0834033287015
+  },
+  "test_observation_count": 73,
+  "test_opened_after_pretest_decision": true,
+  "test_target_clipping_rate": 0.0
+}

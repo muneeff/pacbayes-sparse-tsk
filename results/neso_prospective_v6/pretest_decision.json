@@ -1,0 +1,60 @@
+{
+  "candidate_count": 3060,
+  "certificate_uses_test": false,
+  "certification_target_clipping_rate": 0.3150684931506849,
+  "clip_bound_scaled": 3.1615282101489006,
+  "decision_made_before_test_opening": true,
+  "deployment": "seasonal_naive_7d",
+  "gate": {
+    "asymmetric_score_margin_passed": true,
+    "block_rmse_stability_passed": false,
+    "block_score_stability_passed": true,
+    "certificate_passed": false,
+    "clipping_passed": false,
+    "failed_conditions": [
+      "certificate",
+      "clipping",
+      "block_rmse_stability",
+      "worst_block_degradation"
+    ],
+    "gate_passed": false,
+    "rmse_margin_passed": true,
+    "seasonal_validation_asymmetric_score": 2578.12992424244,
+    "seasonal_validation_rmse": 1802.6622158663981,
+    "validation_bma_asymmetric_score": 2025.8225296919256,
+    "validation_bma_rmse": 1628.2439164854145,
+    "validation_bma_rmse_improvement_vs_fallback": 0.09675595230532663,
+    "validation_bma_rmse_nonnegative_blocks": 2,
+    "validation_bma_score_improvement_vs_fallback": 0.21422791355746162,
+    "validation_bma_score_nonnegative_blocks": 3,
+    "validation_bma_worst_block_rmse_improvement": -0.09795644640171434,
+    "validation_bma_worst_block_score_improvement": -0.17629713848951772,
+    "worst_block_degradation_passed": false
+  },
+  "gate_uses_test": false,
+  "schema_version": "6.0",
+  "selected_base_structure_kl": 2.4849066497880004,
+  "selected_candidate_id": "lag=1|alpha=1|rules=1",
+  "selected_certificate": 0.19755875472418907,
+  "selected_certificate_untruncated": 0.19755875472418907,
+  "selected_consequent_dimension": 2,
+  "selected_exact_empirical_gibbs_risk": 0.006642158354465777,
+  "selected_gaussian_kl": 2.7852234770466153,
+  "selected_lag": 1,
+  "selected_posterior_scale_ratio": 0.3,
+  "selected_prior_scale_multiplier": 8.0,
+  "selected_ridge_alpha": 1.0,
+  "selected_subset_identity_kl": 2.7686748229186433,
+  "selected_subset_one_based": [
+    1
+  ],
+  "selected_subset_size": 1,
+  "selected_subset_zero_based": [
+    0
+  ],
+  "selected_temperature": 1.0,
+  "selected_total_kl": 9.64824286218736,
+  "selected_total_structure_kl": 5.253581472706644,
+  "selection_uses_test": false,
+  "status": "PRETEST_DECISION_FROZEN"
+}
